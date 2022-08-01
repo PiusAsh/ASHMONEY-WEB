@@ -1,0 +1,252 @@
+/* .sideBack{
+    background-image: url(/assets/images/bread-bg.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 100vh;
+} */
+
+
+.mainSection{
+  background-color: #F8F9FA;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+
+
+.Des {
+  width: 423.422px;
+  height: 63px;
+  font-size: 15px;
+  color: #08386d;
+  font-weight: 400;
+  font-family: 'Poppins',
+  sans-serif;
+}
+
+
+
+
+.log {
+  color: #354168;
+  font-size: 30px;
+  font-weight: 800 !important;
+  width: 423.422px;
+  font-family: 'Poppins',
+  sans-serif;
+}
+
+.wel {
+  color: #242424;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'Poppins',
+  sans-serif;
+}
+
+.heroImg {
+  width: 100% !important;
+  height: 450px !important;
+  margin-top: 40px;
+
+}
+
+
+.form-control {
+  height: 52px;
+  width: 550px !important;
+  border: 2px solid #e7e7e7 !important;
+  border-radius: 11px !important;
+
+}
+
+.form-control:focus {
+  border: none !important;
+
+}
+
+/* .form-label {
+  color:#C31E39;
+  background-color: white;
+  position: absolute;
+  margin-left: 15px;
+  margin-top: -17px;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 7px;
+  font-family: 'Poppins',
+  sans-serif;
+
+
+} */
+
+.submit1 {
+  background-color: #C31E39 !important;
+  height: 60px;
+  width: 423.222px !important;
+  border-radius: 11px !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  font-size: 16px !important;
+  font-family: 'Poppins',
+  sans-serif;
+}
+
+/* @media (max-width: 985px) {
+  .heroImg {
+    display: none;
+  }
+} */
+
+
+
+  /* .form-control {
+    height: 52px;
+    width: 550px !important;
+    border: 2px solid #C31E39 !important;
+    border-radius: 11px !important;
+  } */
+
+  .submit1 {
+    background-color: #C31E39 !important;
+    height: 60px;
+    width: 550px !important;
+    border-radius: 11px !important;
+    color: #fff !important;
+    font-weight: 700 !important;
+    font-size: 16px !important;
+    font-family: 'Poppins',
+    sans-serif;
+  }
+
+
+
+::placeholder {
+  color: #808080;
+  font-weight: 500;
+  font-size: 14px;
+  font-family: 'Poppins',
+  sans-serif;
+}
+
+.mainSection {
+  margin-top: 70px;
+}
+
+.forget {
+  color: #858585;
+  font-size: 15px;
+  font-weight: 400;
+  text-decoration: none;
+  font-family: 'Poppins',
+  sans-serif;
+}
+
+.forget:hover {
+  color: #858585;
+  font-size: 15px;
+  font-weight: 400;
+  text-decoration: none;
+  font-family: 'Poppins',
+  sans-serif;
+}
+
+.links {
+
+  text-align: center;
+  width: 423.222px !important;
+  font-family: 'Poppins',
+  sans-serif;
+}
+
+.coh {
+  color: #808080;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: 'Poppins',
+  sans-serif;
+}
+
+.lg {
+  color: #C31E39;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  font-family: 'Poppins',
+  sans-serif;
+}
+
+
+
+@media (max-width: 439px) {
+
+  .form-control {
+    height: 50px !important;
+    width: 350px !important;
+    /* border: 2px solid #C31E39 !important; */
+    border: 2px solid #e7e7e7 !important;
+    border-radius: 11px !important;
+
+  }
+
+  .submit1 {
+    background-color: #C31E39 !important;
+    height: 50px;
+    width: 350px !important;
+    border-radius: 11px !important;
+    color: #fff !important;
+    font-weight: 700 !important;
+    font-size: 16px !important;
+    justify-content: center;
+    display: flex;
+    font-family: 'Poppins',
+    sans-serif;
+  }
+
+  .log {
+    color: #C31E39;
+    font-size: 35px;
+    font-weight: 800 !important;
+    width: 423.422px;
+    margin-left: 25px;
+    font-family: 'Poppins',
+    sans-serif;
+  }
+
+  .form {
+    margin-left: 16px;
+
+  }
+
+  .Des {
+    color: #08386d;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    width: 350px;
+    margin-left: 16px;
+    font-family: 'Poppins',
+    sans-serif;
+  }
+
+  .wel {
+    margin-left: 18px;
+    font-family: 'Poppins',
+    sans-serif;
+  }
+
+  .links {
+
+    text-align: center;
+    width: 350px !important;
+    margin-top: -20px;
+    font-family: 'Poppins',
+    sans-serif;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+}

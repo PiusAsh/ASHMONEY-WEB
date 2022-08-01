@@ -1,0 +1,159 @@
+.heroDes {
+  color: #f00016;
+  font-size: 17px;
+  font-weight: 500;
+  font-family: 'Poppins',
+    sans-serif;
+}
+
+.heroBg {
+  background-image: url(/assets/images/ai1.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.heroText {
+  width: 450px;
+  line-height: 63px;
+  color: #272e3a;
+  font-size: 45px;
+  font-family: 'Poppins',
+    sans-serif;
+  font-weight: 600;
+}
+
+.loremText {
+  color: #888888;
+  font-size: 17px;
+  line-height: 30px;
+  font-family: 'Poppins',
+    sans-serif;
+  font-weight: 500;
+}
+.loremText2 {
+  color: #888888;
+  font-size: 16px;
+  line-height: 32px;
+  font-family: 'Poppins',
+    sans-serif;
+  font-weight: 500;
+  
+}
+
+.heroBtn {
+  /* padding: 0px 20px 0px 20px; */
+  background-color: #C31E39;
+  letter-spacing: 1px;
+  color: white;
+  height: 40px;
+  width: 130px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 30px;
+  border: none;
+  font-family: 'Poppins',
+    sans-serif;
+  text-transform: uppercase;
+
+}
+
+.nextText {
+  color: #354168;
+  font-weight: 500;
+  font-size: 32px;
+  font-family: 'Poppins',
+    sans-serif;
+  line-height: 42px;
+  height: 84px;
+  width: 540px;
+}
+
+.card-title {
+  color: #222222;
+  font-size: 17px;
+  font-family: 'Poppins',
+    sans-serif;
+  font-weight: 600;
+}
+
+.card-text {
+  font-size: 15px;
+  color: #888888;
+  font-family: 'Poppins',
+    sans-serif;
+}
+
+.justText {
+  font-size: 15px;
+  color: #888888;
+  font-family: 'Poppins',
+    sans-serif;
+  line-height: 28.5px;
+  width: 540px;
+}
+
+.card {
+  background-color: #fbecec;
+  border-bottom: 3px solid #f00016;
+  height: 233px;
+  width: 255px;
+}
+
+.loanText {
+  color: #13287e;
+  font-size: 30px;
+  font-weight: 600;
+  font-family: 'Poppins',
+  sans-serif;
+}
+
+.howBg{
+    background-image: url(/assets/images/map.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.howProcess{
+    font-size: 18px;
+    color: #222222;
+    font-weight: 500;
+    font-family: 'Poppins',
+    sans-serif;
+}
+
+.processText {
+  font-size: 15px;
+  color: #888888;
+  font-family: 'Poppins',
+    sans-serif;
+  line-height: 28.5px;
+  
+}
+.processText1 {
+  font-size: 14px;
+  color: #888888;
+  font-family: 'Poppins',
+    sans-serif;
+  line-height: 28.5px;
+  
+}
+.preFooter{
+    background-image: url(/assets/images/feature-bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+}
+.why{
+    font-size: 30px;
+    color: #222222;
+    font-weight: 600;
+    font-family: 'Poppins',
+    sans-serif;
+}
+.feature{
+    font-size: 17px;
+    color: #222222;
+    font-weight: 600;
+    font-family: 'Poppins',
+    sans-serif;
+}

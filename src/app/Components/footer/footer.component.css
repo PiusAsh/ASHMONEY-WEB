@@ -1,0 +1,29 @@
+.bg-footer {
+  background-image: url(/assets/images/footer-back.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}
+
+.footerText {
+  font-size: 13px;
+  color: #222222;
+  font-family: 'Poppins',
+    sans-serif;
+}
+
+.footerTitle {
+  color: #c31e39;
+  font-weight: 500;
+  font-size: 16px;
+  font-family: 'Poppins',
+    sans-serif;
+}
+
+.footerLinks {
+  text-decoration: none;
+  font-size: 14px;
+  color: #222222;
+  font-family: 'Poppins',
+    sans-serif;
+}
