@@ -130,8 +130,13 @@ body {
     sans-serif;
 }
 
-.mainSection {
-  margin-top: 70px;
+.lg1 {
+  color: #C31E39;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  font-family: 'Poppins',
+    sans-serif;
 }
 
 .forget {

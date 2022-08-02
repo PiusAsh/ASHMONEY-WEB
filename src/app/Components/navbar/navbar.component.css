@@ -21,3 +21,7 @@
     font-size: 15px;
     text-decoration: none;
 }
+
+.navbar{
+    border-bottom: 2px solid #e93a47;
+}
