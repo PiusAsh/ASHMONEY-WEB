@@ -1,9 +1,4 @@
-/* .sideBack{
-    background-image: url(/assets/images/bread-bg.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    height: 100vh;
-} */
+ 
 
 .mainSection {
   background-color: rgba(255, 255, 255, 0.822);
@@ -32,9 +27,21 @@ body {
   color: #354168;
   font-size: 30px;
   font-weight: 800 !important;
-  width: 423.422px;
+  /* width: 423.422px; */
   font-family: 'Poppins',
     sans-serif;
+}
+
+.info{
+  padding: 6px;
+  font-size: 11px;
+  font-family: 'Poppins',
+  sans-serif;
+  background-color: #C31E39;
+  color: white;
+  border: none;
+  max-width: 150px;
+
 }
 
 .wel {
@@ -65,20 +72,7 @@ body {
 
 }
 
-/* .form-label {
-  color: #000;
-  background-color: #F8F9FA;
-  position: absolute;
-  margin-left: 15px;
-  margin-top: -17px;
-  font-weight: 600;
-  font-size: 13px;
-  padding: 7px;
-  font-family: 'Poppins',
-    sans-serif;
 
-
-} */
 
 .submit1 {
   background-color: #C31E39 !important;
@@ -101,8 +95,8 @@ body {
 
 
 .form-control {
-  height: 52px;
-  width: 550px !important;
+  height: 50px;
+  width: 500px !important;
   border: 2px solid #e7e7e7 !important;
   border-radius: 11px !important;
   
@@ -111,7 +105,7 @@ body {
 .submit1 {
   background-color: #C31E39 !important;
   height: 60px;
-  width: 550px !important;
+  width: 500px !important;
   border-radius: 11px !important;
   color: #fff !important;
   font-weight: 700 !important;
@@ -129,6 +123,14 @@ body {
   font-family: 'Poppins',
     sans-serif;
 }
+
+.text-danger {
+  font-weight: 500;
+  font-family: 'Poppins',
+    sans-serif;
+
+}
+
 
 .lg1 {
   color: #C31E39;
@@ -210,10 +212,10 @@ body {
 
   .log {
     color: #C31E39;
-    font-size: 35px;
+    font-size: 25px;
     font-weight: 800 !important;
-    width: 423.422px;
-    margin-left: 25px;
+    /* width: 423.422px;
+    margin-left: 25px; */
     font-family: 'Poppins',
       sans-serif;
   }
@@ -228,8 +230,6 @@ body {
     font-size: 14px;
     line-height: 20px;
     font-weight: 400;
-    /* width: 350px; */
-    /* margin-left: 16px; */
     font-family: 'Poppins',
       sans-serif;
   }
@@ -253,3 +253,8 @@ body {
     overflow-x: hidden;
   }
 }
+ 
+
+
+
+

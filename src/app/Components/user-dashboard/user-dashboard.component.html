@@ -1,1 +1,148 @@
-<p>user-dashboard works!</p>
+<section>
+  <div class="row">
+    <!-- SIDEBAR COLUMN -->
+    <div class="col-lg-2 sideBar">
+
+      <!-- SIDEBAR LINKS -->
+      <div class="py-4 px-5">
+        <div class="linkss  py-5">
+          <p class="mb-3 ashBank">ASHBANK</p>
+<ul class="liss">
+  <li class="liss py-3"><a class="linkName" routerLink="/user">Dashboard</a>
+  </li>
+  <li class="liss py-3 "><a class="linkName" routerLink="/send">Send Money</a></li>
+  <li class="liss py-3 "><a class="linkName" routerLink="/receive">Receive</a></li>
+  <li class="liss py-3 "><a class="linkName" routerLink="/loan">Quick Loan</a></li>
+  <li class="liss py-3 "><a class="linkName" routerLink="/profile">Profile</a></li>
+  <li class="liss py-3"><a class="linkName" routerLink="/report">Report</a></li>
+</ul>
+          <ul class="py-5">
+            <li class="liss py-3"><a class="logout"  (click)="logout()">Logout</a>
+          </ul>
+        </div>
+      </div>
+
+      <!--END OF SIDEBAR LINKS -->
+
+
+    </div>
+    <!-- END OF SIDEBAR COLUMN -->
+    <!-- <div class="col-lg-1 "></div> -->
+
+
+    <div class="col-lg-9 py-5 px-5">
+      <p class="welcome mt-3 mb-3 px-4">Welcome Back, Pius A. <br/> <span class="How">How are you doing today? Today’s date is 1st August,
+          2022.</span></p>
+
+      <div class="container row account">
+        <div class="container d-flex priceContainer">
+
+        <div class="col-lg-5 me-5">
+
+          <p class="yourAcct  mt-3 px-5">Your Balance</p>
+          <p class="acctAmount px-5">₦5,000,630.00</p>
+        <div class="d-flex px-5 mt-3">
+            <button class="money me-2" routerLink="/send">Send Money</button>
+            <button class="money" routerLink="/receive" >Receive Money</button>
+        </div>
+                    <!-- <p class="yourAcctNo  mt-4 px-5">Account No: <span class="acctNo">0233445678</span></p> -->
+        </div>
+        <!-- <div class="col-lg-3">
+
+
+        </div> -->
+        <div class="col-lg-7 px-5">
+                <div class="card cardcard mt-3 px-3 p-3 m-4">
+                  <div class="img-box">
+                    <img src="https://www.freepnglogos.com/uploads/visa-logo-download-png-21.png" alt="" style="width: 50px;" height="40px;">
+                  </div>
+                  <div class="number">
+                    <label class="fw-bold acctLabel" for="">**** **** **** 1060</label>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between">
+                    <small><span class="fw-bold acctLabel">Expiry date:</span>&nbsp;<span
+                        class="acctLabel">10/16</span></small>
+                    <small><span class="fw-bold acctLabel">Name:</span> &nbsp;<span
+                        class="acctLabel">Pius</span></small>
+                  </div>
+                </div>
+        </div>
+      </div></div>
+
+
+
+
+
+      <div class="row py-3">
+<h2 class="tra mb-3 mt-3 px-3">Recent Transactions</h2>
+<p class="tra1 py-1 px-2">Credit Transactions</p>
+        <!-- Transaction section -->
+ <table class="table">
+   <thead>
+     <tr>
+       <th scope="">Name</th>
+       <th scope="col">Account</th>
+       <th scope="col">Amount</th>
+       <th scope="col">Type</th>
+       <th scope="col">Date</th>
+       <th scope="col">Status</th>
+
+       
+     </tr>
+   </thead>
+   <tbody>
+     <tr>
+       <td>Pius Ashogbon</td>
+       <td>0085875008</td>
+       <td>500,0000</td>
+       <td>Credit</td>
+       <td>12-07-2022</td>
+       <td>Successful</td>
+
+
+       
+     </tr>
+
+   </tbody>
+ </table>
+        <!-- end of transaction  -->
+      </div>
+      <div class="row py-3">
+<p class="tra1 py-1 px-2">Debit Transactions</p>
+        <!-- Transaction section -->
+ <table class="table">
+   <thead>
+     <tr>
+       <th scope="">Name</th>
+       <th scope="col">Account</th>
+       <th scope="col">Amount</th>
+       <th scope="col">Type</th>
+       <th scope="col">Date</th>
+       <th scope="col">Status</th>
+
+       
+     </tr>
+   </thead>
+   <tbody>
+     <tr>
+       <td>Pius Ashogbon</td>
+       <td>0085875008</td>
+       <td>500,0000</td>
+       <td>Debit</td>
+       <td>12-07-2022</td>
+       <td>Successful</td>
+
+
+       
+     </tr>
+
+   </tbody>
+ </table>
+        <!-- end of transaction  -->
+      </div>
+
+
+    </div>
+    <!-- END OF MAIN PAGE COLUMN -->
+  </div>
+</section>

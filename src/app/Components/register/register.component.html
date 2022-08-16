@@ -1,54 +1,84 @@
-
-
-<section class="bg-light py-4">
+<section class="bg-light">
   <div class="container">
     <div class="row">
       <div class="col-lg-3"></div>
       <div class="col-lg-6">
 
-        <h1 class="log text-left">Create An Account</h1>
+        <h1 class="log text-left mt-4">Create An Account</h1>
 
-        <p class="Des text-left">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt itaque impedit quae
-          minus.</p>
+        <form [formGroup]="registerForm" class="form" (ngSubmit)="register()">
+          <div class="row">
+            <div class="mb-3">
 
+              <input formControlName="firstName" type="email" placeholder="First Name" class="form-control shadow-sm"
+                id="exampleInputEmail1" aria-describedby="emailHelp">
+              <span class="text-danger"
+                *ngIf="registerForm.controls['firstName'].dirty && registerForm.hasError('required', 'firstName')">First
+                Name is
+                required</span>
 
-        <form class="form">
+            </div>
+
+            <div class="mb-3">
+
+              <input formControlName="lastName" type="email" placeholder="Last Name" class="form-control shadow-sm"
+                id="exampleInputEmail1" aria-describedby="emailHelp">
+              <span class="text-danger"
+                *ngIf="registerForm.controls['lastName'].dirty && registerForm.hasError('required', 'lastName')">Last
+                Name is
+                required</span>
+
+            </div>
+          </div>
           <div class="mb-3">
-            <!-- <label for="exampleInputEmail1" class="form-label">First Name</label> -->
-            <input type="email" placeholder="First Name" class="form-control shadow-sm" id="exampleInputEmail1"
-              aria-describedby="emailHelp">
+
+            <input formControlName="email" type="email" placeholder="Email" class="form-control shadow-sm"
+              id="exampleInputEmail1" aria-describedby="emailHelp">
+            <span class="text-danger"
+              *ngIf="registerForm.controls['email'].dirty && registerForm.hasError('required', 'email')">
+              Email is
+              required</span>
+
+
 
           </div>
           <div class="mb-3">
-            <!-- <label for="exampleInputEmail1" class="form-label">Last Name</label> -->
-            <input type="email" placeholder="Last Name" class="form-control shadow-sm" id="exampleInputEmail1"
-              aria-describedby="emailHelp">
+
+            <input type="email" maxlength="11" minlength="11" formControlName="phoneNo" placeholder="Phone Number"
+              class="form-control shadow-sm" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <span class="text-danger"
+              *ngIf="registerForm.controls['phoneNo'].dirty && registerForm.hasError('required', 'phoneNo')">Phone
+              Number is required</span>
+
+          </div>
+
+          <div class="mb-3">
+
+            <input type="number" formControlName="acctNo" placeholder="Account Number" [value]="userAccount"
+              class="form-control shadow-sm" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <span class="text-danger"
+              *ngIf="registerForm.controls['acctNo'].dirty && registerForm.hasError('required', 'acctNo')">Account
+              number must be generated via the above button</span>
 
           </div>
           <div class="mb-3">
-            <!-- <label for="exampleInputEmail1" class="form-label">Email</label> -->
-            <input type="email" placeholder="Email" class="form-control shadow-sm" id="exampleInputEmail1"
-              aria-describedby="emailHelp">
 
+            <input formControlName="password" type="password" placeholder="Password" class="form-control shadow-sm"
+              id="exampleInputPassword1">
+            <span class="text-danger"
+              *ngIf="registerForm.controls['password'].dirty && registerForm.hasError('required', 'password')">
+              Password is
+              required</span>
           </div>
-          <div class="mb-3">
-            <!-- <label for="exampleInputPassword1" class="form-label">Password</label> -->
-            <input type="password" placeholder="Password" class="form-control shadow-sm" id="exampleInputPassword1">
-          </div>
-          <div class="mb-3">
-            <!-- <label for="exampleInputPassword1" class="form-label">Confirm Password</label> -->
-            <input type="password" placeholder="Confirm Password" class="form-control shadow-sm" id="exampleInputPassword1">
-          </div>
-
-          <button type="submit" class="submit1 btn">Register Now</button>
+          <p class="info mb-1 mx-2" (click)="GenerateAccount()">Generate Account Number</p>
+          <button type="submit" [disabled]="!registerForm.valid" class="submit1 btn">Register Now</button>
           <div class="links py-3">
 
 
             <p class="coh py-1 text-center">Already have an Account? <span><a class="lg text-center"
                   routerLink="/login">Login Now</a></span></p>
-            <p class="coh py-1 text-center"> <span><a class="lg1 text-center"
-                  routerLink="/">Back To Home</a></span></p>
-                  
+            <p class="coh py-1 text-center"> <span><a class="lg1 text-center" routerLink="/">Back To Home</a></span></p>
+
 
           </div>
         </form>
