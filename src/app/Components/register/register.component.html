@@ -1,4 +1,4 @@
-<section class="bg-light">
+<!-- <section class="bg-light">
   <div class="container">
     <div class="row">
       <div class="col-lg-3"></div>
@@ -71,7 +71,7 @@
               Password is
               required</span>
           </div>
-          <p class="info mb-1 mx-2" (click)="GenerateAccount()">Generate Account Number</p>
+          <button type="button" class="info mb-1 mx-2" (click)="GenerateAccount()"> Generate Account Number</button>
           <button type="submit" [disabled]="!registerForm.valid" class="submit1 btn">Register Now</button>
           <div class="links py-3">
 
@@ -90,4 +90,251 @@
       <div class="col-lg-3"></div>
     </div>
   </div>
+</section> -->
+
+
+
+<!-- LOAN PAGE -->
+
+<section>
+  <div class="row">
+    <!-- SIDEBAR COLUMN -->
+    <div class="col-lg-3 px-5">
+
+      <!-- SIDEBAR LINKS -->
+      <!-- <div class="py-4 px-5">
+        <div class="linkss  py-5">
+          <p class="mb-3 ashBank">ASHBANK</p>
+          <ul class="liss">
+            <li class="liss py-3"><a class="linkName" routerLink="/user">Dashboard</a>
+            </li>
+            <li class="liss py-3 "><a class="linkName" routerLink="/send">Send Money</a></li>
+            <li class="liss py-3 "><a class="linkName" routerLink="/receive">Receive</a></li>
+            <li class="liss py-3 "><a class="linkName" routerLink="/loan">Quick Loan</a></li>
+            <li class="liss py-3 "><a class="linkName" routerLink="/profile">Profile</a></li>
+            <li class="liss py-3"><a class="linkName" routerLink="/report">Report</a></li>
+          </ul>
+
+          <ul class="py-5">
+            <li class="liss py-3"><a class="logout" href="#">Logout</a>
+          </ul>
+        </div>
+      </div> -->
+
+      <!--END OF SIDEBAR LINKS -->
+
+
+    </div>
+    <!-- END OF SIDEBAR COLUMN -->
+    <!-- <div class="col-lg-1 "></div> -->
+
+
+    <div class="col-lg-7 px-5">
+
+      <div class="row">
+        <div class="d-flex flex-column mt-5 px-5">
+          <p class="fs-4 fw-bold m-0 text-uppercase py-1 px-5">Open an account</p>
+                      <span class="text-muted px-4">Welcome to the future of Savings & Investments</span>
+          <span class="line my-1"></span>
+        </div>
+        <form>
+          <div class="row mt-4">
+            <div class="col-lg-4">
+              <span class="text-uppercase text-muted">FIRST NAME</span>
+              <input type="text" class="form-control shadow-sm d-flex align-items-center py-2 px-2"
+                id="exampleInputPassword1">
+            </div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-4">
+              <span class="text-uppercase text-muted">LAST NAME</span>
+              <input type="text" class="form-control shadow-sm d-flex align-items-center py-2 px-2"
+                id="exampleInputPassword1">
+            </div>
+          </div>
+
+
+          <div class="row mt-2">
+            <div class="col-lg-4">
+              <span class="text-uppercase text-muted">phone number</span>
+              <input type="text" class="form-control shadow-sm d-flex align-items-center py-2 px-2"
+                id="exampleInputPassword1">
+            </div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-4">
+              <span class="text-uppercase text-muted">email address</span>
+              <input type="text" class="form-control shadow-sm d-flex align-items-center py-2 px-2"
+                id="exampleInputPassword1">
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-lg-4">
+              <span class="text-uppercase text-muted">date of birth</span>
+              <input type="date" class="form-control shadow-sm d-flex align-items-center py-2 px-2"
+                id="exampleInputPassword1">
+            </div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-4">
+              <span class="text-uppercase text-muted">Gender</span>
+              <select class="form-select d-flex align-items-center shadow-sm py-2 px-2" id="amount" aria-label="">
+                <option selected hidden>Gender</option>
+                <option class="valAmount" value="Male">Male</option>
+                <option class="valAmount" value="Female">Female</option>
+              </select>
+            </div>
+          </div>
+
+                <div class="row mt-2">
+            <div class="col-lg-9">
+              <span class="text-uppercase text-muted">Address</span>
+              <input type="address" class="form-control shadow-sm d-flex align-items-center py-2 px-2"
+                id="exampleInputPassword1">
+            </div> 
+          </div> 
+
+          <div class="row mt-2">
+            <div class="col-lg-4">
+              <span class="text-uppercase text-muted">state</span>
+              <input type="text" class="form-control shadow-sm d-flex align-items-center py-2 px-2"
+                id="exampleInputPassword1">
+            </div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-4">
+              <span class="text-uppercase text-muted">country</span>
+              <input type="text" class="form-control shadow-sm d-flex align-items-center py-2 px-2"
+                id="exampleInputPassword1">
+            </div>
+          </div>
+          <!-- <div class="row mt-2">
+            <div class="col-lg-4">
+              <span class="text-uppercase text-muted">account number</span>
+              <input [value]="userAccount" readonly type="number" class="form-control shadow-sm d-flex align-items-center py-2 px-2"
+                id="exampleInputPassword1">
+            </div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-4">
+              <span class="text-uppercase text-muted">transaction pin</span>
+              <input type="number" [maxLength]="4" class="form-control shadow-sm d-flex align-items-center py-2 px-2"
+                id="exampleInputPassword1">
+            </div>
+          </div> -->
+
+          <!-- <div class="row mt-2">
+            <div class="col-lg-9">
+              <span class="text-uppercase text-muted">ACCOUNT NUMBER</span>
+              <input  [value]="userAccount" type="text" class="form-control shadow-sm d-flex align-items-center py-2 px-2"
+                id="exampleInputPassword1">
+            </div>
+          </div> -->
+          <div class="row mt-3">
+            <div class="col-lg-9">
+
+              <div class="col-12 p-0">
+                <!-- <button type="button" class="info mb-1 mx-2" (click)="GenerateAccount()"> Generate Account
+                  Number</button> -->
+                <div class="btn btn-primary w-100">create account</div>
+              </div>
+            </div>
+
+          </div>
+
+
+        </form>
+      </div>
+
+      <!-- <div class="container">
+        <form>
+          <div class="d-flex flex-column">
+            <p class="fs-4 fw-bold m-0">Profile Settings</p>
+            <span class="line my-2"></span>
+          </div>
+          <div class="row p-0">
+            <div class="row d-flex">
+            <div class="col-12 p-0 px-4">
+              <span class="text-uppercase text-muted">account number</span>
+            </div>
+            <div class="col-6 p-0 px-4">
+              <input type="number" maxlength="10" minlength="10"
+                class="form-control shadow-sm d-flex align-items-center py-2 px-2" id="exampleInputPassword1">
+            </div>
+                        <div class="col-12 p-0 px-4">
+                          <span class="text-uppercase text-muted">account number</span>
+                        </div>
+            <div class="col-6 p-0 px-4">
+              <input type="number" maxlength="10" minlength="10"
+                class="form-control shadow-sm d-flex align-items-center py-2 px-2" id="exampleInputPassword1">
+            </div></div>
+
+
+            <div class="col-12 p-0 px-4 mt-1">
+              <span class="text-uppercase text-muted">Select bank</span>
+            </div>
+            <div class="col-12 p-0 px-4">
+              <select class="form-select d-flex align-items-center shadow-sm py-2 px-2" id="amount" aria-label="">
+                <option selected hidden>What Bank?</option>
+                <option class="valAmount" value="jan">First Bank</option>
+                <option class="valAmount" value="feb">Access Bank</option>
+                <option class="valAmount" value="mar">Guarantee Trust Bank (GTB)</option>
+                <option class="valAmount" value="apr">Fidelity Bank</option>
+                <option class="valAmount" value="may">Wema Bank</option>
+                <option class="valAmount" value="jun">Go Money</option>
+                <option class="valAmount" value="jul">Sterling Bank</option>
+                <option class="valAmount" value="aug">Royal Bank</option>
+                <option class="valAmount" value="sept">Union Bank</option>
+                <option class="valAmount" value="oct">Opay Digital Service</option>
+                <option class="valAmount" value="nov">Paystack</option>
+                <option class="valAmount" value="dec">Stanbic Bank</option>
+              </select>
+            </div>
+
+            <AMOUNT -->
+      <!-- <div class="col-12 p-0 px-4 mt-1">
+              <span class="text-uppercase text-muted">amount</span>
+            </div>
+            <div class="col-12 p-0 px-4">
+              <input type="number" maxlength="10" minlength="10"
+                class="form-control shadow-sm d-flex align-items-center py-2 px-2" id="exampleInputPassword1">
+            </div>
+
+            <!-RECEIVER'S NAME -->
+      <!-- <div class="col-12 p-0 px-4 mt-1">
+              <span class="text-uppercase text-muted">RECEIVER'S NAME</span>
+            </div>
+            <div class="col-12 p-0 px-4">
+              <input type="text" class="form-control shadow-sm d-flex align-items-center py-2 px-2"
+                id="exampleInputPassword1">
+            </div> -->
+      <!-- TRANSACTION PIN -->
+      <!-- <div class="col-12 p-0 px-4 mt-1">
+              <span class="text-uppercase text-muted">TRANSACTION PIN</span>
+            </div>
+            <div class="col-12 p-0 px-4">
+              <input type="password" class="form-control shadow-sm d-flex align-items-center py-2 px-2"
+                id="exampleInputPassword1">
+            </div>
+
+
+            <div class="col-12 p-0 px-4">
+              <div class="d-flex align-items-center my-3">
+                <span class="text-muted text-uppercase">you're about to send:</span>
+                <span class="c-g ps-1">₦<span id="money">23,640</span></span>
+              </div>
+            </div>
+            <div class="col-12 p-0 px-4">
+              <div class="btn btn-primary w-100">Send</div>
+              <div class="text-muted text-center mb-4 mt-1">You can make up to <span
+                  style="color: #C31E39; font-weight: 600;">30</span>
+                free transfers</div>
+            </div>
+          </div>
+        </form>
+      </div> -->
+
+
+
+    </div>
+    <div class="col-lg-2"></div>
+
+  </div>
+  <!-- END OF MAIN PAGE COLUMN -->
 </section>

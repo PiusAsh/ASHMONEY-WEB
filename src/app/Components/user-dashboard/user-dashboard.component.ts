@@ -9,10 +9,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-dashboard.component.css'],
 })
 export class UserDashboardComponent implements OnInit {
+  myDate = Date.now();
+
   constructor(private router: Router) {}
 
   ngOnInit() {
-    // console.log('This is init method');
+   
   }
 
   // simpleAlert() {
@@ -38,8 +40,8 @@ export class UserDashboardComponent implements OnInit {
         //   'Your imaginary file has been deleted.',
         //   'success'
         // );
-      // } else if (result.dismiss === Swal.DismissReason.cancel) {
-      //   Swal.fire('Cancelled', 'Your imaginary file is safe :)', 'error');
+        // } else if (result.dismiss === Swal.DismissReason.cancel) {
+        //   Swal.fire('Cancelled', 'Your imaginary file is safe :)', 'error');
       }
     });
   }
