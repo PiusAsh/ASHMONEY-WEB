@@ -54,8 +54,9 @@
 
           <div class="mb-3">
 
-            <input type="number" formControlName="acctNo" placeholder="Account Number" [value]="userAccount"
-              class="form-control shadow-sm" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <input type="text" formControlName="acctNo" placeholder="Account Number" [value]="userAccount"
+              class="form-control acctDsp shadow-sm" readonly
+              aria-describedby="emailHelp">
             <span class="text-danger"
               *ngIf="registerForm.controls['acctNo'].dirty && registerForm.hasError('required', 'acctNo')">Account
               number must be generated via the above button</span>

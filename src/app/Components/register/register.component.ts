@@ -13,15 +13,30 @@ import {NgToastService} from 'ng-angular-popup'
 export class RegisterComponent implements OnInit {
   public registerForm!: FormGroup;
 
-    userAccount = "";
+  userAccount = '';
 
- GenerateAccount(){
-  var account = new Date().getTime()
-  this.userAccount = "DEMO ACCOUNT";
-  console.log(account);
- }
+  GenerateAccount() {
+    var account = new Date().getTime().toString();
+    //this.userAccount = account;
+    var code = account;
+    var newAccount = code.slice(0,10);
+    this.userAccount = newAccount;
+    console.log(newAccount);
 
- 
+
+
+
+  // userAccount = '';
+
+  // GenerateAccount() {
+  //   // var display = document.querySelector('#acctDsp') as HTMLElement;
+  //   var account = new Date().getTime().toString();
+  //   this.userAccount = account;
+    
+  //   console.log(this.userAccount);
+    //var micro = account; 
+    // this.userAccount = display;
+  }
 
   constructor(
     private formBuilder: FormBuilder,
@@ -42,10 +57,8 @@ export class RegisterComponent implements OnInit {
       phoneNo: ['', Validators.required],
       password: ['', Validators.required],
       acctNo: ['', Validators.required],
-      
     });
   }
-
 
   register() {
     this.http
@@ -70,10 +83,11 @@ export class RegisterComponent implements OnInit {
           });
         }
       );
+      
   }
 
-  debitTransactions(){
-    
+  debitTransactions() {}
   }
-}
+
+
 
