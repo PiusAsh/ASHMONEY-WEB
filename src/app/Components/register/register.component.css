@@ -501,7 +501,7 @@ body {
    font-weight: 600;
  }
  .info {
-   padding: 6px;
+   padding: 8px;
    font-size: 11px;
    font-family: 'Poppins',
      sans-serif;
@@ -509,6 +509,7 @@ body {
    color: white;
    border: none;
    max-width: 150px;
+   margin-top: 30px;
 
  }
  .flex-column{

@@ -96,12 +96,12 @@
 
 
 <section class="bigWhole">
-  <div class="row mt-3">
+  <div class="row mt-1">
 
     <div class="col-lg-3 px-5">
     </div>
 
-    <div class="col-lg-6 card py-3">
+    <div class="col-lg-6 card ">
 
       <div class="row px-5">
         <div class="d-flex flex-column mt-4 openAcc">
@@ -177,6 +177,20 @@
                 id="exampleInputPassword1">
             </div>
           </div>
+
+          <!-- GENERATE ACCOUNT -->
+          <div class="row mt-2">
+            <div class="col-lg-4">
+               <button type="button" class="info " (click)="GenerateAccount()"> Generate Account
+                 Number</button>
+            </div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-4">
+              <span class="text-uppercase text-muted">aCCOUNT NUMBER</span>
+              <input type="text" readonly [value]="userAccount" class="form-control shadow-sm d-flex align-items-center py-2 px-2"
+                id="exampleInputPassword1">
+            </div>
+          </div>
           <div class="row mt-3">
             <div class="col-lg-9">
 
@@ -185,7 +199,7 @@
                   Number</button> -->
                 <div class="btn btn-primary w-100">create account</div>
               </div>
-              <p class="coh mt-3 text-muted text-center">Already have an Account? <span><a class="lg text-center"
+              <p class="coh mt-2 text-muted text-center">Already have an Account? <span><a class="lg text-center"
                     routerLink="/login">Login Now</a></span> OR <span><a class="lg text-center" routerLink="/">Back To
                         Home</a></span></p>
 
