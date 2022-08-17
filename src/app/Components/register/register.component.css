@@ -262,6 +262,12 @@ body {
 
  @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
 
+
+ /* .bigWhole{
+  background: rgb(247, 141, 141);
+  background: linear-gradient(90deg, rgba(247, 141, 141, 0.027) 4rgba(232, 109, 115, 0.432) 1) 17%, rgba(136, 118, 121, 0.055) 71%);
+ } */
+
  * {
    margin: 0;
    padding: 0;
@@ -283,7 +289,7 @@ body {
 
  .line {
    max-height: 10px;
-   width: 350px;
+   width: 370px;
    border-top: 2px solid #C31E39;
    
  }
@@ -296,6 +302,12 @@ body {
  .text-muted {
    font-size: 12px;
    color: #0a0a0a !important;
+ }
+ .formC, .openAcc{
+  margin-left: 65px!important;
+ }
+.openAcc{
+  margin-left: 70px!important;
  }
 
  .c-g {
