@@ -283,11 +283,16 @@ body {
 
  .line {
    max-height: 10px;
-   width: 350px;
+  width: 350px;
    border-top: 2px solid #C31E39;
+   /* margin-right: 40px!important; */
+   translate: 50% 50%;
    
  }
 
+ .formRow{
+  margin-left: 65px;
+ }
 
  option {
    font-size: 14px;
@@ -502,4 +507,9 @@ body {
  .flex-column{
   justify-content: center;
   display: flex;
+ }
+
+
+ .welcome{
+  margin-right: 60px!important;
  }
