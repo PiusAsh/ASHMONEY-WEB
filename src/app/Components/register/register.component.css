@@ -515,3 +515,19 @@ body {
   justify-content: center;
   display: flex;
  }
+
+ .coh {
+   
+   font-size: 13px;
+   font-weight: 500;
+   font-family: 'Montserrat',
+   sans-serif;
+ }
+ .lg {
+   color: #C31E39;
+   font-size: 13px;
+   font-weight: 600;
+   text-decoration: none;
+   font-family: 'Montserrat',
+   sans-serif;
+ }

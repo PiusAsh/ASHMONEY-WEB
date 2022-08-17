@@ -513,3 +513,12 @@ body {
  .welcome{
   margin-right: 60px!important;
  }
+
+  .lg {
+    color: #C31E39;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    font-family: 'Montserrat',
+      sans-serif;
+  }
