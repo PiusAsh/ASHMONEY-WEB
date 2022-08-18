@@ -204,6 +204,17 @@
       "password": "",
       "acctNo": "",
       "id": 25
+    },
+    {
+      "firstName": "Ash",
+      "lastName": "Mond",
+      "email": "puuus@gmail.com",
+      "phoneNo": 222222222,
+      "password": "00000",
+      "acctNo": 1660815029,
+      "dob": "2022-08-19",
+      "country": "nigeria",
+      "id": 26
     }
   ],
   "creditTransactions ": [],

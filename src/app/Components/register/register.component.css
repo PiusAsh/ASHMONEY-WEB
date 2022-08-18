@@ -220,7 +220,6 @@ body {
 
   .form {
     margin-left: 16px;
-
   }
 
   .Des {
@@ -531,4 +530,13 @@ body {
    text-decoration: none;
    font-family: 'Montserrat',
    sans-serif;
+ }
+
+ .text-danger {
+   font-weight: 600;
+   font-family: 'Montserrat',
+   sans-serif;
+   font-size: 13px;
+   
+
  }

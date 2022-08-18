@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Registration } from 'src/app/Models/registration';
 
 @Component({
   selector: 'app-registration-success',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./registration-success.component.css']
 })
 export class RegistrationSuccessComponent implements OnInit {
+  registerUser: Registration[] = [];
 
   constructor() { }
 

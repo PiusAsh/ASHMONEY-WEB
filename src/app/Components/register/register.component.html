@@ -96,31 +96,39 @@
 
 
 <section class="bigWhole">
-  <div class="row mt-1">
+  <div class="row mt-4">
 
     <div class="col-lg-3 px-5">
     </div>
 
     <div class="col-lg-6 card ">
 
-      <div class="row px-5">
+      <div class="row px-5 py-3">
         <div class="d-flex flex-column mt-4 openAcc">
           <p class="fs-4 fw-bold m-0 text-uppercase mt-1  px-5">Open an account</p>
-                      <span class="text-muted px-5 mb-2">Welcome to the future of Savings & Investments</span>
+          <span class="text-muted px-5 mb-2">Welcome to the future of Savings & Investments</span>
           <span class="line my-1 px-3 mb-3"></span>
         </div>
-        <form class="formC mb-2">
+        <form [formGroup]="registerForm" (ngSubmit)="register()" class="formC mb-2">
           <div class="row  mt-2">
             <div class="col-lg-4">
               <span class="text-uppercase text-muted">FIRST NAME</span>
-              <input type="text" class="form-control shadow-sm d-flex align-items-center py-2 px-2"
-                id="exampleInputPassword1">
+              <input type="text" formControlName="firstName" name="firstName"
+                class="form-control shadow-sm d-flex align-items-center py-2 px-2">
+              <span class="text-danger"
+                *ngIf="registerForm.controls['firstName'].dirty && registerForm.hasError('required', 'firstName')">First
+                Name is
+                required</span>
             </div>
             <div class="col-lg-1"></div>
             <div class="col-lg-4">
               <span class="text-uppercase text-muted">LAST NAME</span>
-              <input type="text" class="form-control shadow-sm d-flex align-items-center py-2 px-2"
-                id="exampleInputPassword1">
+              <input type="text" formControlName="lastName" name="lastName"
+                class="form-control shadow-sm d-flex align-items-center py-2 px-2">
+              <span class="text-danger"
+                *ngIf="registerForm.controls['lastName'].dirty && registerForm.hasError('required', 'lastName')">Last
+                Name is
+                required</span>
             </div>
           </div>
 
@@ -128,80 +136,97 @@
           <div class="row mt-2">
             <div class="col-lg-4">
               <span class="text-uppercase text-muted">phone number</span>
-              <input type="text" class="form-control shadow-sm d-flex align-items-center py-2 px-2"
-                id="exampleInputPassword1">
+              <input type="number" minlength="11" maxlength="11" formControlName="phoneNo" name="phoneNo"
+                class="form-control shadow-sm d-flex align-items-center py-2 px-2">
+              <span class="text-danger"
+                *ngIf="registerForm.controls['phoneNo'].dirty && registerForm.hasError('required', 'phoneNo')">Phone
+                Number is required</span>
+
             </div>
             <div class="col-lg-1"></div>
             <div class="col-lg-4">
               <span class="text-uppercase text-muted">email address</span>
-              <input type="text" class="form-control shadow-sm d-flex align-items-center py-2 px-2"
-                id="exampleInputPassword1">
+              <input type="text" name="email" formControlName="email"
+                class="form-control shadow-sm d-flex align-items-center py-2 px-2">
+              <span class="text-danger"
+                *ngIf="registerForm.controls['email'].dirty && registerForm.hasError('required', 'email')">
+                Email is
+                required</span>
             </div>
           </div>
 
           <div class="row mt-2">
             <div class="col-lg-4">
               <span class="text-uppercase text-muted">date of birth</span>
-              <input type="date" class="form-control shadow-sm d-flex align-items-center py-2 px-2"
-                id="exampleInputPassword1">
-            </div>
-            <div class="col-lg-1"></div>
-            <div class="col-lg-4">
-              <span class="text-uppercase text-muted">Gender</span>
-              <select class="form-select d-flex align-items-center shadow-sm py-2 px-2" id="amount" aria-label="">
-                <option selected hidden>Gender</option>
-                <option class="valAmount" value="Male">Male</option>
-                <option class="valAmount" value="Female">Female</option>
-              </select>
-            </div>
-          </div>
-
-                <div class="row mt-2">
-            <div class="col-lg-9">
-              <span class="text-uppercase text-muted">Address</span>
-              <input type="address" class="form-control shadow-sm d-flex align-items-center py-2 px-2"
-                id="exampleInputPassword1">
-            </div> 
-          </div> 
-
-          <div class="row mt-2">
-            <div class="col-lg-4">
-              <span class="text-uppercase text-muted">state</span>
-              <input type="text" class="form-control shadow-sm d-flex align-items-center py-2 px-2"
-                id="exampleInputPassword1">
+              <input type="date" name="dob" formControlName="dob"
+                class="form-control shadow-sm d-flex align-items-center py-2 px-2">
+              <span class="text-danger"
+                *ngIf="registerForm.controls['dob'].dirty && registerForm.hasError('required', 'dob')">Date of birth is
+                required</span>
             </div>
             <div class="col-lg-1"></div>
             <div class="col-lg-4">
               <span class="text-uppercase text-muted">country</span>
-              <input type="text" class="form-control shadow-sm d-flex align-items-center py-2 px-2"
-                id="exampleInputPassword1">
+              <input type="text" name="country" formControlName="country"
+                class="form-control shadow-sm d-flex align-items-center py-2 px-2">
+              <span class="text-danger"
+                *ngIf="registerForm.controls['country'].dirty && registerForm.hasError('required', 'country')">Last
+                Name is
+                required</span>
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-lg-4">
+              <span class="text-uppercase text-muted">password</span>
+              <input type="password" name="password" formControlName="password"
+                class="form-control shadow-sm d-flex align-items-center py-2 px-2">
+              <span class="text-danger"
+                *ngIf="registerForm.controls['password'].dirty && registerForm.hasError('required', 'password')">
+                Password is
+                required</span>
+            </div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-4">
+              <span class="text-uppercase text-muted">confirm password</span>
+              <input type="password" name="password" formControlName="password"
+                class="form-control shadow-sm d-flex align-items-center py-2 px-2">
+              <span class="text-danger"
+                *ngIf="registerForm.controls['password'].dirty && registerForm.hasError('required', 'password')">
+                Confirm your password</span>
             </div>
           </div>
 
           <!-- GENERATE ACCOUNT -->
           <div class="row mt-2">
             <div class="col-lg-4">
-               <button type="button" class="info " (click)="GenerateAccount()"> Generate Account
-                 Number</button>
+              <button type="button" class="info " (click)="GenerateAccount()"> Generate Account
+                Number</button>
             </div>
             <div class="col-lg-1"></div>
             <div class="col-lg-4">
+
               <span class="text-uppercase text-muted">aCCOUNT NUMBER</span>
-              <input type="text" readonly [value]="userAccount" class="form-control shadow-sm d-flex align-items-center py-2 px-2"
-                id="exampleInputPassword1">
+              <input type="number" [value]="userAccount" formControlName="acctNo" name="accountNo"
+                class="form-control shadow-sm d-flex align-items-center py-2 px-2">
+              <span class="text-danger"
+                *ngIf="registerForm.controls['acctNo'].valid && registerForm.hasError('required')">Please
+                generate your account number</span>
             </div>
+
+
           </div>
           <div class="row mt-3">
             <div class="col-lg-9">
 
               <div class="col-12 p-0">
-                <!-- <button type="button" class="info mb-1 mx-2" (click)="GenerateAccount()"> Generate Account
-                  Number</button> -->
-                <div class="btn btn-primary w-100">create account</div>
+
+                <button type="submit" [disabled]="!registerForm.valid" class="btn btn-primary w-100">Register
+                  Now</button>
               </div>
               <p class="coh mt-2 text-muted text-center">Already have an Account? <span><a class="lg text-center"
                     routerLink="/login">Login Now</a></span> OR <span><a class="lg text-center" routerLink="/">Back To
-                        Home</a></span></p>
+                    Home</a></span></p>
 
             </div>
 

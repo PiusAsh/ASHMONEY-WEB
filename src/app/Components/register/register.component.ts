@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from "@angular/forms"
 import { Router } from '@angular/router';
 import {NgToastService} from 'ng-angular-popup'
+import { Registration } from 'src/app/Models/registration';
 
 
 @Component({
@@ -11,6 +12,19 @@ import {NgToastService} from 'ng-angular-popup'
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
+
+  registerUser: Registration = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    phoneNo: 0,
+    country: '',
+    accountNo: 0,
+    dob: undefined,
+    password: undefined
+  };
+
+
   public registerForm!: FormGroup;
 
   userAccount = '';
@@ -22,21 +36,8 @@ export class RegisterComponent implements OnInit {
     var newAccount = code.slice(0,10);
     this.userAccount = newAccount;
     console.log(newAccount);
-
-
-
-
-  // userAccount = '';
-
-  // GenerateAccount() {
-  //   // var display = document.querySelector('#acctDsp') as HTMLElement;
-  //   var account = new Date().getTime().toString();
-  //   this.userAccount = account;
-    
-  //   console.log(this.userAccount);
-    //var micro = account; 
-    // this.userAccount = display;
   }
+
 
   constructor(
     private formBuilder: FormBuilder,
@@ -51,12 +52,12 @@ export class RegisterComponent implements OnInit {
       lastName: ['', Validators.required],
       email: [
         '',
-        Validators.required,
-        // Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
-      ],
+        Validators.required],
       phoneNo: ['', Validators.required],
       password: ['', Validators.required],
       acctNo: ['', Validators.required],
+      dob: ['', Validators.required],
+      country: ['', Validators.required],
     });
   }
 

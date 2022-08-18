@@ -8,7 +8,7 @@
 
 .heroBg {
   background-image: url(/assets/images/ai1.png);
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
 }
 
