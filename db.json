@@ -1,220 +1,59 @@
 {
   "register": [
     {
-      "firstName": "pius",
-      "lastName": "tytt",
+      "firstName": "Pius",
+      "lastName": "Ashogbon",
       "email": "Pius1ash@gmail.com",
-      "phoneNo": 4545456677,
-      "password": "888888888888",
+      "phoneNo": 9052794388,
+      "password": "piusash",
+      "acctNo": 1660917909,
+      "dob": "2022-08-20",
+      "country": "Nigeria",
       "id": 1
     },
     {
-      "firstName": "thhhth",
-      "lastName": "rrhrhrh",
-      "email": "rhrhrrh",
-      "phoneNo": 5066060,
-      "password": "iggggggggg",
+      "firstName": "Jennifer",
+      "lastName": "Mbonu",
+      "email": "m@gmail.com",
+      "phoneNo": 900000000,
+      "password": "00000",
+      "acctNo": 1660918699,
+      "dob": "2022-08-27",
+      "country": "Nigeria",
       "id": 2
     },
     {
-      "firstName": "Mike",
-      "lastName": "Joe",
-      "email": "mikejoe@gmail.com",
-      "phoneNo": 909888877,
-      "password": "piuspius",
+      "firstName": "Ash",
+      "lastName": "You",
+      "email": "gjgj@gmail.com",
+      "phoneNo": 9876,
+      "password": "ppp",
+      "acctNo": 1660923123,
+      "dob": "2022-09-01",
+      "country": "TOGO",
       "id": 3
     },
     {
-      "firstName": "Pius",
-      "lastName": "Pius1ash@gmail.com",
-      "email": "Pius1ash@gmail.com",
+      "firstName": "Victor",
+      "lastName": "Beans man",
+      "email": "beans@gmail.com",
       "phoneNo": 90,
-      "password": "090",
+      "password": "000",
+      "acctNo": 1660924021,
+      "dob": "2022-08-26",
+      "country": "togo",
       "id": 4
     },
     {
-      "firstName": "gjgj",
-      "lastName": "jgjg",
-      "email": "oototto",
-      "phoneNo": 908765,
-      "password": "kjkj",
-      "id": 5
-    },
-    {
-      "firstName": "Thompson",
-      "lastName": "Greek",
-      "email": "greektho@gmail.com",
-      "phoneNo": "09016006729",
-      "password": "greek",
-      "id": 6
-    },
-    {
-      "firstName": "mike",
-      "lastName": "dane",
-      "email": "daann",
-      "phoneNo": "09090909090",
-      "password": "0000000",
-      "id": 7
-    },
-    {
-      "firstName": "thtyt",
-      "lastName": "ttyy",
-      "email": "yyyy",
-      "phoneNo": "90909090999",
-      "password": "yyyyu",
-      "id": 8
-    },
-    {
-      "firstName": "ttt",
-      "lastName": "yyy",
-      "email": "uiiuu",
-      "phoneNo": "09090909090",
-      "password": "hhhh",
-      "id": 9
-    },
-    {
-      "firstName": "ttt",
-      "lastName": "jhjj",
-      "email": "hghh",
-      "phoneNo": "90909099090",
-      "password": "hhh",
-      "id": 10
-    },
-    {
-      "firstName": "jjj",
-      "lastName": "ggg",
-      "email": "hj",
-      "phoneNo": "90909090900",
-      "password": "kkk",
-      "id": 11
-    },
-    {
-      "firstName": "ththh",
-      "lastName": "ggg",
-      "email": "yuyu",
-      "phoneNo": "90909090909",
-      "password": "gggg",
-      "id": 12
-    },
-    {
-      "firstName": "Pius1ash@gmail.com",
-      "lastName": "Pius1ash@gmail.com",
+      "firstName": "Bisi",
+      "lastName": "Tom",
       "email": "Pius1ash@gmail.com",
-      "phoneNo": "09090909090",
-      "password": "9898",
-      "id": 13
-    },
-    {
-      "firstName": "Pius",
-      "lastName": "Ash",
-      "email": "Ash@gmail.com",
-      "phoneNo": "09000000000",
-      "password": "000",
-      "id": 14
-    },
-    {
-      "firstName": "john",
-      "lastName": "bull",
-      "email": "lkrewklNAK",
-      "phoneNo": "07033290394",
-      "password": "JOHNBULL",
-      "id": 15
-    },
-    {
-      "firstName": "piu",
-      "lastName": "yyy",
-      "email": "Pius1ash@gmail.com",
-      "phoneNo": "09000000000",
-      "password": "000",
-      "id": 16
-    },
-    {
-      "firstName": "Ridwan",
-      "lastName": "Rid",
-      "email": "rid@gmail.com",
-      "phoneNo": "08155942551",
-      "password": "090",
-      "id": 17
-    },
-    {
-      "firstName": "vic",
-      "lastName": "tor",
-      "email": "t@gmail.com",
-      "phoneNo": "00000000000",
-      "password": "000",
-      "id": 18
-    },
-    {
-      "firstName": "",
-      "lastName": "",
-      "email": "",
-      "phoneNo": "",
-      "password": "",
-      "id": 19
-    },
-    {
-      "firstName": "",
-      "lastName": "",
-      "email": "",
-      "phoneNo": "",
-      "password": "",
-      "id": 20
-    },
-    {
-      "firstName": "",
-      "lastName": "",
-      "email": "",
-      "phoneNo": "",
-      "password": "",
-      "acctNo": null,
-      "id": 21
-    },
-    {
-      "firstName": "",
-      "lastName": "",
-      "email": "",
-      "phoneNo": "",
-      "password": "",
-      "acctNo": "",
-      "id": 22
-    },
-    {
-      "firstName": "",
-      "lastName": "",
-      "email": "",
-      "phoneNo": "",
-      "password": "",
-      "acctNo": "",
-      "id": 23
-    },
-    {
-      "firstName": "",
-      "lastName": "",
-      "email": "",
-      "phoneNo": "",
-      "password": "",
-      "acctNo": "",
-      "id": 24
-    },
-    {
-      "firstName": "",
-      "lastName": "",
-      "email": "",
-      "phoneNo": "",
-      "password": "",
-      "acctNo": "",
-      "id": 25
-    },
-    {
-      "firstName": "Ash",
-      "lastName": "Mond",
-      "email": "puuus@gmail.com",
-      "phoneNo": 222222222,
+      "phoneNo": 797977,
       "password": "00000",
-      "acctNo": 1660815029,
-      "dob": "2022-08-19",
-      "country": "nigeria",
-      "id": 26
+      "acctNo": 1660924262,
+      "dob": "2022-08-24",
+      "country": "Nigeria",
+      "id": 5
     }
   ],
   "creditTransactions ": [],

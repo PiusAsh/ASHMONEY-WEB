@@ -4,21 +4,20 @@
     <div class="col-lg-2 sideBar">
 
       <!-- SIDEBAR LINKS -->
-      <div class="py-4 px-3">
+      <div class="py-4 px-5">
         <div class="linkss  py-5">
-          <p class="mb-3 ashBank">ASHBANK</p>
-<ul class="liss">
-  <li class="liss py-3"><a class="linkName" routerLink="/admin">Registered Users</a>
-  </li>
-  <li class="liss py-3 "><a class="linkName" routerLink="/credit">Credit Transactions</a></li>
-  <li class="liss py-3 "><a class="linkName" routerLink="/debit">Debit Transactions</a></li>
-    <li class="liss py-3 "><a class="linkName" routerLink="/loan">Quick Loan</a></li>
-  <li class="liss py-3 "><a class="linkName" routerLink="/account">Account</a></li>
-  <li class="liss py-3"><a class="linkName" routerLink="/report">Reports</a></li>
-</ul>
-
+          <p class="mb-5 ashBank">ASHBANK</p>
+          <ul class="liss">
+            <li class="liss py-3"><a class="linkName" routerLink="/user">Dashboard</a>
+            </li>
+            <li class="liss py-3 "><a class="linkName" routerLink="/send">Overview</a></li>
+            <li class="liss py-3 "><a class="linkName" routerLink="/receive">Transactions</a></li>
+            <li class="liss py-3 "><a class="linkName" routerLink="/loan">Registered Users</a></li>
+            <li class="liss py-3 "><a class="linkName" routerLink="/profile">Account Settings</a></li>
+            <li class="liss py-3"><a class="linkName" routerLink="/report">Report</a></li>
+          </ul>
           <ul class="py-5">
-            <li class="liss py-3"><a class="logout" href="#">Logout</a>
+            <li class="liss py-3"><a class="logout">Logout</a>
           </ul>
         </div>
       </div>
@@ -31,96 +30,49 @@
     <!-- <div class="col-lg-1 "></div> -->
 
 
-    <div class="col-lg-8 py-5 px-5">
-      <p class="welcome mt-3 mb-3 px-4">Welcome Back, Admin. <br /> <span class="How">How are you doing today? Today’s
-          date is 1st August,
-          2022.</span></p>
+    <div class="col-lg-9 py-5 px-5 mainPage">
+      <p class="welcome mt-4 mb-3 px-4">Welcome Back, Admin. <br /><span class="How">How are you doing today? Today is
+          {{myDate | date:'fullDate'}}</span></p>
+      <!-- NEW TABLE FOR TESTING -->
+      <div class="row">
+<div class="container">
+  <table id="example" class="table table-striped table-bordered" style="width:100%">
+    <thead class="theHead">
+      <tr>
+        <!-- <th>ID</th> -->
+        <th>Full Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Account Number</th>
+        <th>Date of birth</th>
+        <th>Country</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let users of user">
+ 
+        <!-- <td> {{users.id}}</td> -->
+        <td> {{users.firstName}} {{users.lastName}}</td>
+        <td>{{users.phoneNo}}</td>
+        <td>{{users.email}}</td>
+        <td>{{users.acctNo}} </td>
+        <td>{{users.dob}}</td>
+        <td>{{users.country}}</td>
+        <td><p class="view">View</p></td>
+      </tr>
 
-          
+    </tbody>
+    
+  </table>
+</div>
 
-          <!-- TRANSACTION TABLE -->
-
-      <div class="row py-3">
-
-
-
-        <h2 class="tra mb-3 mt-3 px-3">All Transactions</h2>
-
-        <!-- Transaction section -->
- <table class="table">
-   <thead>
-     <tr>
-       <th scope="">Name</th>
-       <th scope="col">Account</th>
-       <th scope="col">Amount</th>
-       <th scope="col">Type</th>
-       <th scope="col">Date</th>
-       <th scope="col">Status</th>
-       <th scope="col">Action</th>
-
-
-     </tr>
-   </thead>
-   <tbody>
-     <tr>
-       <td>Pius Ashogbon</td>
-       <td>0085875008</td>
-       <td>500,0000</td>
-       <td>Credit</td>
-       <td>12-07-2022</td>
-       <td>Successful</td>
-       <td>
-        <a class="view text-center" href="/">Edit Info</a>
-       </td>
-
-
-
-     </tr>
-
-   </tbody>
- </table>
-        <!-- end of transaction  -->
-      </div>
-
-      <!-- END OF ALL TRANSACTIONS -->
-
-
-      <div class="row py-3">
-
-
-        <h2 class="tra mb-3 mt-3 px-3">All Registered Users</h2>
-
-        <!-- Transaction section -->
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="">First Nme</th>
-              <th scope="col">Last Name</th>
-              <th scope="col">Email</th>
-              <th scope="col">Account Number</th>
-              <th scope="col">Registered Date</th>
-
-
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Pius </td>
-              <td>Ashogbon</td>
-              <td>piusash@gmail.com</td>
-              <td>0085875008</td>
-              <td>12-07-2022</td>
-
-
-
-            </tr>
-
-          </tbody>
-        </table>
-        <!-- end of transaction  -->
       </div>
 
     </div>
     <!-- END OF MAIN PAGE COLUMN -->
   </div>
 </section>
+
+
+

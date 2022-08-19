@@ -1,134 +1,28 @@
-<!-- LOAN PAGE -->
-
 <section>
   <div class="row mt-3">
-    <!-- SIDEBAR COLUMN -->
     <div class="col-lg-1">
-
-      <!-- SIDEBAR LINKS -->
-      <!-- <div class="py-4 px-5">
-        <div class="linkss  py-5">
-          <p class="mb-3 ashBank">ASHBANK</p>
-          <ul class="liss">
-            <li class="liss py-3"><a class="linkName" routerLink="/user">Dashboard</a>
-            </li>
-            <li class="liss py-3 "><a class="linkName" routerLink="/send">Send Money</a></li>
-            <li class="liss py-3 "><a class="linkName" routerLink="/receive">Receive</a></li>
-            <li class="liss py-3 "><a class="linkName" routerLink="/loan">Quick Loan</a></li>
-            <li class="liss py-3 "><a class="linkName" routerLink="/profile">Profile</a></li>
-            <li class="liss py-3"><a class="linkName" routerLink="/report">Report</a></li>
-          </ul>
-
-          <ul class="py-5">
-            <li class="liss py-3"><a class="logout" href="#">Logout</a>
-          </ul>
-        </div>
-      </div> -->
-
-      <!--END OF SIDEBAR LINKS -->
-
-
     </div>
-    <!-- END OF SIDEBAR COLUMN -->
-    <!-- <div class="col-lg-1 "></div> -->
-
-
     <div class="col-lg-10  px-5 text-center mt-5">
 
-      <div class="container shadow-sm px-5 py-5">
+      <div class="container shadow-sm px-5 py-5" *ngFor="let users of user" >
         <div class="d-flex flex-column align-items-center mt-2">
           <p class="fs-4 fw-bold m-0">Congratulations</p>
           <span class="text-muted fs-6">Your account has been created successfully</span>
           <span class="line my-2"></span>
         </div>
         <div class="col-12 p-0 mt-4 mb-2 text-center">
-          <p class="fs-6 fw-bold m-0 mt-5">Hello, <span class="text-muted fs-6">Pius Ash</span></p>
+          <p class="fs-6 fw-bold m-0 mt-5">Hello, <span class="text-muted fs-6">{{users.firstName}}</span></p>
 
 
         </div>
         <div class="col-12 p-0  mb-5 text-center">
           <p class="fs-6 m-0">Your account number is: <span class=" fs-5"
-              style="color: #C31E39; font-weight: 600;">0000090909098</span></p>
-
-
+              style="color: #C31E39; font-weight: 600;">{{users.acctNo}}</span></p>
         </div>
-
-
-
-
         <div class="btn btn-primary w-100" routerLink="/login">Log In</div>
         <span class="text-muted fs-7">Beware of scammers. Please keep your Information save</span>
-
-        <!-- <form>
-          <div class="d-flex flex-column align-items-center">
-            <p class="fs-4 fw-bold m-0">Congratulations</p>
-            <span class="text-muted">Your account has been created successfully</span>
-            <span class="line my-2"></span>
-          </div>
-          <div class="row p-0">
-            <div class="col-12 p-0 px-4">
-              <span class="text-uppercase text-muted">account number</span>
-            </div>
-            <div class="col-12 p-0 px-4">
-              <input type="number" maxlength="10" minlength="10"
-                class="form-control shadow-sm d-flex align-items-center py-2 px-2" id="exampleInputPassword1">
-            </div>
-            <div class="col-12 p-0 px-4 mt-1">
-              <span class="text-uppercase text-muted">Select bank</span>
-            </div>
-            <div class="col-12 p-0 px-4">
-              <select class="form-select d-flex align-items-center shadow-sm py-2 px-2" id="amount" aria-label="">
-                <option selected hidden>What Bank?</option>
-                <option class="valAmount" value="ASHBANK">ASHBANK</option>
-              </select>
-            </div>
-
-            <div class="col-12 p-0 px-4 mt-1">
-              <span class="text-uppercase text-muted">amount</span>
-            </div>
-            <div class="col-12 p-0 px-4">
-              <input type="number" maxlength="10" minlength="10"
-                class="form-control shadow-sm d-flex align-items-center py-2 px-2" id="exampleInputPassword1">
-            </div>
-
-           
-            <div class="col-12 p-0 px-4 mt-1">
-              <span class="text-uppercase text-muted">RECEIVER'S NAME</span>
-            </div>
-            <div class="col-12 p-0 px-4">
-              <input type="text" class="form-control shadow-sm d-flex align-items-center py-2 px-2"
-                id="exampleInputPassword1">
-            </div>
-            
-            <div class="col-12 p-0 px-4 mt-1">
-              <span class="text-uppercase text-muted">TRANSACTION PIN</span>
-            </div>
-            <div class="col-12 p-0 px-4">
-              <input type="password" class="form-control shadow-sm d-flex align-items-center py-2 px-2"
-                id="exampleInputPassword1">
-            </div>
-
-
-            <div class="col-12 p-0 px-4">
-              <div class="d-flex align-items-center my-3">
-                <span class="text-muted text-uppercase">you're about to request:</span>
-                <span class="c-g ps-1">₦<span id="money">23,640</span></span>
-              </div>
-            </div>
-            <div class="col-12 p-0 px-4">
-              <div class="btn btn-primary w-100">Send</div>
-              <div class="text-muted text-center mb-4 mt-1">You can make up to <span
-                  style="color: #C31E39; font-weight: 600;">30</span>
-                free transfers</div>
-            </div>
-          </div>
-        </form> -->
       </div>
-
-
-
     </div>
     <div class="col-lg-1"></div>
   </div>
-  <!-- END OF MAIN PAGE COLUMN -->
 </section>

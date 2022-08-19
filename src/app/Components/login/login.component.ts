@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
       // alert("Something went wrong")
       this.toast.info({
         detail: 'Something went wrong',
-        summary: "Please check your internet connection",
+        summary: "Check your internet connection",
         duration: 4000,
       });
     })

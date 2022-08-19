@@ -1,10 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormBuilder, Validators} from "@angular/forms"
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import {NgToastService} from 'ng-angular-popup'
+import { NgToastService } from 'ng-angular-popup';
 import { Registration } from 'src/app/Models/registration';
-
 
 @Component({
   selector: 'app-register',
@@ -12,18 +11,17 @@ import { Registration } from 'src/app/Models/registration';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-
-  registerUser: Registration = {
+  user: Registration = {
     firstName: '',
     lastName: '',
     email: '',
     phoneNo: 0,
     country: '',
-    accountNo: 0,
-    dob: undefined,
-    password: undefined
+    acctNo: 0,
+    dob: '',
+    password: 0,
+    id: 0
   };
-
 
   public registerForm!: FormGroup;
 
@@ -31,13 +29,11 @@ export class RegisterComponent implements OnInit {
 
   GenerateAccount() {
     var account = new Date().getTime().toString();
-    //this.userAccount = account;
     var code = account;
-    var newAccount = code.slice(0,10);
+    var newAccount = code.slice(0, 10);
     this.userAccount = newAccount;
     console.log(newAccount);
   }
-
 
   constructor(
     private formBuilder: FormBuilder,
@@ -50,9 +46,7 @@ export class RegisterComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      email: [
-        '',
-        Validators.required],
+      email: ['', Validators.required],
       phoneNo: ['', Validators.required],
       password: ['', Validators.required],
       acctNo: ['', Validators.required],
@@ -73,7 +67,7 @@ export class RegisterComponent implements OnInit {
             duration: 4000,
           });
           this.registerForm.reset();
-          this.router.navigate(['success']);
+          this.router.navigate(['login']);
         },
         (err) => {
           // alert("Something went wrong")
@@ -84,11 +78,6 @@ export class RegisterComponent implements OnInit {
           });
         }
       );
-      
   }
 
-  debitTransactions() {}
-  }
-
-
-
+}

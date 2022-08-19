@@ -1,6 +1,18 @@
+ @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+
 .sideBar {
   background-color: #C31E39;
-  /* height: 100vh; */
+  /* position: -webkit-sticky;
+  position: sticky; */
+  position: fixed;
+  top: 0;
+  
+  
+
+}
+
+.mainPage{
+  margin-left: 18%;
 }
 
 .linkUL {
@@ -17,13 +29,14 @@
   font-weight: 400;
   /* margin-top: 5px; */
   font-family: 'Poppins',
-    sans-serif;
+  sans-serif;
 
 }
-
-.th{
-    border-bottom: 1px solid #C31E39 !important;
+.theHead{
+  border-bottom: 2px solid #a39497e7;
 }
+
+
 
 .yourAcct {
   text-decoration: none !important;
@@ -32,8 +45,8 @@
   color: #fff;
   font-weight: 500;
   /* margin-top: 5px; */
-  font-family: 'Poppins',
-    sans-serif;
+  font-family: 'Montserrat',
+sans-serif;
 
 }
 
@@ -45,7 +58,7 @@
   font-weight: 500;
   /* margin-top: 5px; */
   font-family: 'Poppins',
-    sans-serif;
+  sans-serif;
 
 }
 
@@ -57,7 +70,7 @@
   font-weight: 600;
   /* margin-top: 5px; */
   font-family: 'Poppins',
-    sans-serif;
+  sans-serif;
 
 }
 
@@ -67,9 +80,9 @@
 
 .How {
   font-family: 'Poppins',
-    sans-serif;
+  sans-serif;
   font-size: 15px;
-  font-weight: 400;
+  font-weight: 500;
   color: #242424;
 }
 
@@ -78,25 +91,12 @@
   color: #ac1c34;
   font-size: 14px;
   font-weight: 600;
-  font-family: 'Poppins',
-    sans-serif;
   border: none;
   border-radius: 6px;
   padding: 5px 8px 5px 8px;
 
 }
 
-.acctNo {
-  text-decoration: none !important;
-  text-align: left !important;
-  font-size: 16px;
-  color: #fff;
-  font-weight: 600;
-  /* margin-top: 5px; */
-  font-family: 'Poppins',
-    sans-serif;
-
-}
 
 .logout {
   text-decoration: none !important;
@@ -107,7 +107,7 @@
   font-weight: 500;
   /* margin-top: 5px; */
   font-family: 'Poppins',
-    sans-serif;
+  sans-serif;
   padding: 10px;
   border-radius: 5px;
 
@@ -120,18 +120,11 @@
   font-weight: 600;
   /* margin-top: 5px; */
   font-family: 'Poppins',
-    sans-serif;
+  sans-serif;
 
 }
 
 
-.linkName:hover {
-  text-decoration: none;
-  font-size: 18px;
-  font-family: 'Poppins',
-    sans-serif;
-
-}
 
 .liss {
   list-style: none;
@@ -140,7 +133,7 @@
 .ashBank {
   font-size: 24px;
   font-family: 'Poppins',
-    sans-serif;
+  sans-serif;
   color: #fff;
   font-weight: 600;
 }
@@ -148,8 +141,10 @@
 .welcome {
   color: #121212;
   font-size: 25px;
-  font-family: 'Poppins',
-    sans-serif;
+  /* font-family: 'Montserrat',
+sans-serif; */
+font-family: 'Poppins',
+sans-serif;
   font-weight: 600;
 }
 
