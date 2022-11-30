@@ -1,4 +1,207 @@
-<section class="bigWhole">
+<div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 mx-auto">
+  <div class="border-0">
+    <div class="row d-flex">
+      <div class="col-lg-6">
+        <div class="card1 pb-5">
+          <div class="row">
+            <img class="" src="/assets/images/logo.jpg" class="logo" />
+          </div>
+          <div class="row px-3 justify-content-center mt-5 mb-5 border-line">
+            <img class="mt-5" src="/assets/images/draw.svg" class="image" />
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card2 card border-0 px-4 py-5">
+          <div class="row mt-4 px-3">
+            <!-- <h6 class="mb-0 mr-4 py-3">Sign in with</h6> -->
+            <!-- <div class="facebook text-center me-2"><div class="bi bi-facebook"></div></div>
+                        <div class="twitter text-center me-2"><div class="bi bi-twitter"></div></div>
+                        <div class="linkedin text-center mr-2"><div class="bi bi-linkedin"></div></div> -->
+          </div>
+          <div class="row">
+            <p class="welcome">Register</p>
+            <!-- <p>Kindly signup with your credentials</p> -->
+            <!-- <div class="line"></div>
+                        <small class="or text-center">Or</small> -->
+            <!-- <div class="line"></div> -->
+          </div>
+          <form [formGroup]="registerForm" (ngSubmit)="register()">
+            <div class="row">
+              <div class="col-lg-6 p-1">
+                <label class="mb-1"
+                  ><h6 class="mb-0 text-sm">First Name</h6></label
+                >
+                <input
+                  class=""
+                  formControlName="firstName"
+                  type="text"
+                  name="email"
+                  placeholder="Enter  your First Name"
+                />
+              </div>
+              <div class="col-lg-6 p-1">
+                <label class="mb-1"
+                  ><h6 class="mb-0 text-sm">Last Name</h6></label
+                >
+                <input
+                  class=""
+                  formControlName="lastName"
+                  type="text"
+                  name="email"
+                  placeholder="Enter your Last Name"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 p-1">
+                <label class="mb-1"
+                  ><h6 class="mb-0 text-sm">Email</h6></label
+                >
+                <input
+                  class=""
+                  formControlName="email"
+                  type="text"
+                  name="email"
+                  placeholder="Enter your email address"
+                />
+              </div>
+              <div class="col-lg-6 p-1">
+                <label class="mb-1"
+                  ><h6 class="mb-0 text-sm">Phone Number</h6></label
+                >
+                <input
+                  class=""
+                  formControlName="phone"
+                  type="text"
+                  name="email"
+                  placeholder="Enter your phone number"
+                />
+              </div>
+            </div>
+            <!-- <div class="row px-3 mb-4">
+              <label class="mb-1"
+                ><h6 class="mb-0 text-sm">Email Address</h6></label
+              >
+              <input
+                class=""
+                formControlName="email"
+                type="text"
+                name="email"
+                placeholder="Enter a valid email address"
+              />
+              
+            </div> -->
+            <div class="row">
+              <label class="mb-1"><h6 class="mb-0 text-sm">Address</h6></label>
+              <input
+                type="text"
+                formControlName="address"
+                name="address"
+                placeholder="Enter password"
+              />
+              <span
+                class="text-danger"
+                *ngIf="
+                  registerForm.controls['address'].dirty &&
+                  registerForm.hasError('required', 'address')
+                "
+                ></span
+              >
+            </div>
+
+            <div class="row">
+              <div class="col-lg-6 p-1">
+                <label class="mb-1"
+                  ><h6 class="mb-0 text-sm">State</h6></label
+                >
+                <input
+                  class=""
+                  formControlName="state"
+                  type="text"
+                  name="state"
+                  placeholder="Enter your state"
+                />
+              </div>
+              <div class="col-lg-6 p-1">
+                <label class="mb-1"
+                  ><h6 class="mb-0 text-sm">Country</h6></label
+                >
+                <input
+                  class=""
+                  formControlName="country"
+                  type="text"
+                  name="country"
+                  placeholder="country"
+                />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-6 p-1">
+                <label class="mb-1"
+                  ><h6 class="mb-0 text-sm">Password</h6></label
+                >
+                <input
+                  class=""
+                  formControlName="password"
+                  type="text"
+                  name="password"
+                  placeholder="Enter your password"
+                />
+              </div>
+              <div class="col-lg-6 p-1">
+                <label class="mb-1"
+                  ><h6 class="mb-0 text-sm">Confirm Password</h6></label
+                >
+                <input
+                  class=""
+                  formControlName="confirmPassword"
+                  type="text"
+                  name="password"
+                  placeholder="Confirm Password"
+                />
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <button
+                type="submit"
+                [disabled]="registerForm.invalid"
+                class="btn btn-blue text-center py-2 w-100 fw-bold"
+              >
+                Create an Account
+              </button>
+            </div>
+          </form>
+          <div class="row mb-4 px-3">
+            <small class="font-weight-bold text-center"
+              >Don't have an account? <a class="text-danger">Register</a></small
+            >
+          </div>
+        </div>
+      </div>
+      <!-- <div class="bg-blue"> -->
+
+      <!-- </div> -->
+    </div>
+  </div>
+</div>
+
+<div class="row bg-blue fixed-bottom p-2">
+  <div class="col-lg-6">
+    <small class="copy">Copyright &copy; 2022. All rights reserved.</small>
+  </div>
+
+  <div class="col-lg-6 text-center">
+    <span class="bi bi-facebook text-sm"></span>
+    <span class="bi bi-github text-sm"></span>
+    <span class="bi bi-linkedin text-sm"></span>
+    <span class="bi bi-twitter text-sm"></span>
+  </div>
+</div>
+
+<!-- <section class="bigWhole">
   <div class="row mt-4">
 
     <div class="col-lg-3 px-5">
@@ -100,7 +303,7 @@
             </div>
           </div>
 
-          <!-- GENERATE ACCOUNT -->
+
           <div class="row mt-2">
             <div class="col-lg-4">
               <button type="button" class="info " (click)="GenerateAccount()"> Generate Account
@@ -142,4 +345,4 @@
     <div class="col-lg-3"></div>
 
   </div>
-</section>
+</section> -->

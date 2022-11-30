@@ -1,11 +1,18 @@
-.sideBar{
-    background-color:#C31E39;
-    /* height: 100vh; */
-}
+@import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);@import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css");
 .linkUL{
     text-decoration: none !important;
     /* justify-content: center;
     text-align: center; */
+}
+.sideBar{
+    background-color:#C31E39;
+    height: 100vh;
+}
+*{
+  overflow-x: hidden;
+}
+#navbarVertical{
+    background-color: #C31E39!important;
 }
 
 .linkName {

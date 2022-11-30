@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { Registration } from 'src/app/Models/registration';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -10,12 +11,21 @@ import { Router } from '@angular/router';
 })
 export class UserDashboardComponent implements OnInit {
   myDate = Date.now();
+  user: Registration = {
+    firstName: '',
+    id: 0,
+    lastName: '',
+    email: '',
+    phoneNo: 0,
+    country: '',
+    acctNo: undefined,
+    dob: undefined,
+    password: undefined
+  };
 
   constructor(private router: Router) {}
 
-  ngOnInit() {
-   
-  }
+  ngOnInit() {}
 
   // simpleAlert() {
   //   Swal.fire('Hello world!');

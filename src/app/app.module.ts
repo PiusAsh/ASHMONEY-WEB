@@ -22,6 +22,7 @@ import { DebitTransactionComponent } from './Components/debit-transaction/debit-
 import { NgToastModule } from 'ng-angular-popup';
 import { RegistrationSuccessComponent } from './Components/registration-success/registration-success.component';
 import { AdminRegistrationComponent } from './Models/admin-registration/admin-registration.component';
+import { SidebarComponent } from './Components/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { AdminRegistrationComponent } from './Models/admin-registration/admin-re
     CreditTransactionComponent,
     DebitTransactionComponent,
     RegistrationSuccessComponent,
-    AdminRegistrationComponent
+    AdminRegistrationComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
