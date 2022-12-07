@@ -87,7 +87,7 @@ export class RegisterComponent implements OnInit {
         console.log('******return1', res);
         // this.route.navigate(['user/:id']);
         this.router.navigate(['login']);
-      },
+      }, 
       (err) => {
          alert("Something went wrong")
         this.toast.error({
