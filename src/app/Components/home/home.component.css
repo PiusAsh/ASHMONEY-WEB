@@ -6,6 +6,21 @@
     sans-serif;
 }
 
+/* .hideMobile{
+  display: none;
+} */
+
+
+@media (max-width: 576px) {
+  .hideMobile{
+    display: none!important;
+  }
+
+  .heroText{
+    font-size: 35px!important;
+  }
+ }
+
 .heroBg {
   background-image: url(/assets/images/ai1.png);
   background-size: cover;

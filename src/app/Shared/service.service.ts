@@ -8,22 +8,30 @@ import { Registration } from '../Models/registration';
   providedIn: 'root',
 })
 export class ServiceService {
-  users: Registration[] = [];
+  
   constructor(private http: HttpClient) {}
 
-  apiUrl: string = 'http://localhost:3000/register';
+  baseApiUrl: string = 'https://localhost:44362/api/';
 
   getData() {
-    return this.http.get<any>(this.apiUrl);
+    return this.http.get<any>(this.baseApiUrl);
   }
 
   getAllUsers(): Observable<Registration[]> {
-    return this.http.get<Registration[]>(this.apiUrl + '/register');
+    return this.http.get<Registration[]>(this.baseApiUrl + 'User/GetAllUsers');
   }
 
-  getContacts() {
-    return this.http.get(this.apiUrl).subscribe((c) => {
-      this.users = c as Registration[];
-    });
+  login(user: Registration): Observable<Registration> {
+    return this.http.post<Registration>(this.baseApiUrl + 'User/Login', user);
   }
+
+  register(user: Registration) {
+    return this.http.post(`${this.baseApiUrl}User/Register`, user);
+  }
+
+  // getContacts() {
+  //   return this.http.get(this.baseApiUrl).subscribe((c) => {
+  //     this.users = c as Registration[];
+  //   });
+  // }
 }

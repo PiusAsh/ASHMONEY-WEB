@@ -1,17 +1,16 @@
- @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap");
+@import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
+@import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css");
 
 .sideBar {
-  background-color: #C31E39;
+  background-color: #c31e39;
   /* position: -webkit-sticky;
   position: sticky; */
   position: fixed;
   top: 0;
-  
-  
-
 }
 
-.mainPage{
+.mainPage {
   margin-left: 18%;
 }
 
@@ -28,15 +27,11 @@
   color: #fff;
   font-weight: 400;
   /* margin-top: 5px; */
-  font-family: 'Poppins',
-  sans-serif;
-
+  font-family: "Poppins", sans-serif;
 }
-.theHead{
+.theHead {
   border-bottom: 2px solid #a39497e7;
 }
-
-
 
 .yourAcct {
   text-decoration: none !important;
@@ -45,21 +40,17 @@
   color: #fff;
   font-weight: 500;
   /* margin-top: 5px; */
-  font-family: 'Montserrat',
-sans-serif;
-
+  font-family: "Montserrat", sans-serif;
 }
 
-.yourAcctNo {
+.youraccountNumber {
   text-decoration: none !important;
   text-align: left !important;
   font-size: 15px;
   color: #fff;
   font-weight: 500;
   /* margin-top: 5px; */
-  font-family: 'Poppins',
-  sans-serif;
-
+  font-family: "Poppins", sans-serif;
 }
 
 .acctAmount {
@@ -69,9 +60,7 @@ sans-serif;
   color: #fff;
   font-weight: 600;
   /* margin-top: 5px; */
-  font-family: 'Poppins',
-  sans-serif;
-
+  font-family: "Poppins", sans-serif;
 }
 
 .priceContainer {
@@ -79,8 +68,7 @@ sans-serif;
 }
 
 .How {
-  font-family: 'Poppins',
-  sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 15px;
   font-weight: 500;
   color: #242424;
@@ -94,37 +82,29 @@ sans-serif;
   border: none;
   border-radius: 6px;
   padding: 5px 8px 5px 8px;
-
 }
-
 
 .logout {
   text-decoration: none !important;
   text-align: left !important;
   font-size: 16px;
   background-color: #fff;
-  color: #C31E39;
+  color: #c31e39;
   font-weight: 500;
   /* margin-top: 5px; */
-  font-family: 'Poppins',
-  sans-serif;
+  font-family: "Poppins", sans-serif;
   padding: 10px;
   border-radius: 5px;
-
 }
 .view {
   text-decoration: none !important;
   text-align: left !important;
   font-size: 15px;
-  color: #C31E39;
+  color: #c31e39;
   font-weight: 600;
   /* margin-top: 5px; */
-  font-family: 'Poppins',
-  sans-serif;
-
+  font-family: "Poppins", sans-serif;
 }
-
-
 
 .liss {
   list-style: none;
@@ -132,8 +112,7 @@ sans-serif;
 
 .ashBank {
   font-size: 24px;
-  font-family: 'Poppins',
-  sans-serif;
+  font-family: "Poppins", sans-serif;
   color: #fff;
   font-weight: 600;
 }
@@ -143,33 +122,26 @@ sans-serif;
   font-size: 25px;
   /* font-family: 'Montserrat',
 sans-serif; */
-font-family: 'Poppins',
-sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 600;
 }
 
-
-
-
 .table th {
   font-size: 15px;
-  font-family: 'Poppins',
-    sans-serif;
-    border-bottom: 1px solid #242424;
+  font-family: "Poppins", sans-serif;
+  border-bottom: 1px solid #242424;
 }
 
 .table td {
   font-size: 15px;
-  font-family: 'Poppins',
-    sans-serif;
-
+  font-family: "Poppins", sans-serif;
 }
 
 .tra {
   color: #121212;
   font-size: 17px;
   font-weight: 600;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 /* end of main css */
@@ -178,7 +150,6 @@ sans-serif;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-
 }
 
 td,
@@ -186,16 +157,12 @@ th {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 10px;
-
-
 }
 
 td {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
-
-
 }
 
 tr {

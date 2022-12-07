@@ -1,11 +1,29 @@
 export interface Registration {
-  firstName: string;
-  id: number;
-  lastName: string;
-  email: string;
-  phoneNo: number;
+   id: 0;
+  firstName: string ;
+  lastName: string ;
+  email: string ;
+  phoneNumber: number;
   country: string;
-  acctNo: any;
-  dob: any;
-  password: any;
+  state: string;
+  address: string;
+  password: string;
+  gender: string;
+  dateOfBirth: Date;
+  isAdmin: boolean;
+  accountNumber: string;
+  bankName: string;
+  accountBalance: string;
+  acctType: any;
+  transactionPin: number;
+  dateCreated:Date;
+  lastUpdated: Date,
+  lastLoggedIn: Date
 }
+
+export interface LoginResponse {
+  Message: string;
+  userData: string;
+}
+
+ 

@@ -6,8 +6,8 @@
       "email": "Pius1ash@gmail.com",
       "phoneNo": 9052794388,
       "password": "piusash",
-      "acctNo": 1660917909,
-      "dob": "2022-08-20",
+      "accountNumber": 1660917909,
+      "dateOfBirth": "2022-08-20",
       "country": "Nigeria",
       "id": 1
     },
@@ -17,8 +17,8 @@
       "email": "m@gmail.com",
       "phoneNo": 900000000,
       "password": "00000",
-      "acctNo": 1660918699,
-      "dob": "2022-08-27",
+      "accountNumber": 1660918699,
+      "dateOfBirth": "2022-08-27",
       "country": "Nigeria",
       "id": 2
     },
@@ -28,8 +28,8 @@
       "email": "gjgj@gmail.com",
       "phoneNo": 9876,
       "password": "ppp",
-      "acctNo": 1660923123,
-      "dob": "2022-09-01",
+      "accountNumber": 1660923123,
+      "dateOfBirth": "2022-09-01",
       "country": "TOGO",
       "id": 3
     },
@@ -39,8 +39,8 @@
       "email": "beans@gmail.com",
       "phoneNo": 90,
       "password": "000",
-      "acctNo": 1660924021,
-      "dob": "2022-08-26",
+      "accountNumber": 1660924021,
+      "dateOfBirth": "2022-08-26",
       "country": "togo",
       "id": 4
     },
@@ -50,8 +50,8 @@
       "email": "Pius1ash@gmail.com",
       "phoneNo": 797977,
       "password": "00000",
-      "acctNo": 1660924262,
-      "dob": "2022-08-24",
+      "accountNumber": 1660924262,
+      "dateOfBirth": "2022-08-24",
       "country": "Nigeria",
       "id": 5
     }

@@ -11,17 +11,7 @@ import { Registration } from 'src/app/Models/registration';
 })
 export class UserDashboardComponent implements OnInit {
   myDate = Date.now();
-  user: Registration = {
-    firstName: '',
-    id: 0,
-    lastName: '',
-    email: '',
-    phoneNo: 0,
-    country: '',
-    acctNo: undefined,
-    dob: undefined,
-    password: undefined
-  };
+user: any;
 
   constructor(private router: Router) {}
 
@@ -29,7 +19,7 @@ export class UserDashboardComponent implements OnInit {
 
   // simpleAlert() {
   //   Swal.fire('Hello world!');
-  // }
+  // }P
 
   // alertWithSuccess() {
   //   Swal.fire('Thank you...', 'You submitted succesfully!', 'success');

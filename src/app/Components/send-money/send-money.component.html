@@ -1,48 +1,147 @@
 <!-- LOAN PAGE -->
 
-<section>
-  <div class="row">
-    <!-- SIDEBAR COLUMN -->
-    <div class="col-lg-2 sideBar">
-
-      <!-- SIDEBAR LINKS -->
-      <div class="py-4 px-5">
-        <div class="linkss  py-5">
-          <p class="mb-3 ashBank">ASHBANK</p>
-          <ul class="liss">
-            <li class="liss py-3"><a class="linkName" routerLink="/user">Dashboard</a>
-            </li>
-            <li class="liss py-3 "><a class="linkName" routerLink="/send">Send Money</a></li>
-            <li class="liss py-3 "><a class="linkName" routerLink="/receive">Receive</a></li>
-            <li class="liss py-3 "><a class="linkName" routerLink="/loan">Quick Loan</a></li>
-            <li class="liss py-3 "><a class="linkName" routerLink="/profile">Profile</a></li>
-            <li class="liss py-3"><a class="linkName" routerLink="/report">Report</a></li>
-          </ul>
-
-          <ul class="py-5">
-            <li class="liss py-3"><a class="logout" href="#">Logout</a>
-          </ul>
+<!-- Dashboard -->
+<div class="d-flex flex-column flex-lg-row h-lg-full ">
+  <!-- Vertical Navbar -->
+  <nav
+    class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light bg-white border-bottom border-bottom-lg-0 border-end-lg"
+    id="navbarVertical"
+  >
+    <div class="container-fluid">
+      <!-- Toggler -->
+      <button
+        class="navbar-toggler ms-n2"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#sidebarCollapse"
+        aria-controls="sidebarCollapse"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Brand -->
+      <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0" href="#">
+        <img
+          src="https://preview.webpixels.io/web/img/logos/clever-primary.svg"
+          alt="..."
+        />
+      </a>
+      <!-- User menu (mobile) -->
+      <div class="navbar-user d-lg-none">
+        <!-- Dropdown -->
+        <div class="dropdown">
+          <!-- Toggle -->
+          <a
+            href="#"
+            id="sidebarAvatar"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <div class="avatar-parent-child">
+              <img
+                alt="profile"
+                src="https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
+                class="avatar avatar- rounded-circle"
+              />
+              <span class="avatar-child avatar-badge bg-success"></span>
+            </div>
+          </a>
+          <!-- Menu -->
+          <div
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="sidebarAvatar"
+          >
+            <a href="#" class="dropdown-item">Profile</a>
+            <a href="#" class="dropdown-item">Settings</a>
+            <a href="#" class="dropdown-item">Billing</a>
+            <hr class="dropdown-divider" />
+            <a href="#" class="dropdown-item">Logout</a>
+          </div>
         </div>
       </div>
+      <!-- Collapse -->
+      <div class="collapse navbar-collapse" id="sidebarCollapse align-items-center">
+        <div class="mt-5"></div>
+        <!-- Navigation -->
+        <ul class="navbar-nav ">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="bi bi-house"></i> Dashboard
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="transaction">
+              <i class="bi bi-bar-chart"></i> Transaction
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/send-money">
+              <i class="bi bi-chat"></i> Send Money
+              <!-- <span
+                class="badge bg-soft-primary text-primary rounded-pill d-inline-flex align-items-center ms-auto"
+                >6</span
+              > -->
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/receive-money">
+              <i class="bi bi-bookmarks"></i> Receive Money
+            </a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="bi bi-people"></i> Users
+            </a>
+          </li> -->
+        </ul>
+        <!-- Divider -->
+        <hr class="navbar-divider my-5 opacity-20" />
+        <!-- Navigation -->
 
-      <!--END OF SIDEBAR LINKS -->
-
-
+        <!-- Push content down -->
+        <!-- <div class="mt-auto"></div> -->
+        <!-- User (md) -->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="user-account">
+              <i class="bi bi-person-square"></i> Account
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="bi bi-box-arrow-left"></i> Logout
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
-    <!-- END OF SIDEBAR COLUMN -->
-    <!-- <div class="col-lg-1 "></div> -->
-
-
-    <div class="col-lg-9  px-5">
-
-      <div class="container">
-        <form>
-          <div class="d-flex flex-column align-items-center">
-            <p class="fs-4 fw-bold m-0">Transfer Money</p>
+  </nav>
+  <!-- Main content -->
+  <div class="h-screen flex-grow-1 overflow-y-lg-auto">
+    <!-- Header -->
+    
+    <!-- Main -->
+    <main class="py-6">
+      
+      <div class="container-fluid">
+<div class="row py-5">
+   <div class="row">
+    <div class="col-lg-3"></div>
+   <div class="col-lg-5">
+    <div class="d-flex py-5 flex-column align-items-center">
+            <p class="fs-4 fw-bold m-0 send">Send Money</p>
             <span class="text-muted">Please provide the details you will like to send</span>
             <span class="line my-2"></span>
-          </div>
-          <div class="row p-0">
+          </div></div>
+   <div class="col-lg-4"></div>
+  </div>
+  <div class="col-lg-1"></div>
+  <div class="col-lg-5">
+    <h4>Sender</h4>
+    <div class="row p-0">
             <div class="col-12 p-0 px-4">
               <span class="text-uppercase text-muted">account number</span>
             </div>
@@ -51,11 +150,11 @@
                 class="form-control shadow-sm d-flex align-items-center py-2 px-2" id="exampleInputPassword1">
             </div>
             <div class="col-12 p-0 px-4 mt-1">
-              <span class="text-uppercase text-muted">Select bank</span>
+              <span class="text-uppercase text-muted">bank name</span>
             </div>
             <div class="col-12 p-0 px-4">
               <select class="form-select d-flex align-items-center shadow-sm py-2 px-2" id="amount" aria-label="">
-                <option selected hidden>What Bank?</option>
+                <option selected hidden>Select Bank</option>
                 <option class="valAmount" value="ASHBANK">ASHBANK</option>
 
               </select>
@@ -63,7 +162,48 @@
 
             <!-- AMOUNT -->
             <div class="col-12 p-0 px-4 mt-1">
-              <span class="text-uppercase text-muted">amount</span>
+              <span class="text-uppercase text-muted">Account name</span>
+            </div>
+            <div class="col-12 p-0 px-4">
+              <input  type="number"
+                class="form-control shadow-sm d-flex align-items-center py-2 px-2" id="exampleInputPassword1">
+            </div>
+
+            <!-- RECEIVER'S NAME -->
+            <div class="col-12 p-0 px-4 mt-1">
+              <span class="text-uppercase text-muted">Amount</span>
+            </div>
+            <div class="col-12 p-0 px-4">
+              <input type="text"
+                class="form-control shadow-sm d-flex align-items-center py-2 px-2" id="exampleInputPassword1">
+            </div>
+            
+          </div>
+  </div>
+  <div class="col-lg-5 ">
+    <h4 class="dest">Beneficiary</h4>
+    <div class="row p-0">
+            <div class="col-12 p-0 px-4">
+              <span class="text-uppercase text-muted">account number</span>
+            </div>
+            <div class="col-12 p-0 px-4">
+              <input type="number" maxlength="10" minlength="10"
+                class="form-control shadow-sm d-flex align-items-center py-2 px-2" id="exampleInputPassword1">
+            </div>
+            <div class="col-12 p-0 px-4 mt-1">
+              <span class="text-uppercase text-muted">bank Name</span>
+            </div>
+            <div class="col-12 p-0 px-4">
+              <select class="form-select d-flex align-items-center shadow-sm py-2 px-2" id="amount" aria-label="">
+                <option selected hidden>Select Bank</option>
+                <option class="valAmount" value="ASHBANK">ASHBANK</option>
+
+              </select>
+            </div>
+
+            <!-- AMOUNT -->
+            <div class="col-12 p-0 px-4 mt-1">
+              <span class="text-uppercase text-muted">Bank Name</span>
             </div>
             <div class="col-12 p-0 px-4">
               <input type="number" maxlength="10" minlength="10"
@@ -72,41 +212,52 @@
 
             <!-- RECEIVER'S NAME -->
             <div class="col-12 p-0 px-4 mt-1">
-              <span class="text-uppercase text-muted">RECEIVER'S NAME</span>
+              <span class="text-uppercase text-muted">amount in words</span>
             </div>
             <div class="col-12 p-0 px-4">
               <input type="text"
                 class="form-control shadow-sm d-flex align-items-center py-2 px-2" id="exampleInputPassword1">
             </div>
-            <!-- TRANSACTION PIN -->
-            <div class="col-12 p-0 px-4 mt-1">
-              <span class="text-uppercase text-muted">TRANSACTION PIN</span>
+            
+          </div>
+         
+  </div>
+  <div class="col-lg-1"></div>
+   <div class="row p-0">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10">
+               <div class="col-12 p-0 mt-1">
+              <span class="text-uppercase text-muted px-4 mt-1">narration</span>
             </div>
-            <div class="col-12 p-0 px-4">
-              <input type="password"
-                class="form-control shadow-sm d-flex align-items-center py-2 px-2" id="exampleInputPassword1">
+            <div class="col-12 px-4">
+              <input type="text"
+                class="form-control  shadow-sm d-flex align-items-center py-2" id="exampleInputPassword1">
             </div>
+            </div>
+            <div class="col-lg-1"></div>
+          </div>
 
-
-            <div class="col-12 p-0 px-4">
+          <!-- <div class="col-12 p-0 px-4">
               <div class="d-flex align-items-center my-3">
                 <span class="text-muted text-uppercase">you're about to send:</span>
                 <span class="c-g ps-1">₦<span id="money">23,640</span></span>
               </div>
-            </div>
-            <div class="col-12 p-0 px-4">
-              <div class="btn btn-primary w-100">Send</div>
-              <div class="text-muted text-center mb-4 mt-1">You can make up to <span style="color: #C31E39; font-weight: 600;">30</span>
+            </div> -->
+            
+            <div class="row">
+              <div class="col-lg-4"></div>
+              <div class="col-lg-4">            <div class=" p-0 px-4">
+              <div class="btn btn-primary w-100 text-center mt-3">Send</div>
+              <div class="text-muted text-center mt-1">You can make up to <span style="color: #C31E39; font-weight: 600;">30</span>
                 free transfers</div>
+            </div></div>
+              <div class="col-lg-4"></div>
             </div>
-          </div>
-        </form>
+
+</div>
+        
       </div>
-
-
-
-    </div>
-
+    </main>
   </div>
-  <!-- END OF MAIN PAGE COLUMN -->
-</section>
+</div>
+

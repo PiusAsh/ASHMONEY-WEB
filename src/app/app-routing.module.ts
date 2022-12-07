@@ -31,13 +31,13 @@ const routes: Routes = [
     path:'admin', component: AdminDashboardComponent
   },
   {
-    path:'send', component: SendMoneyComponent
+    path:'send-money', component: SendMoneyComponent
   },
   {
     path:'loan', component: LoanCollectionComponent
   },
   {
-    path:'receive', component: ReceiveMoneyComponent
+    path:'receive-money', component: ReceiveMoneyComponent
   },
   {
     path:'profile', component: UserProfileComponent

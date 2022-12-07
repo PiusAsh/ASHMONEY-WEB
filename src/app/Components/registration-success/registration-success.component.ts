@@ -8,7 +8,7 @@ import { ServiceService } from 'src/app/Shared/service.service';
   styleUrls: ['./registration-success.component.css'],
 })
 export class RegistrationSuccessComponent implements OnInit {
-  user: Registration[] = []
+  user: Registration[] = [];
   // user: Registration[] = [];
   //   {
   //     id: 0,
@@ -18,7 +18,7 @@ export class RegistrationSuccessComponent implements OnInit {
   //   phoneNo: 0,
   //   country: '',
   //   accountNo: 9876543256,
-  //   dob: '',
+  //   dateOfBirth: '',
   //   password: 0,
   // }
 

@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
+import { LoginResponse, Registration } from 'src/app/Models/registration';
+import { ServiceService } from 'src/app/Shared/service.service';
 
 @Component({
   selector: 'app-login',
@@ -10,48 +12,53 @@ import { NgToastService } from 'ng-angular-popup';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-
-  public loginForm! : FormGroup
+  loginResponse: LoginResponse = {
+    Message: '',
+    userData: '',
+  };
+  public loginForm!: FormGroup;
+  user: Registration = {
+    id: 0,
+    firstName: '',
+    lastName: '',
+    email: '',
+    phoneNumber: 0,
+    country: '',
+    state: '',
+    address: '',
+    password: '',
+    gender: '',
+    dateOfBirth: new Date(),
+    isAdmin: false,
+    accountNumber: '',
+    bankName: '',
+    accountBalance: '',
+    acctType: '',
+    transactionPin: 0,
+    dateCreated: new Date(),
+    lastUpdated: new Date(),
+    lastLoggedIn: new Date(),
+  };
   
-  constructor(private formBuilder: FormBuilder, private http: HttpClient, private route: Router, private toast : NgToastService ) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private service: ServiceService,
+    private route: Router,
+    private toast: NgToastService
+  ) {}
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
-    })
+      // email: ['', Validators.required],
+      password: ['', Validators.required],
+      phoneNumber: ['', Validators.required],
+    });
   }
-  login(){
-    this.http.get<any>('http://localhost:3000/register')
-    .subscribe(res=>{
-      const user = res.find((a:any)=>{
-        return a.phoneNo === this.loginForm.value.phoneNo && a.password === this.loginForm.value.password
-      });
-      if(user){
-        // alert("Successfully Logged In");
-         this.toast.success({
-           detail: 'Successfully Logged In',
-           summary: "Welcome on board",
-           duration: 4000,
-         });
-        this.loginForm.reset();
-        this.route.navigate(['user'])
-      }else{
-        // alert("User Not Found");
-        this.toast.error({
-          detail: 'User Not Found',
-          summary: "Account doesn't exist",
-          duration: 4000,
-        });
-      }
-    }, err=>{
-      // alert("Something went wrong")
-      this.toast.info({
-        detail: 'Something went wrong',
-        summary: "Check your internet connection",
-        duration: 4000,
-      });
-    })
-
+  login() {
+    this.user = this.loginForm.value;
+    this.service.login(this.user).subscribe((res: any) => {
+      this.loginResponse = res;
+      console.log(res, 'CHECKING LOGGED IN USER DETAILS');
+    });
   }
 }

@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap");
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   list-style: none;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 body {
@@ -22,9 +22,8 @@ body {
 .line {
   max-height: 10px;
   width: 100px;
-  border-top: 2px solid #C31E39;
+  border-top: 2px solid #c31e39;
 }
-
 
 option {
   font-size: 14px;
@@ -36,12 +35,12 @@ option {
 }
 
 .c-g {
-  color: #C31E39;
+  color: #c31e39;
   font-weight: 800;
 }
 
 .dropdown-toggle::after {
-  content: '';
+  content: "";
   border: none;
 }
 
@@ -62,7 +61,7 @@ option {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #C31E39;
+  background-color: #c31e39;
   font-weight: 600;
   outline: none;
   border: none;
@@ -71,15 +70,13 @@ option {
 .valAmount {
   font-weight: 500;
   font-size: 15px;
-  font-family: 'Poppins',
-    sans-serif;
+  font-family: "Poppins", sans-serif;
 }
-
 
 /* SIDEEBAR CSS */
 
 .sideBar {
-  background-color: #C31E39;
+  background-color: #c31e39;
   /* height: 100vh; */
 }
 
@@ -96,13 +93,11 @@ option {
   color: #fff;
   font-weight: 400;
   /* margin-top: 5px; */
-  font-family: 'Poppins',
-    sans-serif;
-
+  font-family: "Poppins", sans-serif;
 }
 
 .th {
-  border-bottom: 1px solid #C31E39 !important;
+  border-bottom: 1px solid #c31e39 !important;
 }
 
 .yourAcct {
@@ -112,21 +107,17 @@ option {
   color: #fff;
   font-weight: 500;
   /* margin-top: 5px; */
-  font-family: 'Poppins',
-    sans-serif;
-
+  font-family: "Poppins", sans-serif;
 }
 
-.yourAcctNo {
+.youraccountNumber {
   text-decoration: none !important;
   text-align: left !important;
   font-size: 15px;
   color: #fff;
   font-weight: 500;
   /* margin-top: 5px; */
-  font-family: 'Poppins',
-    sans-serif;
-
+  font-family: "Poppins", sans-serif;
 }
 
 .acctAmount {
@@ -136,9 +127,7 @@ option {
   color: #fff;
   font-weight: 600;
   /* margin-top: 5px; */
-  font-family: 'Poppins',
-    sans-serif;
-
+  font-family: "Poppins", sans-serif;
 }
 
 .priceContainer {
@@ -146,8 +135,7 @@ option {
 }
 
 .How {
-  font-family: 'Poppins',
-    sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 15px;
   font-weight: 400;
   color: #242424;
@@ -158,24 +146,20 @@ option {
   color: #ac1c34;
   font-size: 14px;
   font-weight: 600;
-  font-family: 'Poppins',
-    sans-serif;
+  font-family: "Poppins", sans-serif;
   border: none;
   border-radius: 6px;
   padding: 5px 8px 5px 8px;
-
 }
 
-.acctNo {
+.accountNumber {
   text-decoration: none !important;
   text-align: left !important;
   font-size: 16px;
   color: #fff;
   font-weight: 600;
   /* margin-top: 5px; */
-  font-family: 'Poppins',
-    sans-serif;
-
+  font-family: "Poppins", sans-serif;
 }
 
 .logout {
@@ -183,35 +167,28 @@ option {
   text-align: left !important;
   font-size: 16px;
   background-color: #fff;
-  color: #C31E39;
+  color: #c31e39;
   font-weight: 500;
   /* margin-top: 5px; */
-  font-family: 'Poppins',
-    sans-serif;
+  font-family: "Poppins", sans-serif;
   padding: 10px;
   border-radius: 5px;
-
 }
 
 .view {
   text-decoration: none !important;
   text-align: left !important;
   font-size: 15px;
-  color: #C31E39;
+  color: #c31e39;
   font-weight: 600;
   /* margin-top: 5px; */
-  font-family: 'Poppins',
-    sans-serif;
-
+  font-family: "Poppins", sans-serif;
 }
-
 
 .linkName:hover {
   text-decoration: none;
   font-size: 18px;
-  font-family: 'Poppins',
-    sans-serif;
-
+  font-family: "Poppins", sans-serif;
 }
 
 .liss {
@@ -220,8 +197,7 @@ option {
 
 .ashBank {
   font-size: 24px;
-  font-family: 'Poppins',
-    sans-serif;
+  font-family: "Poppins", sans-serif;
   color: #fff;
   font-weight: 600;
 }
@@ -229,33 +205,26 @@ option {
 .welcome {
   color: #121212;
   font-size: 25px;
-  font-family: 'Poppins',
-    sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 600;
 }
 
-
-
-
 .table th {
   font-size: 15px;
-  font-family: 'Poppins',
-    sans-serif;
+  font-family: "Poppins", sans-serif;
   border-bottom: 1px solid #242424;
 }
 
 .table td {
   font-size: 15px;
-  font-family: 'Poppins',
-    sans-serif;
-
+  font-family: "Poppins", sans-serif;
 }
 
 .tra {
   color: #121212;
   font-size: 17px;
   font-weight: 600;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 /* end of main css */
@@ -264,7 +233,6 @@ option {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-
 }
 
 td,
@@ -272,16 +240,12 @@ th {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 10px;
-
-
 }
 
 td {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
-
-
 }
 
 tr {
@@ -290,7 +254,7 @@ tr {
   border-right: none !important;
 }
 
-.container{
-    height: 450px;
-    width: 600px!important;
+.container {
+  height: 450px;
+  width: 600px !important;
 }

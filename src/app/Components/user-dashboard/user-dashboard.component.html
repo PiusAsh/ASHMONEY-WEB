@@ -1,150 +1,244 @@
-<section>
-  <div class="row">
-    <!-- SIDEBAR COLUMN -->
-    <div class="col-lg-2 sideBar">
 
-      <!-- SIDEBAR LINKS -->
-      <div class="py-4 px-5">
-        <div class="linkss  py-5">
-          <p class="mb-3 ashBank">ASHBANK</p>
-<ul class="liss">
-  <li class="liss py-3"><a class="linkName" routerLink="/user">Dashboard</a>
-  </li>
-  <li class="liss py-3 "><a class="linkName" routerLink="/send">Send Money</a></li>
-  <li class="liss py-3 "><a class="linkName" routerLink="/receive">Receive</a></li>
-  <li class="liss py-3 "><a class="linkName" routerLink="/loan">Quick Loan</a></li>
-  <li class="liss py-3 "><a class="linkName" routerLink="/profile">Profile</a></li>
-  <li class="liss py-3"><a class="linkName" routerLink="/report">Report</a></li>
-</ul>
-          <ul class="py-5">
-            <li class="liss py-3"><a class="logout"  (click)="logout()">Logout</a>
-          </ul>
+<!-- Dashboard -->
+<div class="d-flex flex-column flex-lg-row h-lg-full">
+  <!-- Vertical Navbar -->
+  <nav
+    class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light bg-white border-bottom border-bottom-lg-0 border-end-lg"
+    id="navbarVertical"
+  >
+    <div class="container-fluid">
+      <!-- Toggler -->
+      <button
+        class="navbar-toggler ms-n2"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#sidebarCollapse"
+        aria-controls="sidebarCollapse"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Brand -->
+      <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0" href="#">
+        <img class="mb-5" style="width: 100%; height: 100px;"
+          src="/assets/images/logonew.png"
+          alt="..."
+        />
+      </a>
+      <!-- User menu (mobile) -->
+      <div class="navbar-user d-lg-none">
+        <!-- Dropdown -->
+        <div class="dropdown">
+          <!-- Toggle -->
+          <a
+            href="#"
+            id="sidebarAvatar"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <div class="avatar-parent-child">
+              <img
+                alt="Image Placeholder"
+                src="https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
+                class="avatar avatar- rounded-circle"
+              />
+              <span class="avatar-child avatar-badge bg-success"></span>
+            </div>
+          </a>
+          <!-- Menu -->
+          <div
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="sidebarAvatar"
+          >
+            <a href="#" class="dropdown-item">Profile</a>
+            <a href="#" class="dropdown-item">Settings</a>
+            <a href="#" class="dropdown-item">Billing</a>
+            <hr class="dropdown-divider" />
+            <a href="#" class="dropdown-item">Logout</a>
+          </div>
         </div>
       </div>
+      <!-- Collapse -->
+      <div class="collapse navbar-collapse" id="sidebarCollapse align-items-center">
+        <div class="mt-5"></div>
+        <!-- Navigation -->
+        <ul class="navbar-nav ">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="bi bi-house"></i> Dashboard
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/transaction">
+              <i class="bi bi-bar-chart"></i> Transaction
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/send-money">
+              <i class="bi bi-chat"></i> Send Money
+              <!-- <span
+                class="badge bg-soft-primary text-primary rounded-pill d-inline-flex align-items-center ms-auto"
+                >6</span
+              > -->
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/receive-money">
+              <i class="bi bi-bookmarks"></i> Receive Money
+            </a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="bi bi-people"></i> Users
+            </a>
+          </li> -->
+        </ul>
+        <!-- Divider -->
+        <hr class="navbar-divider my-5 opacity-20" />
+        <!-- Navigation -->
 
-      <!--END OF SIDEBAR LINKS -->
-
-
+        <!-- Push content down -->
+        <!-- <div class="mt-auto"></div> -->
+        <!-- User (md) -->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="bi bi-person-square"></i> Account
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="bi bi-box-arrow-left"></i> Logout
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
-    <!-- END OF SIDEBAR COLUMN -->
-    <!-- <div class="col-lg-1 "></div> -->
+  </nav>
+  <!-- Main content -->
+  <div class="h-screen flex-grow-1 overflow-y-lg-auto">
+    <!-- Header -->
+    
+    <!-- Main -->
+    <main class="py-6">
+      
+      <div class="container-fluid">
 
 
-    <div class="col-lg-9 py-5 px-5">
-      <p class="welcome mt-3 mb-3 px-4">Welcome Back, {{user.firstName}} <br/> <span class="How">How are you doing today? Today is
+        <p class="welcome mt-1 mb-3 px-4">Welcome Back, Pius A. <br/> <span class="How">How are you doing today? Today is
           {{myDate | date:'fullDate'}}</span></p>
+        <!-- Card stats -->
+        
+        <div class="row g-6 mb-6">
           
-          
+          <div class="col-xl-10 col-sm-6 col-12">
+            <div class="card shadow border-0 account">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <span
+                      class="h3  font-semibold text-white text-sm d-block mb-2"
+                      >Account Balance</span
+                      >
+                      <span class="acctAmount  mb-0">$750.900</span>
+                     
+                    </div>
+                    <!-- <img src="/assets/images/money.svg" style="width: 150px;" alt=""> -->
+                  <div class="col-auto bgg">
 
-      <div class="container row account">
-        <div class="container d-flex priceContainer">
-
-        <div class="col-lg-5 me-5">
-
-          <p class="yourAcct  mt-3 px-5">Your Balance</p>
-          <p class="acctAmount px-5">₦5,000,630.00</p>
-        <div class="d-flex px-5 mt-3">
-            <button class="money me-2" routerLink="/send">Send Money</button>
-            <button class="money" routerLink="/receive" >Receive Money</button>
-        </div>
-                    <!-- <p class="yourAcctNo  mt-4 px-5">Account No: <span class="acctNo">0233445678</span></p> -->
-        </div>
-        <!-- <div class="col-lg-3">
-
-
-        </div> -->
-        <div class="col-lg-7 px-5">
-                <div class="card cardcard mt-3 px-3 p-3 m-4">
-                  <div class="img-box">
-                    <img src="https://www.freepnglogos.com/uploads/visa-logo-download-png-21.png" alt="" style="width: 50px;" height="40px;">
                   </div>
-                  <div class="number">
-                    <label class="fw-bold acctLabel" for="">**** **** **** 1060</label>
-                  </div>
-                  <div class="d-flex align-items-center justify-content-between">
-                    <small><span class="fw-bold acctLabel">Expiry date:</span>&nbsp;<span
-                        class="acctLabel">10/16</span></small>
-                    <small><span class="fw-bold acctLabel">Name:</span> &nbsp;<span
-                        class="acctLabel">Pius</span></small>
+                  <div class="col-auto">
+                     
+                    <div class="d-flex fund">
+                     
+
+            <button class="money me-2" routerLink="/send-money">Send Money</button>
+            <button class="money" routerLink="/receive-money" >Receive Money</button>
+        
+                    </div>
                   </div>
                 </div>
+                <div class="mt-2 mb-0 text-sm">
+                  <span
+                    
+                  >
+                    
+                  </span>
+                  <span class="text-nowrap text-xs text-white"
+                    >Account NO: <span class="fw-bold h5 text-white">0000007787</span> </span
+                  >
+
+
+                  
+                </div>
+
+              </div>
+            </div>
+          </div>
+          
+         
+          
         </div>
-      </div></div>
+        <div class="card shadow border-0 mb-7">
+          <div class="card-header shadow"><h5 class="mb-0">Transactions</h5></div>
+          <div class="table-responsive">
+            <table class="table table-hover table-nowrap">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">Trans Ref</th>
+                  <th scope="col">Sender Name</th>
+                  <th scope="col">Amount</th>
+                  <th scope="col">Trans Date</th>
+                  <th scope="col">Status</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
 
+                
+                
+               
+                
+                
+                <tr>
+                  <td>Ash0568788898</td>
+                  <td>Pius Ashogbon</td>
+                  <td class="text-right">#45,000</td>
+                  <td>Mar 20, 2021</td>
+                  
+                  
+                 
 
+                  <td>
+                    <span class="badge badge-lg badge-dot">
+                      <i class="bg-success"></i>Paid
+                    </span>
+                  </td>
+                  <td class="text-end">
+                    <a href="#" class="btn btn-sm btn-neutral">View</a>
+                    <!-- <button
+                      type="button"
+                      class="btn btn-sm btn-square btn-neutral text-danger-hover"
+                    >
+                      <i class="bi bi-trash"></i>
+                    </button> -->
+                  </td>
+                </tr>
+                
 
-
-
-      <div class="row py-3">
-<h2 class="tra mb-3 mt-3 px-3">Recent Transactions</h2>
-<p class="tra1 py-1 px-2">Credit Transactions</p>
-        <!-- Transaction section -->
- <table class="table">
-   <thead>
-     <tr>
-       <th scope="">Name</th>
-       <th scope="col">Account</th>
-       <th scope="col">Amount</th>
-       <th scope="col">Type</th>
-       <th scope="col">Date</th>
-       <th scope="col">Status</th>
-
-       
-     </tr>
-   </thead>
-   <tbody>
-     <tr>
-       <td>Pius Ashogbon</td>
-       <td>0085875008</td>
-       <td>500,0000</td>
-       <td>Credit</td>
-       <td>12-07-2022</td>
-       <td>Successful</td>
-
-
-       
-     </tr>
-
-   </tbody>
- </table>
-        <!-- end of transaction  -->
+              </tbody>
+            </table>
+          </div>
+          <div class="card-footer border-0 py-5">
+            <span class="text-muted text-sm"
+              >Showing 10 items out of 250 results found</span
+            >
+          </div>
+        </div>
       </div>
-      <div class="row py-3">
-<p class="tra1 py-1 px-2">Debit Transactions</p>
-        <!-- Transaction section -->
- <table class="table">
-   <thead>
-     <tr>
-       <th scope="">Name</th>
-       <th scope="col">Account</th>
-       <th scope="col">Amount</th>
-       <th scope="col">Type</th>
-       <th scope="col">Date</th>
-       <th scope="col">Status</th>
-
-       
-     </tr>
-   </thead>
-   <tbody>
-     <tr>
-       <td>Pius Ashogbon</td>
-       <td>0085875008</td>
-       <td>500,0000</td>
-       <td>Debit</td>
-       <td>12-07-2022</td>
-       <td>Successful</td>
-
-
-       
-     </tr>
-
-   </tbody>
- </table>
-        <!-- end of transaction  -->
-      </div>
-
-
-    </div>
-    <!-- END OF MAIN PAGE COLUMN -->
+    </main>
   </div>
-</section>
+</div>

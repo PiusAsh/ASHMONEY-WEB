@@ -1,7 +1,7 @@
 <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 mx-auto">
   <div class="border-0">
     <div class="row d-flex">
-      <div class="col-lg-6">
+      <div class="col-lg-6 hideMobile">
         <div class="card1 pb-5">
           <div class="row">
             <img class="" src="/assets/images/logo.jpg" class="logo" />
@@ -20,13 +20,13 @@
                         <div class="linkedin text-center mr-2"><div class="bi bi-linkedin"></div></div> -->
           </div>
           <div class="row">
-            <p class="welcome">Register</p>
+            <p class="welcome mb-3">Open Account</p>
             <!-- <p>Kindly signup with your credentials</p> -->
             <!-- <div class="line"></div>
                         <small class="or text-center">Or</small> -->
             <!-- <div class="line"></div> -->
           </div>
-          <form [formGroup]="registerForm" (ngSubmit)="register()">
+          <form [formGroup]="registerForm" (ngSubmit)="Register()">
             <div class="row">
               <div class="col-lg-6 p-1">
                 <label class="mb-1"
@@ -39,6 +39,10 @@
                   name="email"
                   placeholder="Enter  your First Name"
                 />
+                <span class="text-danger"
+                *ngIf="registerForm.controls['firstName'].touched && registerForm.hasError('required', 'firstName')">First
+                Name is
+                required</span>
               </div>
               <div class="col-lg-6 p-1">
                 <label class="mb-1"
@@ -51,6 +55,10 @@
                   name="email"
                   placeholder="Enter your Last Name"
                 />
+                              <span class="text-danger"
+                *ngIf="registerForm.controls['lastName'].touched && registerForm.hasError('required', 'lastName')">Last
+                Name is
+                required</span>
               </div>
             </div>
             <div class="row">
@@ -65,6 +73,13 @@
                   name="email"
                   placeholder="Enter your email address"
                 />
+                              <span class="text-danger"
+                *ngIf="registerForm.controls['email'].touched && registerForm.hasError('required', 'email')">
+                Email is
+                required</span>
+                              <span class="text-danger"
+                *ngIf="registerForm.controls['email'].touched && registerForm.hasError('pattern', 'email')">
+                Enter a Valid Email Address</span>
               </div>
               <div class="col-lg-6 p-1">
                 <label class="mb-1"
@@ -72,11 +87,14 @@
                 >
                 <input
                   class=""
-                  formControlName="phone"
-                  type="text"
-                  name="email"
+                  formControlName="phoneNumber"
+                  type="number"
+                  name="phoneNumber"
                   placeholder="Enter your phone number"
                 />
+                <span class="text-danger"
+                *ngIf="registerForm.controls['phoneNumber'].touched && registerForm.hasError('required', 'phoneNumber')">Phone
+                Number is required</span>
               </div>
             </div>
             <!-- <div class="row px-3 mb-4">
@@ -94,46 +112,55 @@
             </div> -->
             <div class="row">
               <label class="mb-1"><h6 class="mb-0 text-sm">Address</h6></label>
-              <input
-                type="text"
-                formControlName="address"
-                name="address"
-                placeholder="Enter password"
-              />
-              <span
-                class="text-danger"
-                *ngIf="
-                  registerForm.controls['address'].dirty &&
-                  registerForm.hasError('required', 'address')
-                "
-                ></span
-              >
+<input
+                  class=""
+                  formControlName="address"
+                  type="text"
+                  name="address"
+                  placeholder="Enter your Address"
+                />
+                              <span class="text-danger"
+                *ngIf="registerForm.controls['address'].touched && registerForm.hasError('required', 'address')">
+                Address is
+                required</span>
             </div>
 
             <div class="row">
               <div class="col-lg-6 p-1">
                 <label class="mb-1"
-                  ><h6 class="mb-0 text-sm">State</h6></label
+                  ><h6 class="mb-0 text-sm">Date of Birth</h6></label
                 >
                 <input
                   class=""
-                  formControlName="state"
-                  type="text"
+                  formControlName="dateOfBirth"
+                  type="date"
                   name="state"
-                  placeholder="Enter your state"
+                  max="2004-12-31"
+                  
                 />
+                                              <span class="text-danger"
+                *ngIf="registerForm.controls['dateOfBirth'].touched && registerForm.hasError('required', 'dateOfBirth')">Date of Birth is
+                required</span>
               </div>
               <div class="col-lg-6 p-1">
                 <label class="mb-1"
-                  ><h6 class="mb-0 text-sm">Country</h6></label
+                  ><h6 class="mb-0 text-sm">Gender</h6></label
                 >
-                <input
+                <select class="" name="gender" id="gender" formControlName="gender">
+                  <option aria-selected="true" disabled>Select Gender</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+</select>
+                <!-- <input
                   class=""
-                  formControlName="country"
+                  formControlName="gender"
                   type="text"
-                  name="country"
-                  placeholder="country"
-                />
+                  name="gender"
+                  placeholder="gender"
+                /> -->
+                              <span class="text-danger"
+                *ngIf="registerForm.controls['gender'].touched && registerForm.hasError('required', 'gender')">Gender is
+                required</span>
               </div>
             </div>
 
@@ -149,6 +176,11 @@
                   name="password"
                   placeholder="Enter your password"
                 />
+                              <span class="text-danger"
+                *ngIf="registerForm.controls['password'].touched && registerForm.hasError('required', 'password')">
+                Password is
+                required</span>
+                
               </div>
               <div class="col-lg-6 p-1">
                 <label class="mb-1"
@@ -161,22 +193,31 @@
                   name="password"
                   placeholder="Confirm Password"
                 />
+                              <span class="text-danger"
+                *ngIf="registerForm.controls['confirmPassword'].touched && registerForm.hasError('required', 'confirmPassword')">
+                Password is
+                required</span>
               </div>
             </div>
 
             <div class="row mb-3">
               <button
-                type="submit"
-                [disabled]="registerForm.invalid"
+                type="submit" [disabled]="registerForm.invalid"
+                
                 class="btn btn-blue text-center py-2 w-100 fw-bold"
               >
                 Create an Account
               </button>
             </div>
           </form>
-          <div class="row mb-4 px-3">
+          <div class="row  px-3">
             <small class="font-weight-bold text-center"
-              >Don't have an account? <a class="text-danger">Register</a></small
+              >Already have an account? <a routerLink="/login" class="text-danger log">Login Now</a></small
+            >
+          </div>
+          <div class="row  px-3">
+            <small class="font-weight-bold text-center"
+              >Back To <a routerLink="/" class="text-danger log">HomePage</a></small
             >
           </div>
         </div>
@@ -188,7 +229,7 @@
   </div>
 </div>
 
-<div class="row bg-blue fixed-bottom p-2">
+<div class="row bg-blue fixed-bottom p-2 hideMobile">
   <div class="col-lg-6">
     <small class="copy">Copyright &copy; 2022. All rights reserved.</small>
   </div>
@@ -201,148 +242,3 @@
   </div>
 </div>
 
-<!-- <section class="bigWhole">
-  <div class="row mt-4">
-
-    <div class="col-lg-3 px-5">
-    </div>
-
-    <div class="col-lg-6 card ">
-
-      <div class="row px-5 py-3">
-        <div class="d-flex flex-column mt-4 openAcc">
-          <p class="fs-4 fw-bold m-0 text-uppercase mt-1  px-5">Open an account</p>
-          <span class="text-muted px-5 mb-2">Welcome to the future of Savings & Investments</span>
-          <span class="line my-1 px-3 mb-3"></span>
-        </div>
-        <form [formGroup]="registerForm" (ngSubmit)="register()" class="formC mb-2">
-          <div class="row  mt-2">
-            <div class="col-lg-4">
-              <span class="text-uppercase text-muted">FIRST NAME</span>
-              <input type="text" formControlName="firstName" name="firstName"
-                class="form-control shadow-sm d-flex align-items-center py-2 px-2">
-              <span class="text-danger"
-                *ngIf="registerForm.controls['firstName'].dirty && registerForm.hasError('required', 'firstName')">First
-                Name is
-                required</span>
-            </div>
-            <div class="col-lg-1"></div>
-            <div class="col-lg-4">
-              <span class="text-uppercase text-muted">LAST NAME</span>
-              <input type="text" formControlName="lastName" name="lastName"
-                class="form-control shadow-sm d-flex align-items-center py-2 px-2">
-              <span class="text-danger"
-                *ngIf="registerForm.controls['lastName'].dirty && registerForm.hasError('required', 'lastName')">Last
-                Name is
-                required</span>
-            </div>
-          </div>
-
-
-          <div class="row mt-2">
-            <div class="col-lg-4">
-              <span class="text-uppercase text-muted">phone number</span>
-              <input type="number" minlength="11" maxlength="11" formControlName="phoneNo" name="phoneNo"
-                class="form-control shadow-sm d-flex align-items-center py-2 px-2">
-              <span class="text-danger"
-                *ngIf="registerForm.controls['phoneNo'].dirty && registerForm.hasError('required', 'phoneNo')">Phone
-                Number is required</span>
-
-            </div>
-            <div class="col-lg-1"></div>
-            <div class="col-lg-4">
-              <span class="text-uppercase text-muted">email address</span>
-              <input type="text" name="email" formControlName="email"
-                class="form-control shadow-sm d-flex align-items-center py-2 px-2">
-              <span class="text-danger"
-                *ngIf="registerForm.controls['email'].dirty && registerForm.hasError('required', 'email')">
-                Email is
-                required</span>
-            </div>
-          </div>
-
-          <div class="row mt-2">
-            <div class="col-lg-4">
-              <span class="text-uppercase text-muted">date of birth</span>
-              <input type="date" name="dob" formControlName="dob"
-                class="form-control shadow-sm d-flex align-items-center py-2 px-2">
-              <span class="text-danger"
-                *ngIf="registerForm.controls['dob'].dirty && registerForm.hasError('required', 'dob')">Date of birth is
-                required</span>
-            </div>
-            <div class="col-lg-1"></div>
-            <div class="col-lg-4">
-              <span class="text-uppercase text-muted">country</span>
-              <input type="text" name="country" formControlName="country"
-                class="form-control shadow-sm d-flex align-items-center py-2 px-2">
-              <span class="text-danger"
-                *ngIf="registerForm.controls['country'].dirty && registerForm.hasError('required', 'country')">Last
-                Name is
-                required</span>
-            </div>
-          </div>
-
-          <div class="row mt-2">
-            <div class="col-lg-4">
-              <span class="text-uppercase text-muted">password</span>
-              <input type="password" name="password" formControlName="password"
-                class="form-control shadow-sm d-flex align-items-center py-2 px-2">
-              <span class="text-danger"
-                *ngIf="registerForm.controls['password'].dirty && registerForm.hasError('required', 'password')">
-                Password is
-                required</span>
-            </div>
-            <div class="col-lg-1"></div>
-            <div class="col-lg-4">
-              <span class="text-uppercase text-muted">confirm password</span>
-              <input type="password" name="password" formControlName="password"
-                class="form-control shadow-sm d-flex align-items-center py-2 px-2">
-              <span class="text-danger"
-                *ngIf="registerForm.controls['password'].dirty && registerForm.hasError('required', 'password')">
-                Confirm your password</span>
-            </div>
-          </div>
-
-
-          <div class="row mt-2">
-            <div class="col-lg-4">
-              <button type="button" class="info " (click)="GenerateAccount()"> Generate Account
-                Number</button>
-            </div>
-            <div class="col-lg-1"></div>
-            <div class="col-lg-4">
-
-              <span class="text-uppercase text-muted">aCCOUNT NUMBER</span>
-              <input type="number" [value]="userAccount" formControlName="acctNo" name="accountNo"
-                class="form-control shadow-sm d-flex align-items-center py-2 px-2">
-              <span class="text-danger"
-                *ngIf="registerForm.controls['acctNo'].valid && registerForm.hasError('required')">Please
-                generate your account number</span>
-            </div>
-
-
-          </div>
-          <div class="row mt-3">
-            <div class="col-lg-9">
-
-              <div class="col-12 p-0">
-
-                <button type="submit" [disabled]="!registerForm.valid" class="btn btn-primary w-100">create account</button>
-              </div>
-              <p class="coh mt-2 text-muted text-center">Already have an Account? <span><a class="lg text-center"
-                    routerLink="/login">Login Now</a></span> OR <span><a class="lg text-center" routerLink="/">Back To
-                    Home</a></span></p>
-
-            </div>
-
-          </div>
-
-
-        </form>
-      </div>
-
-    </div>
-    <div class="col-lg-3"></div>
-
-  </div>
-</section> -->
