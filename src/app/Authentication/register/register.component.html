@@ -31,7 +31,7 @@
                   class=""
                   formControlName="firstName"
                   type="text"
-                  name="email"
+                  name="firstName"
                   placeholder="Enter  your First Name"
                 />
                 <span class="text-danger"
@@ -47,7 +47,7 @@
                   class=""
                   formControlName="lastName"
                   type="text"
-                  name="email"
+                  name="lastName"
                   placeholder="Enter your Last Name"
                 />
                               <span class="text-danger"
@@ -72,9 +72,9 @@
                 *ngIf="registerForm.controls['email'].touched && registerForm.hasError('required', 'email')">
                 Email is
                 required</span>
-                              <span class="text-danger"
+                              <!-- <span class="text-danger"
                 *ngIf="registerForm.controls['email'].touched && registerForm.hasError('pattern', 'email')">
-                Enter a Valid Email Address</span>
+                Enter a Valid Email Address</span> -->
               </div>
               <div class="col-lg-6 p-1">
                 <label class="mb-1"
@@ -129,7 +129,7 @@
                   class=""
                   formControlName="dateOfBirth"
                   type="date"
-                  name="state"
+                  name="dateOfBirth"
                   max="2004-12-31"
                   
                 />
@@ -167,7 +167,7 @@
                 <input
                   class=""
                   formControlName="password"
-                  type="text"
+                  type="password"
                   name="password"
                   placeholder="Enter your password"
                 />
@@ -184,7 +184,7 @@
                 <input
                   class=""
                   formControlName="confirmPassword"
-                  type="text"
+                  type="password"
                   name="password"
                   placeholder="Confirm Password"
                 />
@@ -197,8 +197,8 @@
 
             <div class="row mb-1">
               <button
-                type="submit" [disabled]="registerForm.invalid"
-                
+                type="submit"
+                [disabled]="registerForm.invalid"
                 class="btn btn-blue text-center py-2 w-100 fw-bold"
               >
                 Create an Account

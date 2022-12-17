@@ -1,6 +1,13 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
+import { AccountService } from 'src/app/Services/account.service';
 
 @Component({
   selector: 'app-login',
@@ -9,17 +16,49 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   loginForm!: FormGroup;
-  constructor(private formBuilder: FormBuilder, private route: Router) {}
+
+  public phoneNumber!: AbstractControl;
+  public password!: AbstractControl;
+  public email!: AbstractControl;
+  
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private route: Router,
+    private accountService: AccountService
+  ) {}
 
   ngOnInit(): void {
-    this.loginForm = this.formBuilder.group({
-      // email: ['', Validators.required],
-      password: ['', Validators.required],
-      phoneNumber: ['', Validators.required],
+    // this.loginForm = this.formBuilder.group({
+    //   password: ['', Validators.required],
+    //   phoneNumber: ['', Validators.required],
+    // });
+
+    this.loginForm = new FormGroup({
+      password: new FormControl('', [Validators.required]),
+      // email: new FormControl('', [Validators.required]),
+      phoneNumber: new FormControl('', [Validators.required]),
     });
   }
 
-  login(){
+  public sendLogin(): void {
+    console.log(this.loginForm.value, 'CHECKING VALUE');
+  }
 
+  login() {
+    // console.log(this.loginForm.value, 'CHECKING VALUE');
+    this.accountService.LoginUser(this.loginForm.value).subscribe({
+      next: (res) => {
+        // alert(res);
+        console.log(res, 'CHECKING SUCCESS');
+        console.log(res, 'CHECKING SUCCESS RES');
+        console.log(this.loginForm.value, 'CHECKING FORM VALUE');
+      },
+      error: (err) => {
+        
+        // alert(err.error.message);
+        console.log(err.error.message, 'CHECKING SUCCESS');
+      },
+    });
   }
 }

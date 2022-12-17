@@ -7,6 +7,7 @@ import { AccountInfoComponent } from './userDashboard/account-info/account-info.
 import { OverviewComponent } from './userDashboard/overview/overview.component';
 import { ReceiveMoneyComponent } from './userDashboard/receive-money/receive-money.component';
 import { SendMoneyComponent } from './userDashboard/send-money/send-money.component';
+import { UsersuccessPageComponent } from './usersuccess-page/usersuccess-page.component';
 
 const routes: Routes = [
   {
@@ -22,15 +23,15 @@ const routes: Routes = [
     component: LoginComponent,
   },
   {
-    path: 'user',
+    path: 'user/:id',
     component: OverviewComponent,
   },
+  // {
+  //   path: 'admin',
+  //   component: OverviewComponent,
+  // },
   {
-    path: 'admin',
-    component: OverviewComponent,
-  },
-  {
-    path: 'send-money',
+    path: 'send-money/:id',
     component: SendMoneyComponent,
   },
   // {
@@ -38,7 +39,7 @@ const routes: Routes = [
   //   component: LoanCollectionComponent,
   // },
   {
-    path: 'receive-money',
+    path: 'receive-money/:id',
     component: ReceiveMoneyComponent,
   },
   {
@@ -46,10 +47,10 @@ const routes: Routes = [
     component: AccountInfoComponent,
   },
   
-  // {
-  //   path: 'success',
-  //   component: RegistrationSuccessComponent,
-  // },
+  {
+    path: 'success',
+    component: UsersuccessPageComponent,
+  },
   // {
   //   path: 'testing',
   //   component: LoanPageComponent,

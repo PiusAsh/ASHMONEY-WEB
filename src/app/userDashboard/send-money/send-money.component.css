@@ -24,6 +24,9 @@
 .send{
   color: #000;
 }
+/* .form{
+  display: flex;
+} */
 
 .text-muted{
     font-weight: 400;

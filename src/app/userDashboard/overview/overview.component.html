@@ -77,7 +77,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/send-money">
+            <a class="nav-link" routerLink="/send-money/{{userAcct.id}}">
               <i class="bi bi-chat"></i> Send Money
               <!-- <span
                 class="badge bg-soft-primary text-primary rounded-pill d-inline-flex align-items-center ms-auto"
@@ -86,7 +86,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/receive-money">
+            <a class="nav-link" routerLink="/receive-money/{{userAcct.id}}">
               <i class="bi bi-bookmarks"></i> Receive Money
             </a>
           </li>
@@ -126,9 +126,9 @@
     <main class="py-6">
       
       <div class="container-fluid">
+<p class="text-end">Last Logged In: {{userAcct.lastLoggedIn | date:'medium'}}</p>
 
-
-        <p class="welcome mt-1 mb-3 px-4">Welcome Back, Pius A. <br/> <span class="How">How are you doing today? Today is
+        <p class="welcome mt-1 mb-3 px-4">Welcome Back, {{userAcct.firstName}} <br/> <span class="How">How are you doing today? Today is
           {{myDate | date:'fullDate'}}</span></p>
         <!-- Card stats -->
         
@@ -143,7 +143,7 @@
                       class="h3  font-semibold text-white text-sm d-block mb-2"
                       >Account Balance</span
                       >
-                      <span class="acctAmount  mb-0">$750.900</span>
+                      <span class="acctAmount  mb-0">{{userAcct.accountBalance | currency: "₦"}}</span>
                      
                     </div>
                     <!-- <img src="/assets/images/money.svg" style="width: 150px;" alt=""> -->
@@ -168,7 +168,7 @@
                     
                   </span>
                   <span class="text-nowrap text-xs text-white"
-                    >Account NO: <span class="fw-bold h5 text-white">0000007787</span> </span
+                    >Account NO: <span class="fw-bold h5 text-white">{{userAcct.accountNumber}}</span> </span
                   >
 
 
