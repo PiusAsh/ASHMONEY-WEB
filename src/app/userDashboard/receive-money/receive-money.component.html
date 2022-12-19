@@ -21,9 +21,9 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <!-- Brand -->
-      <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0" href="#">
+            <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0" href="#">
         <img
-          src="https://preview.webpixels.io/web/img/logos/clever-primary.svg"
+          src="assets/images/sidelogo.png" style="width: 200px; height: 100px;"
           alt="..."
         />
       </a>
@@ -73,13 +73,13 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/transaction/{{userAcct.id}}">
+            <a class="nav-link" routerLink="/transactions/{{userAcct.id}}">
               <i class="bi bi-bar-chart"></i> Transaction
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/send-money/{{userAcct.id}}">
-              <i class="bi bi-chat"></i> Send Money
+              <i class="bi bi-cash"></i> Send Money
               <!-- <span
                 class="badge bg-soft-primary text-primary rounded-pill d-inline-flex align-items-center ms-auto"
                 >6</span
@@ -88,7 +88,12 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/receive-money/{{userAcct.id}}">
-              <i class="bi bi-bookmarks"></i> Receive Money
+              <i class="bi bi-wallet-fill"></i> Receive Money
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/quick-loan/{{userAcct.id}}">
+              <i class="bi bi-bookmarks"></i> Quick Loan
             </a>
           </li>
           <!-- <li class="nav-item">
@@ -106,7 +111,7 @@
         <!-- User (md) -->
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" routerLink="user-account/{{userAcct.id}}">
+            <a class="nav-link" routerLink="account-info/{{userAcct.id}}">
               <i class="bi bi-person-square"></i> Account
             </a>
           </li>
@@ -156,7 +161,7 @@
     </div>
     <div class="">
        <span class="text-uppercase h3  font-semibold text-white text-sm d-block mb-2">Beneficiary Name</span>
-       <p class="name">{{userAcct.firstName}} {{userAcct.lastName}}</p>
+       <p class="name">{{userAcct.fullName}}</p>
     </div>
   </div>
   <div class="img ms-auto"><img src="/assets/images/credit.svg" style="width:  200px;" alt=""></div>

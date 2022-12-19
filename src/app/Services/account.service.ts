@@ -4,6 +4,7 @@ import { Account, IUserLogin } from '../Model/account';
 import { BehaviorSubject, map, Observable, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
+import { bankTransferResponse } from '../Model/transaction';
 
 @Injectable({
   providedIn: 'root',
@@ -48,6 +49,12 @@ export class AccountService {
   getAllAccount(): Observable<Account[]> {
     return this.http.get<Account[]>(this.baseApiUrl + 'Account/GetAllAccounts');
   }
+  getAllTransfer(): Observable<bankTransferResponse[]> {
+    return this.http.get<bankTransferResponse[]>(
+      this.baseApiUrl + 'Account/GetAllTransfer'
+    );
+  }
+  
 
   LoginUser(login: any): Observable<Account> {
     return this.http
@@ -68,9 +75,9 @@ export class AccountService {
 
             this.router.navigate([`user/${this.user.user.id}`]);
             this.toast.success({
-              detail: `Hey, ${this.user.user.firstName}`,
+              detail: `Hey, ${this.user.user.fullName}`,
               summary: 'Welcome back!',
-              duration: 4000,
+              duration: 5000,
             });
           },
           error: (err) => {
@@ -93,7 +100,7 @@ export class AccountService {
             this.toast.success({
               detail: 'Registered Successfully',
               summary: 'Thank you for banking with us!',
-              duration: 4000,
+              duration: 5000,
             });
             this.router.navigate(['login']);
             return res;

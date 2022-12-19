@@ -3,10 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './Authentication/login/login.component';
 import { RegisterComponent } from './Authentication/register/register.component';
 import { HomeComponent } from './HomePage/home/home.component';
+import { QuickLoanComponent } from './useDashboard/quick-loan/quick-loan.component';
 import { AccountInfoComponent } from './userDashboard/account-info/account-info.component';
 import { OverviewComponent } from './userDashboard/overview/overview.component';
 import { ReceiveMoneyComponent } from './userDashboard/receive-money/receive-money.component';
 import { SendMoneyComponent } from './userDashboard/send-money/send-money.component';
+import { TransactionComponent } from './userDashboard/transaction/transaction.component';
 import { UsersuccessPageComponent } from './usersuccess-page/usersuccess-page.component';
 
 const routes: Routes = [
@@ -25,6 +27,18 @@ const routes: Routes = [
   {
     path: 'user/:id',
     component: OverviewComponent,
+  },
+  {
+    path: 'account-info/:id',
+    component: AccountInfoComponent,
+  },
+  {
+    path: 'transactions/:id',
+    component: TransactionComponent,
+  },
+  {
+    path: 'quick-loan/:id',
+    component: QuickLoanComponent,
   },
   // {
   //   path: 'admin',
@@ -48,7 +62,7 @@ const routes: Routes = [
   },
   
   {
-    path: 'success',
+    path: 'success/:id',
     component: UsersuccessPageComponent,
   },
   // {

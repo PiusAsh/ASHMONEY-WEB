@@ -23,38 +23,23 @@
           </div>
           <form [formGroup]="registerForm" (ngSubmit)="Register()">
             <div class="row">
-              <div class="col-lg-6 p-1">
+              <div class="col-lg-12 p-1">
                 <label class="mb-1"
-                  ><h6 class="mb-0 text-sm">First Name</h6></label
+                  ><h6 class="mb-0 text-sm">Full Name</h6></label
                 >
                 <input
                   class=""
-                  formControlName="firstName"
+                  formControlName="fullName"
                   type="text"
-                  name="firstName"
-                  placeholder="Enter  your First Name"
+                  name="fullName"
+                  placeholder="Enter your Full Name"
                 />
                 <span class="text-danger"
-                *ngIf="registerForm.controls['firstName'].touched && registerForm.hasError('required', 'firstName')">First
+                *ngIf="registerForm.controls['fullName'].touched && registerForm.hasError('required', 'fullName')">Full
                 Name is
                 required</span>
               </div>
-              <div class="col-lg-6 p-1">
-                <label class="mb-1"
-                  ><h6 class="mb-0 text-sm">Last Name</h6></label
-                >
-                <input
-                  class=""
-                  formControlName="lastName"
-                  type="text"
-                  name="lastName"
-                  placeholder="Enter your Last Name"
-                />
-                              <span class="text-danger"
-                *ngIf="registerForm.controls['lastName'].touched && registerForm.hasError('required', 'lastName')">Last
-                Name is
-                required</span>
-              </div>
+              
             </div>
             <div class="row">
               <div class="col-lg-6 p-1">

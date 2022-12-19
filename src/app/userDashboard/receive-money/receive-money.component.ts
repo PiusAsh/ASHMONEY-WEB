@@ -11,8 +11,7 @@ import { AccountService } from 'src/app/Services/account.service';
 export class ReceiveMoneyComponent implements OnInit {
   userAcct: Account = {
     id: 0,
-    firstName: '',
-    lastName: '',
+    fullName: '',
     email: '',
     phoneNumber: 0,
     country: '',
@@ -21,11 +20,10 @@ export class ReceiveMoneyComponent implements OnInit {
     password: '',
     gender: '',
     dateOfBirth: new Date(),
-    isAdmin: false,
-    accountNumber: '',
+    accountNumber: 0,
     bankName: '',
-    accountBalance: '',
-    acctType: '',
+    accountBalance: 0,
+    accountType: '',
     transactionPin: 0,
     dateCreated: new Date(),
     lastUpdated: new Date(),
@@ -39,7 +37,7 @@ export class ReceiveMoneyComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params) => {
       const id: any = params.get('id');
-      alert(id);
+      // alert(id);
       if (id) {
         this.accountService.GetAccountById(id).subscribe({
           next: (res) => {

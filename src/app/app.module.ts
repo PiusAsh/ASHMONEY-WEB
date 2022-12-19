@@ -17,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UsersuccessPageComponent } from './usersuccess-page/usersuccess-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgToastModule } from 'ng-angular-popup';
+import { QuickLoanComponent } from './useDashboard/quick-loan/quick-loan.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { NgToastModule } from 'ng-angular-popup';
     FooterComponent,
     HomeComponent,
     UsersuccessPageComponent,
+    QuickLoanComponent,
   ],
   imports: [
     BrowserModule,

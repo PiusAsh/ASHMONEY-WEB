@@ -16,7 +16,9 @@
 .bi:hover{
   color: #000!important;
 }
-
+.logout{
+    cursor: pointer;
+}
 .How {
     font-family: 'Poppins',
     sans-serif;

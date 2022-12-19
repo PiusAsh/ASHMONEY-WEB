@@ -18,8 +18,7 @@ export class RegisterComponent {
     private accountService: AccountService
   ) {
     this.registerForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      fullName: ['', Validators.required],
       email: [
         '',
         Validators.required
@@ -40,7 +39,7 @@ export class RegisterComponent {
     this.accountService.RegisterUser(this.registerForm.value).subscribe({
       next: (res) => {
         this.reg = res;
-        alert(this.reg.account.accountBalance);
+        // alert(this.reg.account.accountBalance);
         console.log(res, 'CHECKING SUCCESS');
       },
       error: (err) => {

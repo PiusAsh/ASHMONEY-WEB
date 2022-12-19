@@ -1,4 +1,4 @@
-<section>
+<section class="bg-light">
   <div class="row mt-3">
     <div class="col-lg-1"></div>
     <div class="col-lg-10 px-5 text-center mt-5">
@@ -12,18 +12,18 @@
         </div>
         <div class="col-12 p-0 mt-4 mb-2 text-center">
           <p class="fs-6 fw-bold m-0 mt-5">
-            Hello, <span class="text-muted fs-6">Pius Ash</span>
+            Hello, <span class="text-muted fs-6">{{userAcct.fullName}}</span>
           </p>
         </div>
         <div class="col-12 p-0 mb-5 text-center">
           <p class="fs-6 m-0">
             Your account number is:
             <span class="fs-5" style="color: #c31e39; font-weight: 600">{{
-              00099876566
+              userAcct.accountNumber
             }}</span>
           </p>
         </div>
-        <div class="btn btn-primary w-100" routerLink="/login">Log In</div>
+        <div class="btn btn-primary w-100" routerLink="/login">Update Profile</div>
         <span class="text-muted fs-7"
           >Beware of scammers. Please keep your Information save</span
         >

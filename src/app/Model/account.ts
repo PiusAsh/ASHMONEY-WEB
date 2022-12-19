@@ -1,7 +1,6 @@
 export class Account {
        id!: number;
-  firstName!: string ;
-  lastName!: string ;
+  fullName!: string ;
   email!: string ;
   phoneNumber!: number;
   country!: string;
@@ -10,11 +9,10 @@ export class Account {
   password!: string;
   gender!: string;
   dateOfBirth!: Date;
-  isAdmin!: boolean;
-  accountNumber!: string;
+  accountNumber!: number;
   bankName!: string;
-  accountBalance!: string;
-  acctType!: string;
+  accountBalance!: number;
+  accountType!: string;
   transactionPin!: number;
   dateCreated!:Date;
   lastUpdated!: Date;

@@ -17,7 +17,7 @@ export class TransferService {
   
 
   transfer(request: bankTransferRequest): Observable<bankTransferResponse> {
-    let queryParam: string = `?BeneficiaryAccount=${this.BeneficiaryAccount}&SenderAccount=${this.SenderAccount}&Amount=${this.Amount}`;
+    let queryParam: string = `?BeneficiaryAccount=${request.beneficiaryAccount}&SenderAccount=${request.senderAccount}&Amount=${request.amount}`;
     return this.http
       .post<bankTransferResponse>(
         this.baseApiUrl + '/Transfer' + queryParam,

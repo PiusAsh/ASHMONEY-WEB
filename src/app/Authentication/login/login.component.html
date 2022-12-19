@@ -36,7 +36,7 @@
                     <form [formGroup]="loginForm">
                     <div class="row px-3 mb-4">
                         <label class="mb-1"><h6 class="mb-0 text-sm">Phone Number</h6></label>
-                        <input class="" formControlName="phoneNumber" type="number" name="phoneNumber" placeholder="phoneNumber">
+                        <input class="" formControlName="phoneNumber" type="number" name="phoneNumber" placeholder="Enter your phone number">
                          <span class="text-danger"
                     *ngIf="loginForm.controls['phoneNumber'].touched && loginForm.hasError('required', 'phoneNumber')">Phone Number is required</span>
                     </div>

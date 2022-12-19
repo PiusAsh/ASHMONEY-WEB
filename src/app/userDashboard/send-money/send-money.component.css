@@ -1,8 +1,15 @@
 @import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
 @import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css");
 
+
+input[required] {
+  background-color: white;
+}
 #navbarVertical{
     background-color: #C31E39!important;
+}
+#navbarVal{
+    background-color: #c31e3a3d;
 }
 .nav-link{
   color: #fff!important;
