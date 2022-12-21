@@ -1,0 +1,25 @@
+@import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
+@import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css");
+
+#navbarVertical{
+    background-color: #C31E39!important;
+}
+.nav-link{
+  color: #fff!important;
+}
+.nav-link:hover{
+  color: #000!important;
+}
+.bi{
+  color: #fff!important;
+}
+.bi:hover{
+  color: #000!important;
+}
+.logout{
+    cursor: pointer;
+}
+th{
+  font-weight: 600!important;
+  font-size: 11px!important;
+}

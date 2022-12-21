@@ -17,5 +17,6 @@ senderAccount! : string;
   status! : string;
   amount!: number;
   narration!: string;
+  type!: string;
   
 }

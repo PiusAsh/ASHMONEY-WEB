@@ -54,7 +54,12 @@ export class AccountService {
       this.baseApiUrl + 'Account/GetAllTransfer'
     );
   }
-  
+
+  getAllTransfers(): Observable<bankTransferResponse[]> {
+    return this.http.get<bankTransferResponse[]>(
+      'https://localhost:44303/GetAllTransfer'
+    );
+  }
 
   LoginUser(login: any): Observable<Account> {
     return this.http

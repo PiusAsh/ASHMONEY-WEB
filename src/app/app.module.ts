@@ -18,6 +18,7 @@ import { UsersuccessPageComponent } from './usersuccess-page/usersuccess-page.co
 import { HttpClientModule } from '@angular/common/http';
 import { NgToastModule } from 'ng-angular-popup';
 import { QuickLoanComponent } from './useDashboard/quick-loan/quick-loan.component';
+import { LoanRequestComponent } from './Components/loan-request/loan-request.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { QuickLoanComponent } from './useDashboard/quick-loan/quick-loan.compone
     HomeComponent,
     UsersuccessPageComponent,
     QuickLoanComponent,
+    LoanRequestComponent,
   ],
   imports: [
     BrowserModule,

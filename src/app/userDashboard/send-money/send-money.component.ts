@@ -44,6 +44,7 @@ export class SendMoneyComponent implements OnInit {
     transactionDate: new Date(),
     referenceNumber: '',
     beneficiary: '',
+    type: '',
     beneficiaryAccount: '',
     senderAccount: '',
     beneficiaryBankName: '',
@@ -53,11 +54,9 @@ export class SendMoneyComponent implements OnInit {
     narration: '',
   };
 
-  
   senderAccount!: number;
   beneficiaryAccount!: number;
   amount!: number;
-
 
   transferForm!: FormGroup;
   res: any;
@@ -66,21 +65,24 @@ export class SendMoneyComponent implements OnInit {
   accountNumber!: number;
   AccountUser: any;
   error!: string;
+  timerInterval: any;
   constructor(
     private accountService: AccountService,
     private activatedRoute: ActivatedRoute,
     private transferService: TransferService,
     private fb: FormBuilder,
-    private toast: NgToastService, private route: Router
+    private toast: NgToastService,
+    private route: Router
   ) {
     this.transferForm = new FormGroup({
       senderAccount: new FormControl('', Validators.required),
       beneficiaryAccount: new FormControl('', Validators.required),
       amount: new FormControl('', Validators.required),
-      sender: new FormControl('', Validators.required),
+      sender: new FormControl(''),
       narration: new FormControl('', Validators.required),
-      beneficiary: new FormControl('', Validators.required),
-      beneficiaryBankName: new FormControl('', Validators.required),
+      beneficiary: new FormControl(''),
+      beneficiaryBankName: new FormControl(''),
+      type: new FormControl('',),
     });
     // this.transferForm = this.fb.group({
     //   acctType: [''],
@@ -109,19 +111,19 @@ export class SendMoneyComponent implements OnInit {
     });
   }
 
-  trf(){
+  trf() {
     console.log(this.transferForm.value, 'CHECKING FORM SENDER VALUE');
   }
 
   // /Transfer?BeneficiaryAccount=1111399171&SenderAccount=1111310496&Amount=1300' \
   //  queryParam = `?BeneficiaryAccount=${BeneficiaryAccount}&SenderAccount=${SenderAccount}&Amount=Amount`;
   transfer() {
-    if(this.transferForm){
-this.TransferResponse.sender = this.transferForm.value.sender;
-this.TransferResponse.beneficiary = this.transferForm.value.beneficiary;
-this.TransferResponse.narration = this.transferForm.value.narration;
-this.TransferResponse.beneficiaryBankName =
-  this.transferForm.value.beneficiaryBankName;
+    if (this.transferForm) {
+      this.TransferResponse.sender = this.transferForm.value.sender;
+      this.TransferResponse.beneficiary = this.transferForm.value.beneficiary;
+      this.TransferResponse.narration = this.transferForm.value.narration;
+      this.TransferResponse.beneficiaryBankName =
+        this.transferForm.value.beneficiaryBankName;
     }
     console.log(this.transferForm.value, 'CHECKING FORM SENDER VALUE');
     const request: bankTransferRequest = {
@@ -131,41 +133,58 @@ this.TransferResponse.beneficiaryBankName =
     };
     // console.log(request.senderAccount, "888888")
     this.transferService.transfer(request).subscribe(
-       (response) => {
+      (response) => {
         this.TransferResponse = response;
-
+        
         Swal.fire({
-          title: 'Transfer Successful',
-          text: `You just sent ₦${response.amount} to ${response.beneficiary}`,
-          icon: 'success',
-          iconColor: '#008000',
-          // color: '#C31E39',
-          backdrop: `
+          title: 'Processing...',
+          // html: 'Processing...',
+          timer: 4000,
+          timerProgressBar: true,
+          showCancelButton: false,
+          showConfirmButton: false,
+          padding: '5em',
+          willClose: () => {
+            clearInterval(this.timerInterval);
+          },
+        }).then((result) => {
+          /* Read more about handling dismissals below */
+          if (result.dismiss === Swal.DismissReason.timer) {
+            Swal.fire({
+              title: 'Transfer Successful',
+              text: `You just sent ₦${response.amount} to ${response.beneficiary}`,
+              icon: 'success',
+              iconColor: '#008000',
+              // color: '#C31E39',
+              backdrop: `
     #c31e3a3d
     left top
     no-repeat
   `,
-          confirmButtonText: 'OK',
-          confirmButtonColor: '#C31E39',
-        }).then((result) => {
-          if (result.isConfirmed) {
-            this.route.navigate([`user/${this.userAcct.id}`]);
+              confirmButtonText: 'OK',
+              confirmButtonColor: '#C31E39',
+            }).then((result) => {
+              if (result.isConfirmed) {
+                this.route.navigate([`user/${this.userAcct.id}`]);
+              }
+            });
           }
         });
+
         
+
         console.log(response, 'CHECKING RES');
-       
-        
       },
       (error) => {
         this.toast.error({
-          detail: error, summary: "Please try again...", duration:4000
-        })
+          detail: error,
+          summary: 'Please try again...',
+          duration: 4000,
+        });
         console.error(error);
       }
     );
   }
-
 
   GetAcctById(id: any) {
     this.accountService.GetAccountById(id).subscribe({
@@ -177,8 +196,6 @@ this.TransferResponse.beneficiaryBankName =
       },
     });
   }
-
-  
 
   validateAccountNumber(accountNumber: string) {
     if (accountNumber.length !== 10 || accountNumber.length > 10) {

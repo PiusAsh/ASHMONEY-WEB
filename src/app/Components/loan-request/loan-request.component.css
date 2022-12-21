@@ -1,17 +1,8 @@
 @import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
 @import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css");
 
-.swal2-title {
-  font-size: 10px!important;
-}
-input[required] {
-  background-color: white;
-}
 #navbarVertical{
     background-color: #C31E39!important;
-}
-#navbarVal{
-    background-color: #c31e3a3d;
 }
 .nav-link{
   color: #fff!important;
@@ -25,21 +16,10 @@ input[required] {
 .bi:hover{
   color: #000!important;
 }
-.form-control{
-  border: 0px 0px 5px 0px!important;
-  height: 40px!important;
+.logout{
+    cursor: pointer;
 }
 
-.send{
-  color: #000;
-}
-/* .form{
-  display: flex;
-} */
-
-.text-muted{
-    font-weight: 400;
-}
 .line {
   max-height: 10px;
   width: 100px;
@@ -60,10 +40,10 @@ option {
   font-weight: 800;
 }
 
-/* .dropdown-toggle::after {
+.dropdown-toggle::after {
   content: "";
   border: none;
-} */
+}
 
 .form-select {
   font-size: 14px;
@@ -93,12 +73,3 @@ option {
   font-size: 15px;
   font-family: "Poppins", sans-serif;
 }
-
-/* SIDEEBAR CSS */
-
-
-
-.th {
-  border-bottom: 1px solid #c31e39 !important;
-}
-

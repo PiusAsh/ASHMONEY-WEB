@@ -75,7 +75,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="transactions/{{userAcct.id}}">
+            <a class="nav-link" routerLink="/transactions/{{userAcct.id}}">
               <i class="bi bi-bar-chart"></i> Transaction
             </a>
           </li>
@@ -168,7 +168,7 @@
       <div class="container-fluid">
 <p class="text-end">Last Logged In: {{userAcct.lastLoggedIn | date:'medium'}}</p>
 
-        <p class="welcome mt-1 mb-3 px-4">Welcome Back, {{userAcct.fullName}} <br/> <span class="How">How are you doing today? Today is
+        <p class="welcome mt-1 mb-3 px-4">Welcome Back, {{this.userAcct.fullName}} <br/> <span class="How">How are you doing today? Today is
           {{myDate | date:'fullDate'}}</span></p>
         <!-- Card stats -->
         

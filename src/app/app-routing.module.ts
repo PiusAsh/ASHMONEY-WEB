@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './Authentication/login/login.component';
 import { RegisterComponent } from './Authentication/register/register.component';
+import { LoanRequestComponent } from './Components/loan-request/loan-request.component';
 import { HomeComponent } from './HomePage/home/home.component';
 import { QuickLoanComponent } from './useDashboard/quick-loan/quick-loan.component';
 import { AccountInfoComponent } from './userDashboard/account-info/account-info.component';
@@ -38,7 +39,7 @@ const routes: Routes = [
   },
   {
     path: 'quick-loan/:id',
-    component: QuickLoanComponent,
+    component: LoanRequestComponent,
   },
   // {
   //   path: 'admin',

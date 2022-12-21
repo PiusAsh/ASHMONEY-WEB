@@ -16,3 +16,10 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+.swal2-title {
+  font-size: 24px!important;
+}
+.swal2-timer-progress-bar {
+  background-color: #C31E39!important;
+  height: 7px!important;
+}

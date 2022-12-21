@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Account } from 'src/app/Model/account';
+import { bankTransferResponse } from 'src/app/Model/transaction';
 import { AccountService } from 'src/app/Services/account.service';
 
 @Component({
@@ -38,11 +39,15 @@ export class OverviewComponent implements OnInit {
   };
   userInformation: any;
  trans: any;
+ userName: any;
+ 
   constructor(
     private route: Router,
     private accountService: AccountService,
     public activatedRoute: ActivatedRoute
-  ) {}
+  ) {
+    
+  }
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe((params) => {
@@ -63,7 +68,14 @@ export class OverviewComponent implements OnInit {
       console.log(data, 'ALL ACCOUNTS ----');
     });
 
-    this.accountService.getAllTransfer().subscribe((data: any) => {
+
+
+    // this.accountService.getAllTransfer().subscribe((data: any) => {
+    //   this.trans = data;
+    //   console.log(data, 'ALL TRANSFER ----');
+    // });
+
+    this.accountService.getAllTransfers().subscribe((data: any) => {
       this.trans = data;
       console.log(data, 'ALL TRANSFER ----');
     });
