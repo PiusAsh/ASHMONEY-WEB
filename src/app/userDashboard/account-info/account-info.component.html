@@ -1,1 +1,451 @@
-<p>account-info works!</p>
+
+
+
+
+<!-- Dashboard -->
+<div class="d-flex flex-column flex-lg-row h-lg-full">
+  <!-- Vertical Navbar -->
+  <nav
+    class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light bg-white border-bottom border-bottom-lg-0 border-end-lg"
+    id="navbarVertical"
+  >
+    <div class="container-fluid">
+      <!-- Toggler -->
+      <button
+        class="navbar-toggler ms-n2"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#sidebarCollapse"
+        aria-controls="sidebarCollapse"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Brand -->
+      <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0" href="#">
+        <img
+          src="assets/images/sidelogo.png" style="width: 200px; height: 100px;"
+          alt="..."
+        />
+      </a>
+      <!-- User menu (mobile) -->
+      <div class="navbar-user d-lg-none">
+        <!-- Dropdown -->
+        <div class="dropdown">
+          <!-- Toggle -->
+          <a
+            href="#"
+            id="sidebarAvatar"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <div class="avatar-parent-child">
+              <img
+                alt="Image Placeholder"
+                src="https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
+                class="avatar avatar- rounded-circle"
+              />
+              <span class="avatar-child avatar-badge bg-success"></span>
+            </div>
+          </a>
+          <!-- Menu -->
+          <div
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="sidebarAvatar"
+          >
+            <a href="#" class="dropdown-item">Profile</a>
+            <a href="#" class="dropdown-item">Settings</a>
+            <a href="#" class="dropdown-item">Billing</a>
+            <hr class="dropdown-divider" />
+            <a href="#" class="dropdown-item">Logout</a>
+          </div>
+        </div>
+      </div>
+      <!-- Collapse -->
+      <div class="collapse navbar-collapse" id="sidebarCollapse align-items-center">
+        <div class="mt-5"></div>
+        <!-- Navigation -->
+        <ul class="navbar-nav ">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/user/{{userAcct.id}}">
+              <i class="bi bi-house"></i> Dashboard
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/transactions/{{userAcct.id}}">
+              <i class="bi bi-bar-chart"></i> Transaction
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/send-money/{{userAcct.id}}">
+              <i class="bi bi-cash"></i> Send Money
+              <!-- <span
+                class="badge bg-soft-primary text-primary rounded-pill d-inline-flex align-items-center ms-auto"
+                >6</span
+              > -->
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/receive-money/{{userAcct.id}}">
+              <i class="bi bi-wallet-fill"></i> Receive Money
+            </a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link" routerLink="/quick-loan/{{userAcct.id}}">
+              <i class="bi bi-bookmarks"></i> Quick Loan
+            </a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="bi bi-people"></i> Users
+            </a>
+          </li> -->
+        </ul>
+        <!-- Divider -->
+        <hr class="navbar-divider my-5 opacity-20" />
+        <!-- Navigation -->
+
+        <!-- Push content down -->
+        <!-- <div class="mt-auto"></div> -->
+        <!-- User (md) -->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="account-info/{{userAcct.id}}">
+              <i class="bi bi-person-square"></i> Account
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link logout"  data-toggle="modal"
+              data-target="#exampleModalCenter">
+              <i class="bi bi-box-arrow-left"></i> Logout
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Logout Modal -->
+  <div
+    class="modal fade shadow justify-content-center"
+    id="exampleModalCenter"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="text-center">
+            <i class="bi bi-question-circle-fill"></i>
+          </div>
+          <h4 class="modal-title text-center" id="exampleModalCenterTitle">
+            Are you sure you want to log out?
+          </h4>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="logout()">
+            Yes
+          </button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            No
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Main content -->
+  <div class="h-screen flex-grow-1 overflow-y-lg-auto">
+    <!-- Header -->
+    
+    <!-- Main -->
+    <main class="py-6">
+
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Launch static backdrop modal
+</button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Personal Information</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+                <div class="row">
+        <form #form="ngForm" (ngSubmit)="updateUser()">
+<div class="row mt-2">
+  <div class="col-lg-6">
+                  <span class="text-uppercase text-muted">FULL NAME</span>
+     <input type="text"  [(ngModel)]="userAcct.fullName" readonly 
+       class="form-control  shadow-sm d-flex align-items-center py-2" name="fullName" id="fullName">
+  </div>
+  <!-- <div class="col-lg-1"></div> -->
+  <div class="col-lg-6">
+                  <span class="text-uppercase text-muted">phone number</span>
+     <input type="text" name="phoneNumber"  [(ngModel)]="userAcct.phoneNumber" readonly
+       class="form-control shadow-sm d-flex align-items-center py-2" id="phoneNumber">
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-lg-6">
+                  <span class="text-uppercase text-muted">email address</span>
+     <input type="text"  [(ngModel)]="userAcct.email" readonly
+       class="form-control shadow-sm d-flex align-items-center py-2" name="email" id="email">
+  </div>
+  <!-- <div class="col-lg-1"></div> -->
+  <div class="col-lg-6">
+                  <span class="text-uppercase text-muted">date of birth </span>
+     <input type="date"  [(ngModel)]="userAcct.dateOfBirth" readonly
+       class="form-control shadow-sm d-flex align-items-center py-2" name="dateOfBirth" id="dateOfBirth">
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-6">
+                  <span class="text-uppercase text-muted">Gender</span>
+
+     <input type="text"    [(ngModel)]="userAcct.gender" readonly 
+       class="form-control shadow-sm d-flex align-items-center py-2" name="gender" id="gender">
+  </div>
+  <!-- <div class="col-lg-1"></div> -->
+  <div class="col-lg-6">
+                  <span class="text-uppercase text-muted">State</span>
+                  <input type="text"  [(ngModel)]="userAcct.state" name="state"
+       class="form-control shadow-sm d-flex align-items-center py-2" id="state">
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+                  <span class="text-uppercase text-muted">address</span>
+     <input type="text"    [(ngModel)]="userAcct.address" name="address"
+       class="form-control shadow-sm d-flex align-items-center py-2" id="address">
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-6">
+    <span class="text-uppercase text-muted">country</span>
+    <input type="text"  [(ngModel)]="userAcct.country" name="country" class="form-control shadow-sm d-flex align-items-center py-2" id="country">
+  </div>
+  <!-- <div class="col-lg-1"></div> -->
+  <div class="col-lg-6">
+    <span class="text-uppercase text-muted">REGISTERED DATE</span>
+    <input type="text"  readonly  [(ngModel)]="userAcct.dateCreated" name="dateCreated" readonly class="form-control shadow-sm d-flex align-items-center py-2" id="dateCreated">
+  <!-- [(ngModel)]="user.lastName" -->
+  </div>
+</div>
+
+
+<div class="row mt-3">
+  <div class="col-lg-12">
+
+    <div class="col-12 p-0">
+      <button type="submit" class="btn btn-primary w-100">Save Changes</button>
+    </div>
+  </div>
+
+</div>
+
+
+        </form>
+      </div>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+              <div class="container">
+        <div class="main-body">
+          <!-- Breadcrumb -->
+          <!-- <nav aria-label="breadcrumb" class="main-breadcrumb p-3">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a routerLink="/admin">Overview </a>
+              </li>
+              <li class="breadcrumb-item">
+                <a routerLink="/reg-users">User</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                User Profile
+              </li>
+            </ol>
+          </nav> -->
+          <!-- /Breadcrumb -->
+
+          <div class="row gutters-sm py-3">
+            <div class="col-md-4 mb-1">
+              <div class="card">
+                <div class="card-body">
+                  <div
+                    class="d-flex flex-column align-items-center text-center"
+                  >
+                  <i class="bi bi-person-circle"></i>
+
+                    <div class="">
+                      <h5>{{userAcct.fullName}}</h5>
+                      <!-- <p class="text-secondary mb-1">Full Stack Developer</p> -->
+                      <p class="text-muted font-size-sm mb-1">
+                        {{userAcct.state}}, {{userAcct.country}}
+                      </p>
+
+                      <button class="btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"> Edit Profile </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mt-3">
+                <ul class="list-group list-group-flush">
+                  <li
+                    class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                  >
+                    <h6 class="mb-0">Account Number</h6>
+
+
+                    <span class="text-secondary"> {{userAcct.accountNumber}}</span>
+                    
+
+                  </li>
+                  <li
+                    class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                  >
+                    <h6 class="mb-0">Account Type</h6>
+
+
+                    <span class="text-secondary"> {{userAcct.accountType}}</span>
+                    
+
+                  </li>
+                  <li
+                    class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                  >
+                    <h6 class="mb-0">Account Balance</h6>
+
+
+                    <span class="text-secondary"> {{userAcct.accountBalance | currency: "₦"}}</span>
+                    
+
+                  </li>
+                  <li
+                    class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                  >
+                    <h6 class="mb-0">Registered Date</h6>
+
+
+                    <span class="text-secondary">{{userAcct.dateCreated | date: "short"}}</span>
+                    
+
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Full Name</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">{{userAcct.fullName}}</div>
+                  </div>
+                  <hr />
+
+                 
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Email Address</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">{{userAcct.email}}</div>
+                  </div>
+                  <hr />
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Phone Number</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">{{userAcct.phoneNumber}}</div>
+                  </div>
+                  <hr />
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Gender</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">{{userAcct.gender}}</div>
+                  </div>
+                  <hr />
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">State</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">{{userAcct.state}}</div>
+                  </div>
+                  <hr />
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Country</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">{{userAcct.country}}</div>
+                  </div>
+                  <hr />
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Address</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{userAcct.address}}
+                    </div>
+                  </div>
+                  <hr />
+                                    <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Last Logged In</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">{{userAcct.lastLoggedIn | date: "short"}}</div>
+                  </div>
+                  <hr />
+                                    <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Last Updated</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">{{userAcct.lastUpdated | date: "short"}}</div>
+                  </div>
+                  <hr />
+                                    <!-- <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Registered Date</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">{{userAcct.dateCreated | date: "short"}}</div>
+                  </div>
+                  <hr /> -->
+
+                  <div class="row">
+                    <div class="col-sm-12">
+
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+

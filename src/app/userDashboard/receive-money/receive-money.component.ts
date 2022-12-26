@@ -58,4 +58,8 @@ export class ReceiveMoneyComponent implements OnInit {
       },
     });
   }
+
+  logout(){
+    this.accountService.logout();
+  }
 }

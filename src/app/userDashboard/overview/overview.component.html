@@ -1,7 +1,3 @@
-
-
-
-
 <!-- Dashboard -->
 <div class="d-flex flex-column flex-lg-row h-lg-full">
   <!-- Vertical Navbar -->
@@ -25,7 +21,8 @@
       <!-- Brand -->
       <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0" href="#">
         <img
-          src="assets/images/sidelogo.png" style="width: 200px; height: 100px;"
+          src="assets/images/sidelogo.png"
+          style="width: 200px; height: 100px"
           alt="..."
         />
       </a>
@@ -65,22 +62,25 @@
         </div>
       </div>
       <!-- Collapse -->
-      <div class="collapse navbar-collapse" id="sidebarCollapse align-items-center">
+      <div
+        class="collapse navbar-collapse"
+        id="sidebarCollapse align-items-center"
+      >
         <div class="mt-5"></div>
         <!-- Navigation -->
-        <ul class="navbar-nav ">
+        <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" routerLink="/user/{{userAcct.id}}">
+            <a class="nav-link" routerLink="/user/{{ userAcct.id }}">
               <i class="bi bi-house"></i> Dashboard
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/transactions/{{userAcct.id}}">
+            <a class="nav-link" routerLink="/transactions/{{ userAcct.id }}">
               <i class="bi bi-bar-chart"></i> Transaction
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/send-money/{{userAcct.id}}">
+            <a class="nav-link" routerLink="/send-money/{{ userAcct.id }}">
               <i class="bi bi-cash"></i> Send Money
               <!-- <span
                 class="badge bg-soft-primary text-primary rounded-pill d-inline-flex align-items-center ms-auto"
@@ -89,12 +89,12 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/receive-money/{{userAcct.id}}">
+            <a class="nav-link" routerLink="/receive-money/{{ userAcct.id }}">
               <i class="bi bi-wallet-fill"></i> Receive Money
             </a>
           </li>
-           <li class="nav-item">
-            <a class="nav-link" routerLink="/quick-loan/{{userAcct.id}}">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/quick-loan/{{ userAcct.id }}">
               <i class="bi bi-bookmarks"></i> Quick Loan
             </a>
           </li>
@@ -113,13 +113,16 @@
         <!-- User (md) -->
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" routerLink="account-info/{{userAcct.id}}">
+            <a class="nav-link" routerLink="/account-info/{{ userAcct.id }}">
               <i class="bi bi-person-square"></i> Account
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link logout"  data-toggle="modal"
-              data-target="#exampleModalCenter">
+            <a
+              class="nav-link logout"
+              data-toggle="modal"
+              data-target="#exampleModalCenter"
+            >
               <i class="bi bi-box-arrow-left"></i> Logout
             </a>
           </li>
@@ -161,130 +164,425 @@
   <!-- Main content -->
   <div class="h-screen flex-grow-1 overflow-y-lg-auto">
     <!-- Header -->
-    
-    <!-- Main -->
-    <main class="py-6">
-      
-      <div class="container-fluid">
-<p class="text-end">Last Logged In: {{userAcct.lastLoggedIn | date:'medium'}}</p>
 
-        <p class="welcome mt-1 mb-3 px-4">Welcome Back, {{this.userAcct.fullName}} <br/> <span class="How">How are you doing today? Today is
-          {{myDate | date:'fullDate'}}</span></p>
+    <!-- Main -->
+    <main class="">
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="staticBackdrop2"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabe2l"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title px-5 " id="staticBackdropLabel2">
+                Transaction Details
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body container">
+              <a class="navbar-brand px-5" href="#"><img src="/assets/images/logo.jpg" alt="AshMoney Logo" style="width: 150px;"></a>
+              <ul class="list-group list-group-flush container text-black">
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                >
+                  <h6 class="mb-0">Sender</h6>
+
+                  <span class="">
+                    {{ userAcct.fullName }}</span
+                  >
+                </li>
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                >
+                  <h6 class="mb-0">Recipient</h6>
+
+                  <span class="">
+                    {{ userAcct.fullName }} ( 06977797797 ) </span
+                  >
+                </li>
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                >
+                  <h6 class="mb-0">Recipient Bank</h6>
+
+                  <span class="">
+                    {{ userAcct.bankName }} </span
+                  >
+                </li>
+                
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                >
+                  <h6 class="mb-0">Amount</h6>
+
+                  <span class="">{{
+                    userAcct.accountBalance | currency : "₦"
+                  }}</span>
+                </li>
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                >
+                  <h6 class="mb-0">Transaction Ref</h6>
+
+                  <span class="">{{
+                    userAcct.accountNumber
+                  }}</span>
+                </li>
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                >
+                  <h6 class="mb-0">Narration</h6>
+
+                  <span class="">{{
+                    userAcct.dateCreated 
+                  }}</span>
+                </li>
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                >
+                  <h6 class="mb-0">Status</h6>
+
+                  <span class="text-success">{{
+                    userAcct.accountType
+                  }}</span>
+                </li>
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                >
+                  <h6 class="mb-0">Transaction Date</h6>
+
+                  <span class="">{{
+                    userAcct.dateCreated
+                  }}</span>
+                </li>
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                >
+                  <h6 class="mb-0">Transaction Ref</h6>
+
+                  <span class="">{{
+                    userAcct.dateCreated
+                  }}</span>
+                </li>
+              </ul>
+<div class=" text-center printD">
+
+  <button class="btn btn-sm  print"  (click)="print()">Print Receipt</button>
+</div>
+
+            </div>
+            <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div> -->
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <p class="text-end">
+          Last Logged In: {{ userAcct.lastLoggedIn | date : "medium" }}
+        </p>
+
+        <p class="welcome mt-1 mb-1 px-4">
+          Welcome Back, {{ this.userAcct.fullName }} <br />
+          <span class="How"
+            >How are you doing today? Today is
+            {{ myDate | date : "fullDate" }}</span
+          >
+        </p>
         <!-- Card stats -->
-        
+
         <div class="row g-6 mb-6">
-          
           <div class="col-xl-10 col-sm-6 col-12">
             <div class="card shadow border-0 account">
               <div class="card-body">
                 <div class="row">
                   <div class="col">
                     <span
-                      class="h3  font-semibold text-white text-sm d-block mb-2"
+                      class="h3 font-semibold text-white text-sm d-block mb-2"
                       >Account Balance</span
-                      >
-                      <span class="acctAmount  mb-0">{{userAcct.accountBalance | currency: "₦"}}</span>
-                     
-                    </div>
-                    <!-- <img src="/assets/images/money.svg" style="width: 150px;" alt=""> -->
-                  <div class="col-auto bgg">
-
+                    >
+                    <span class="acctAmount mb-0">{{
+                      userAcct.accountBalance | currency : "₦"
+                    }}</span>
                   </div>
+                  <!-- <img src="/assets/images/money.svg" style="width: 150px;" alt=""> -->
+                  <div class="col-auto bgg"></div>
                   <div class="col-auto">
-                     
                     <div class="d-flex fund">
-                     
-
-            <button class="money me-2" routerLink="/send-money/{{userAcct.id}}">Send Money</button>
-            <button class="money" routerLink="/receive-money/{{userAcct.id}}" >Receive Money</button>
-        
+                      <button
+                        class="money me-2"
+                        routerLink="/send-money/{{ userAcct.id }}"
+                      >
+                        Send Money
+                      </button>
+                      <button
+                        class="money"
+                        routerLink="/receive-money/{{ userAcct.id }}"
+                      >
+                        Receive Money
+                      </button>
                     </div>
                   </div>
                 </div>
                 <div class="mt-2 mb-0 text-sm">
-                  <span
-                    
-                  >
-                    
-                  </span>
+                  <span> </span>
                   <span class="text-nowrap text-xs text-white"
-                    >Account NO: <span class="fw-bold h5 text-white">{{userAcct.accountNumber}}</span> </span
-                  >
-
-
-                  
+                    >Account NO:
+                    <span class="fw-bold h5 text-white">{{
+                      userAcct.accountNumber
+                    }}</span>
+                  </span>
                 </div>
-
               </div>
             </div>
           </div>
-          
-         
-          
         </div>
-        <div class="card shadow border-0 mb-7">
-          <div class="card-header shadow-lg"><h5 class="mb-0">Transaction history</h5></div>
-          <div class="table-responsive">
-            <table class="table table-hover table-nowrap">
+
+
+<div class="content card shadow" role="main">
+  <input type="hidden" #selection [(ngModel)]="selectedCase">
+  <div class="card-container d-flex">
+    <div class="p-4 tab" (click)="selection.value = 'transaction'" [ngClass]="{'active': selection.value === 'transaction'}" tabindex="0">
+                  <h5 class="mb-0">Transaction history</h5>
+    </div>
+    <div class="p-4 tab" (click)="selection.value = 'loan'" [ngClass]="{'active': selection.value === 'loan'}" tabindex="0">
+                  <h5 class="mb-0">Loan history</h5>
+    </div>
+  </div>
+  <div class="terminal" [ngSwitch]="selection.value">
+      <div *ngSwitchDefault="'transaction'">
+                  <div class="table-responsive">
+            <table class="table table-hover table-nowrap text-center">
               <thead class="thead-light">
                 <tr>
-                  <th scope="col">Trans Ref</th>
-                  <th scope="col">Sender Name</th>
-                  <th scope="col">Sender Account</th>
+                  <th scope="col">trans ref</th>
+                  <th scope="col">Sender</th>
                   <th scope="col">Beneficiary</th>
-                  <th scope="col">Beneficiary Account</th>
-                  <th scope="col">Amount</th>
-                  <th scope="col">Status</th>
+                  <th scope="col">Type</th>
+                  <th class="amt" scope="col">Amount</th>
                   <th scope="col">Date</th>
                   <th></th>
                 </tr>
               </thead>
               <tbody>
-
-                
-              
-                
-                
-                <tr *ngFor="let tran of trans">
-                  <td>{{tran.referenceNumber}}</td>
-                  <td>{{trans.sender}}</td>
-                  <td>{{trans.senderAccount}}</td>
-                  <td>{{trans.beneficiary}}</td>
-                  <td>{{trans.beneficiaryAccount}}</td>
-                  <td class="text-right">{{trans.amount}}</td>
-                  <td>{{trans.status}}</td>
-                  <td>{{trans.transactionDate | date: "yyyy-MM-DD"}}</td>
-
+                <tr
+                  *ngFor="
+                    let tran of transact
+                      | paginate : { itemsPerPage: 3, currentPage: p }
+                  "
                   
-                  
-                 
-
-                  <!-- <td>
-                    <span class="badge badge-lg badge-dot">
-                      <i class="bg-success"></i>Paid
-                    </span>
-                  </td> -->
-                  <td class="text-end">
-                    <a href="#" class="btn btn-sm btn-neutral">View</a>
-                    <!-- <button
-                      type="button"
-                      class="btn btn-sm btn-square btn-neutral text-danger-hover"
+                >
+                
+                  <td>{{ tran.referenceNumber }}</td>
+                  <td>{{ tran.sender }}</td>
+                  <td>{{ tran.beneficiary }}</td>
+                  <td
+                    class="text-danger"
+                    *ngIf="tran.sender == userAcct.fullName"
+                  >
+                    Debit
+                  </td>
+                  <td
+                    class="text-success"
+                    *ngIf="tran.sender != userAcct.fullName"
+                  >
+                    Credit
+                  </td>
+                  <td class="money1">{{ tran.amount | currency : "₦" }}</td>
+                  <td>{{ tran.transactionDate | date : "dd-MM-yyyy" }}</td>
+                  <td class="">
+                    <p
+                      class="btn btn-sm btn-neutral"
+                      data-bs-toggle="modal"
+                      data-bs-target="#staticBackdrop"
                     >
-                      <i class="bi bi-trash"></i>
-                    </button> -->
+                      View
+                    </p>
                   </td>
                 </tr>
-                
-
               </tbody>
             </table>
+            <pagination-controls
+              (pageChange)="p = $event"
+            ></pagination-controls>
           </div>
-          <div class="card-footer border-0 py-5">
-            <span class="text-muted text-sm"
-              >No Record found</span
-            >
-          </div>
-        </div>
+      </div>
+      <div *ngSwitchCase="'loan'">          <div class="table-responsive">
+        <table class="table table-hover table-nowrap text-center">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Request Date</th>
+      <th scope="col">Repayment Date</th>
+      <th class="amt" scope="col">Amount</th>
+      <th class="amt" scope="col">Principal</th>
+      <th class="amt"  scope="col">Amount Paid</th>
+      <th scope="col">Status</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="let tran of loans | paginate : { itemsPerPage: 3, currentPage: p }"
+    >
+      <td>{{ tran.requestDate  | date : "dd-MM-yyyy"  }}</td>
+      <td>{{ tran.repaymentDate | date : "dd-MM-yyyy"}}</td>
+      <td class="money1">{{ tran.amount | currency : "₦" }}</td>
+      <td class="money1">{{ tran.principal | currency : "₦" }}</td>
+      <td class="money1">{{ tran.amountPaid | currency : "₦" }}</td>
+      <td>{{ tran.status }}</td>
+      <td class="">
+        <p class="btn btn-sm btn-neutral" data-bs-toggle="modal"
+                      data-bs-target="#staticBackdrop" (click)="viewModal(tran)">View</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="staticBackdrop"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Loan Information</h5>
+         <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+      </div>
+      <div class="modal-body">
+         <a class="navbar-brand text-center" href="#"><img src="/assets/images/logo.jpg" alt="AshMoney Logo" style="width: 200px;"></a>
+                      <ul class="list-group list-group-flush container text-black">
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                >
+                  <h6 class="mb-0">Request Date:</h6>
+
+                  <span class="request-date"></span>
+                </li>
+
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                >
+                  <h6 class="mb-0">Repayment Date:</h6>
+
+                  <span class="repayment-date"></span>
+                </li>
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                >
+                  <h6 class="mb-0">Amount:</h6>
+
+                  <span class="amount"></span>
+                </li>
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                >
+                  <h6 class="mb-0">Principal:</h6>
+
+                  <span class="principal"></span>
+                </li>
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                >
+                  <h6 class="mb-0">Amount Paid:</h6>
+
+                  <span class="amount-paid"></span>
+                </li>
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                >
+                  <h6 class="mb-0">Status:</h6>
+
+                  <span class="status"></span>
+                </li>
+              
+
+              </ul>
+        <!-- <p>Request Date: <span class="request-date"></span></p>
+        <p>Repayment Date: <span class="repayment-date"></span></p>
+        <p>Amount: <span class="amount"></span></p>
+        <p>Principal: <span class="principal"></span></p>
+        <p>Amount Paid: <span class="amount-paid"></span></p>
+        <p>Status: <span class="status"></span></p> -->
+      </div>
+      <div class="modal-footer">
+        <div class=" text-center printD">
+
+  <button class="btn btn-sm  print"  (click)="print()">Print Receipt</button>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
+            <!-- <table class="table table-hover table-nowrap text-center">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">Request Date</th>
+                  <th scope="col">Repayment Date</th>
+                  <th class="amt" scope="col">Amount</th>
+                  <th class="amt" scope="col">Principal</th>
+                  <th class="amt"  scope="col">Amount Paid</th>
+                  <th scope="col">Status</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="
+                    let tran of loans
+                      | paginate : { itemsPerPage: 3, currentPage: p }
+                  "
+                  
+                >
+                
+                  <td>{{ tran.requestDate  | date : "dd-MM-yyyy"  }}</td>
+                  <td>{{ tran.repaymentDate | date : "dd-MM-yyyy"}}</td>
+                  <td class="money1">{{ tran.amount | currency : "₦" }}</td>
+                  <td class="money1">{{ tran.principal | currency : "₦" }}</td>
+                  <td class="money1">{{ tran.amountPaid | currency : "₦" }}</td>
+                  
+                  <td>{{ tran.status }}</td>
+                  <td class="">
+                    <p
+                      class="btn btn-sm btn-neutral"
+                      data-bs-toggle="modal"
+                      data-bs-target="#staticBackdrop"
+                    >
+                      View
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table> -->
+            <pagination-controls
+              (pageChange)="p = $event"
+            ></pagination-controls>
+          </div></div>
+
+  </div>
+</div>
       </div>
     </main>
   </div>

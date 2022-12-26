@@ -80,7 +80,22 @@
   background-repeat: no-repeat;
 }
 
+td{
+  font-size: 14px;
+  font-weight: 500;
+}
+.table td{
+  padding: 5px 5px!important;
+}
 
+.money1{
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.808);
+  text-align: end!important;
+}
+.amt{
+  text-align: end;
+}
 
 .acctNo {
   text-decoration: none!important;
@@ -103,3 +118,43 @@ th{
   font-weight: 600!important;
   font-size: 11px!important;
 }
+.text-danger, .text-success{
+  font-weight: 600;
+}
+
+.list-group-item{
+  padding: 10px 20px!important;
+}
+.print{
+  background-color: #C31E39;
+  color: #fff;
+}
+@media print {
+
+  .prints {
+    visibility: hidden;
+  }
+}
+.modal-header{
+  padding: 14px!important;
+}
+.tab{
+  cursor: pointer;
+}
+.active{
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 14px;
+line-height: 10px;
+color: #E31E23;
+border-bottom: 3px solid #C31E39;
+/* margin-bottom: 30px!important; */
+
+  }
+/* .ngx-pagination .current {
+    padding: 0.1875rem 0.625rem;
+    background: #C31E39!important;
+    color: #fefefe;
+    cursor: default;
+} */

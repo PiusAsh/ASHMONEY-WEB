@@ -7,6 +7,8 @@ import { bankTransferRequest, bankTransferResponse } from 'src/app/Model/transac
 import { AccountService } from 'src/app/Services/account.service';
 import { TransferService } from 'src/app/Services/transfer.service';
 import Swal from 'sweetalert2';
+import * as crypto from 'crypto';
+
 
 @Component({
   selector: 'app-send-money',
@@ -61,11 +63,14 @@ export class SendMoneyComponent implements OnInit {
   transferForm!: FormGroup;
   res: any;
   acct: any;
+  TransferPIN: any;
 
   accountNumber!: number;
   AccountUser: any;
   error!: string;
   timerInterval: any;
+  sendMoneyForm!: FormGroup;
+  incorrectPin = false;
   constructor(
     private accountService: AccountService,
     private activatedRoute: ActivatedRoute,
@@ -74,29 +79,34 @@ export class SendMoneyComponent implements OnInit {
     private toast: NgToastService,
     private route: Router
   ) {
+    this.TransferPIN = this.userAcct.transactionPin;
     this.transferForm = new FormGroup({
-      senderAccount: new FormControl('', Validators.required),
+      senderAccount: new FormControl(''),
       beneficiaryAccount: new FormControl('', Validators.required),
       amount: new FormControl('', Validators.required),
       sender: new FormControl(''),
       narration: new FormControl('', Validators.required),
       beneficiary: new FormControl(''),
       beneficiaryBankName: new FormControl(''),
-      type: new FormControl('',),
+      acctType: new FormControl(''),
     });
-    // this.transferForm = this.fb.group({
-    //   acctType: [''],
-    //   beneficiary: [''],
-    //   beneficiaryAccount: [''],
-    //   sender: [''],
-    //   senderAccount: [''],
-    //   amount: [''],
-    //   narration: [''],
-    //   beneficiaryBankName: [''],
-    // });
+
+    this.sendMoneyForm = new FormGroup({
+      pin: new FormControl('', [Validators.required, Validators.maxLength(4)]),
+    });
+  }
+
+  async encryptId(id: any) {
+    const cipher = crypto.createCipher('aes-256-cbc', 'secret-key');
+    let encryptedId = cipher.update(id, 'utf8', 'hex');
+    encryptedId += cipher.final('hex');
+
+    this.encryptId(this.userAcct.id);
+    this.route.navigate(['/route', encryptedId]);
   }
 
   ngOnInit(): void {
+    // this.router.navigate(['user/', encryptedId]);
     this.activatedRoute.paramMap.subscribe((params) => {
       const id: any = params.get('id');
       // alert(id);
@@ -117,6 +127,22 @@ export class SendMoneyComponent implements OnInit {
 
   // /Transfer?BeneficiaryAccount=1111399171&SenderAccount=1111310496&Amount=1300' \
   //  queryParam = `?BeneficiaryAccount=${BeneficiaryAccount}&SenderAccount=${SenderAccount}&Amount=Amount`;
+
+  // const id: any = this.sendMoneyForm.get('id');
+  resetIncorrectPin() {
+    this.incorrectPin = false;
+  }
+  post() {
+    if (this.sendMoneyForm.value.pin !== this.userAcct.transactionPin) {
+      this.incorrectPin = true;
+      return false;
+    } else {
+      this.incorrectPin = false;
+      this.transfer();
+      return true;
+    }
+  }
+
   transfer() {
     if (this.transferForm) {
       this.TransferResponse.sender = this.transferForm.value.sender;
@@ -135,7 +161,7 @@ export class SendMoneyComponent implements OnInit {
     this.transferService.transfer(request).subscribe(
       (response) => {
         this.TransferResponse = response;
-        
+
         Swal.fire({
           title: 'Processing...',
           // html: 'Processing...',
@@ -163,23 +189,35 @@ export class SendMoneyComponent implements OnInit {
   `,
               confirmButtonText: 'OK',
               confirmButtonColor: '#C31E39',
-            }).then((result) => {
-              if (result.isConfirmed) {
-                this.route.navigate([`user/${this.userAcct.id}`]);
-              }
-            });
+            })
+              .then((result) => {
+                if (result.isConfirmed) {
+                  this.route.navigate([`user/${this.encryptId}`]);
+                }
+                // this.route.navigate([`user/${this.userAcct.id}`]);
+              })
+              .then((result) => {
+                window.location.reload();
+              });
           }
         });
-
-        
 
         console.log(response, 'CHECKING RES');
       },
       (error) => {
-        this.toast.error({
-          detail: error,
-          summary: 'Please try again...',
-          duration: 4000,
+        Swal.fire({
+          title: error.error,
+          text: `Please try again...`,
+          icon: 'error',
+          iconColor: '#C31E39',
+          // color: '#C31E39',
+          backdrop: `
+    #c31e3a3d
+    left top
+    no-repeat
+  `,
+          confirmButtonText: 'OK',
+          confirmButtonColor: '#C31E39',
         });
         console.error(error);
       }
@@ -198,7 +236,11 @@ export class SendMoneyComponent implements OnInit {
   }
 
   validateAccountNumber(accountNumber: string) {
-    if (accountNumber.length !== 10 || accountNumber.length > 10) {
+    if (
+      !accountNumber ||
+      accountNumber.length !== 10 ||
+      accountNumber.length > 10
+    ) {
       this.AccountUser = '';
       return;
     }
@@ -219,5 +261,9 @@ export class SendMoneyComponent implements OnInit {
         this.user = null;
       }
     );
+  }
+
+  logout() {
+    this.accountService.logout();
   }
 }

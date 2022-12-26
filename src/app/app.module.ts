@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgToastModule } from 'ng-angular-popup';
 import { QuickLoanComponent } from './useDashboard/quick-loan/quick-loan.component';
 import { LoanRequestComponent } from './Components/loan-request/loan-request.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -44,8 +45,10 @@ import { LoanRequestComponent } from './Components/loan-request/loan-request.com
     ReactiveFormsModule,
     HttpClientModule,
     NgToastModule,
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
+
 export class AppModule {}

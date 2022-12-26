@@ -54,6 +54,47 @@ export class AccountService {
       this.baseApiUrl + 'Account/GetAllTransfer'
     );
   }
+  getUserTransaction(accountNumber: any): Observable<bankTransferResponse[]> {
+    return this.http
+      .get<bankTransferResponse[]>(
+        // `https://localhost:44303/GetUserTransaction?accountNumber=${accountNumber}`
+        'https://localhost:44303/GetUserTransaction?accountNumber=1111138626'
+      )
+      .pipe(
+        tap({
+          next: (res) => {
+            console.log('GETTING USER TRANSACTIONS', res);
+          },
+        })
+      );;
+  }
+
+ getUserTransactions(accountNumber: any) {
+    return this.http.get<bankTransferResponse[]>(
+      'https://localhost:44303/GetUserTransaction',
+      {
+        params: {
+          accountNumber: accountNumber,
+        },
+      }
+    );
+  }
+
+  updateUser(id: any, update: Account): Observable<Account> {
+    return this.http.put<Account>(
+      this.baseApiUrl + 'Account/UpdateAccount?Id=' + id,
+      update
+    );
+  }
+
+  logout() {
+    localStorage.removeItem(this.UserKey);
+    this.router.navigate(['login']);
+    this.toast.info({
+      detail: 'Logout Successful',
+      summary: 'Please login to continue',
+    });
+  }
 
   getAllTransfers(): Observable<bankTransferResponse[]> {
     return this.http.get<bankTransferResponse[]>(
@@ -87,7 +128,7 @@ export class AccountService {
           },
           error: (err) => {
             this.toast.error({
-              detail: err.error.message,
+              detail: "Internet Connection error",
               summary: 'Please try again',
               duration: 4000,
             });

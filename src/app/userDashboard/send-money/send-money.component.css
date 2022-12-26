@@ -4,8 +4,50 @@
 .swal2-title {
   font-size: 10px!important;
 }
+.modal-content {
+  text-align: center!important;
+}
+.modall-title{
+  display: flex;
+  justify-content: center!important;
+}
+.headText{
+  color: #16192c;
+  font-size: 16px;
+  font-weight: 600;
+}
+input::placeholder {
+  text-align: center;
+}
+.modal-footer{
+  display: flex;
+  justify-content: center;
+}
+.btn-secondary{
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.swal2-input {
+  background-color: #ff0000!important;
+  color: #ffffff;
+  border: none!important;
+}
 input[required] {
   background-color: white;
+}
+.success{
+  background-color: green;
+}
+
+.error{
+  background-color: #ff0000;
+}
+
+.pin{
+  text-align: center!important;
+  font-size: 17px!important;
+  font-weight: 500!important;
 }
 #navbarVertical{
     background-color: #C31E39!important;
