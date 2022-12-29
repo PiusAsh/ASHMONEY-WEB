@@ -141,20 +141,31 @@ th{
 .tab{
   cursor: pointer;
 }
+
+.status-paid {
+  color: green;
+  font-weight: 600;
+}
+
+.status-not-paid {
+  color: orange;
+  font-weight: 600;
+
+  
+}
+
+.status-due {
+  color: red;
+  font-weight: 600;
+
+}
+
 .active{
-    font-family: 'Inter';
+    
 font-style: normal;
 font-weight: 600;
 font-size: 14px;
-line-height: 10px;
 color: #E31E23;
 border-bottom: 3px solid #C31E39;
-/* margin-bottom: 30px!important; */
 
   }
-/* .ngx-pagination .current {
-    padding: 0.1875rem 0.625rem;
-    background: #C31E39!important;
-    color: #fefefe;
-    cursor: default;
-} */

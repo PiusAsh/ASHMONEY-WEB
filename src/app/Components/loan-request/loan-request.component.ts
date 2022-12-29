@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoanRequestModel } from 'src/app/Model/loan';
 import { AccountService } from 'src/app/Services/account.service';
@@ -19,6 +19,13 @@ export class LoanRequestComponent implements OnInit {
   loanInfo: any;
   timerInterval: any;
   result: any;
+  loanAmount!: number;
+  repaymentPeriod!: number;
+  interestRate!: number;
+  principal!: number;
+  interest!: number;
+  incorrectPin = false;
+  pinForm! : FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -26,7 +33,17 @@ export class LoanRequestComponent implements OnInit {
     private route: Router,
     private accountService: AccountService,
     public activatedRoute: ActivatedRoute
-  ) {}
+  ) {
+    this.pinForm = new FormGroup({
+      pin: new FormControl('', [Validators.required, Validators.maxLength(4)]),
+    });
+
+    this.loanRequestForm = new FormGroup({
+      amount: new FormControl('', [Validators.required]),
+      purpose: new FormControl('', [Validators.required]),
+      repaymentPeriod: new FormControl('', [Validators.required]),
+    });
+  }
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe((params) => {
@@ -98,39 +115,36 @@ export class LoanRequestComponent implements OnInit {
       },
 
       (error) => {
-
- Swal.fire({
-   title: 'Processing...',
-   // html: 'Processing...',
-   timer: 2000,
-   timerProgressBar: true,
-   showCancelButton: false,
-   showConfirmButton: false,
-   padding: '5em',
-   willClose: () => {
-     clearInterval(this.timerInterval);
-   },
- }).then((result) => {
-   /* Read more about handling dismissals below */
-   if (result.dismiss === Swal.DismissReason.timer) {
-     Swal.fire({
-       title: 'Loan Disapproved',
-       text: error.error,
-       icon: 'error',
-       iconColor: '#C31E39',
-       // color: '#C31E39',
-       backdrop: `
+        Swal.fire({
+          title: 'Processing...',
+          // html: 'Processing...',
+          timer: 2000,
+          timerProgressBar: true,
+          showCancelButton: false,
+          showConfirmButton: false,
+          padding: '5em',
+          willClose: () => {
+            clearInterval(this.timerInterval);
+          },
+        }).then((result) => {
+          /* Read more about handling dismissals below */
+          if (result.dismiss === Swal.DismissReason.timer) {
+            Swal.fire({
+              title: 'Loan Disapproved',
+              text: error.error,
+              icon: 'error',
+              iconColor: '#C31E39',
+              // color: '#C31E39',
+              backdrop: `
     #c31e3a3d
     left top
     no-repeat
   `,
-       confirmButtonText: 'OK',
-       confirmButtonColor: '#C31E39',
-     });
-   }
- });
-
-
+              confirmButtonText: 'OK',
+              confirmButtonColor: '#C31E39',
+            });
+          }
+        });
 
         // this.toast.error({
         //   detail: error,
@@ -140,6 +154,25 @@ export class LoanRequestComponent implements OnInit {
         console.error(error);
       }
     );
+  }
+
+  calculate() {
+    // Calculate the principal and interest
+    this.principal = this.loanAmount * (1 + (5 * this.repaymentPeriod) / 12);
+    this.interest = this.principal - this.loanAmount;
+  }
+  resetIncorrectPin() {
+    this.incorrectPin = false;
+  }
+  post() {
+    if (this.pinForm.value.pin !== this.userAcct.transactionPin) {
+      this.incorrectPin = true;
+      return false;
+    } else {
+      this.incorrectPin = false;
+      this.onSubmit();
+      return true;
+    }
   }
 
   GetAcctById(id: any) {

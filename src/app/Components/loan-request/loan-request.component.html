@@ -166,7 +166,56 @@
     <main class="py-6">
     <!-- CONTENTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT   -->
         <div class="col-lg-9 py-5">
+        <!-- Modal -->
+      <div
+        class="modal fade"
+        id="staticBackdrop"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header text-center">
 
+
+            </div>
+            <div class="modal-body container">
+              <h5 class="headText text-center py-5">
+                ENTER YOUR TRANSACTION PIN (4 DIGITS)
+              </h5>
+
+              <!-- modal content -->
+<form [formGroup]="pinForm">
+   <div class="col-12 p-0 px-4">
+
+     <input type="number" (input)="resetIncorrectPin()" formControlName="pin" onkeydown="return event.key !== 'e'" class="form-control shadow-sm d-flex align-items-center pin py-3 px-2" placeholder="Enter PIN here">
+<div class="error text-white" *ngIf="incorrectPin == true && loanRequestForm.controls['pin'].touched">
+    Incorrect PIN
+  </div>
+<div class="success text-white text-center" *ngIf="incorrectPin == false && pinForm.value.pin == userAcct.transactionPin">
+    Correct PIN
+  </div>
+  
+     <span class="text-danger text-center mt-3"
+                    *ngIf="pinForm.controls['pin'].touched && pinForm.hasError('required', 'pin')">Please enter your PIN</span>
+   </div>
+   <div class=" text-center text-muted py-2"> <span style="color: #C31E39; font-weight: 600; font-style: 10px!important;">Do not share your PIN with anyone.</span>
+                </div>
+</form>
+
+            </div>
+            <div class="modal-footer">
+              <button  (click)="post()" type="button" [disabled]="pinForm.invalid" class="btn btn-primary">Send</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+       <!-- <div class=" text-center text-muted py-2"> <span style="color: #C31E39; font-weight: 600; font-style: 10px!important;">Do not share your PIN with anyone.</span>
+                </div> -->
+          </div>
+        </div>
+      </div>
 
 
 <div class="row">
@@ -174,7 +223,7 @@
     <div class="col-lg-6">
 
       <div class="container py-5">
-        <form class="py-5" [formGroup]="loanRequestForm" (ngSubmit)="onSubmit()">
+        <form class="py-5" [formGroup]="loanRequestForm">
           <div class="d-flex flex-column align-items-center">
             <p class="fs-4 text-black fw-bold m-0 mt-4">How much do you want?</p>
             <span class="text-muted">We provide online instant cash loans.</span>
@@ -186,7 +235,7 @@
             </div>
             
             <div class="col-12 p-0 px-4">
- <input type="text" id="amount" formControlName="amount" 
+ <input type="text" formControlName="amount" (ngModelChange)="calculate()" id="loanAmount" [(ngModel)]="loanAmount"
                 class="form-control shadow-sm d-flex align-items-center py-2 px-2">
                                                          <span class="text-danger"
                     *ngIf="loanRequestForm.controls['amount'].touched && loanRequestForm.hasError('required', 'amount')">Amount is required</span>
@@ -196,7 +245,7 @@
               <span class="text-uppercase text-muted">DURATION</span>
             </div>
             <div class="col-12 p-0 px-4">
-              <select class="form-select  d-flex align-items-center py-2 px-2" id="repaymentPeriod" formControlName="repaymentPeriod">
+              <select class="form-select  d-flex align-items-center py-2 px-2" [(ngModel)]="repaymentPeriod" id="repaymentPeriod" (ngModelChange)="calculate()" formControlName="repaymentPeriod">
                 <option disabled>Select Month</option>
                 <option class="valAmount" value="1">1 Month</option>
                 <option class="valAmount" value="2">2 Months</option>
@@ -221,16 +270,16 @@
                 <option class="valAmount" >Consumption</option>
               </select>
                                                                                      <span class="text-danger"
-                    *ngIf="loanRequestForm.controls['purpose'].touched && loanRequestForm.hasError('required', 'purpose')">Repayment period is required</span>
+                    *ngIf="loanRequestForm.controls['purpose'].touched && loanRequestForm.hasError('required', 'purpose')">Purpose is required</span>
             </div>
             <div class="col-12 p-0 px-4">
               <div class="d-flex align-items-center my-3">
-                <span class="text-muted text-uppercase">you have to pay:</span>
-                <span class="c-g ps-1">₦<span id="money">23,640</span></span>
+                <span class="text-muted text-uppercase">you're to repay:</span>
+                <span class="c-g ps-1"><span id="money">{{ principal | currency: '₦'}}</span></span>
               </div>
             </div>
             <div class="col-12 p-0 px-4">
-              <button type="submit" class="btn btn-primary w-100">apply now</button>
+              <button type="submit" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#staticBackdrop">apply now</button>
               <div class="text-muted text-center mb-4 mt-3">We provide online instant cash loans</div>
             </div>
           </div>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AccountService } from 'src/app/Services/account.service';
 
@@ -26,7 +26,7 @@ export class RegisterComponent {
       ],
       phoneNumber: ['', Validators.required],
       password: ['', Validators.required],
-      dateOfBirth: ['', Validators.required],
+      dateOfBirth: ['', Validators.required, [this.minAgeValidator(18)]],
       address: ['', Validators.required],
       gender: ['', Validators.required],
       confirmPassword: ['', Validators.required],
@@ -48,4 +48,16 @@ export class RegisterComponent {
       },
     });
   }
+
+
+minAgeValidator(minAge: number): ValidatorFn {
+  return (control: AbstractControl): {[key: string]: any} | null => {
+    const date = new Date(control.value);
+    const currentDate = new Date();
+    const age = currentDate.getFullYear() - date.getFullYear();
+    return age < minAge ? {'minAge': {value: control.value}} : null;
+  }
+}
+
+
 }

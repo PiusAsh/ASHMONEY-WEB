@@ -111,16 +111,30 @@
                   ><h6 class="mb-0 text-sm">Date of Birth</h6></label
                 >
                 <input
-                  class=""
+                  class="" minAgeValidator="18"
                   formControlName="dateOfBirth"
                   type="date"
                   name="dateOfBirth"
-                  max="2004-12-31"
+                 
                   
                 />
-                                              <span class="text-danger"
-                *ngIf="registerForm.controls['dateOfBirth'].touched && registerForm.hasError('required', 'dateOfBirth')">Date of Birth is
-                required</span>
+                                      <!-- <span class="text-danger"
+      *ngIf="registerForm.controls['dateOfBirth'].touched && registerForm.controls['dateOfBirth'].hasError('minAge')">
+  You must be 18 or older to continue!
+</span> -->
+<span class="text-danger"
+      *ngIf="registerForm.controls['dateOfBirth'].touched && registerForm.controls['dateOfBirth'].hasError('required')">
+  Date of Birth is required
+</span>
+
+
+                 <!-- <span *ngIf="registerForm.controls['date'].invalid && registerForm.controls['date'].touched && registerForm.hasError('minAge', 'dateOfBirth')">
+   
+      You must be 18 or older to continue!
+
+                 </span> -->
+                                              <!-- <span class="text-danger"
+                *ngIf="registerForm.controls['dateOfBirth'].invalid && registerForm.controls['dateOfBirth'].touched && registerForm.hasError('minAge', 'dateOfBirth')"> You must be 18 or older to continue!</span> -->
               </div>
               <div class="col-lg-6 p-1">
                 <label class="mb-1"

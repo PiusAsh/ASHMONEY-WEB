@@ -1,3 +1,4 @@
+import { CurrencyPipe, DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -53,7 +54,9 @@ export class OverviewComponent implements OnInit {
     private route: Router,
     private accountService: AccountService,
     public activatedRoute: ActivatedRoute,
-    private loanService: LoanRequestService
+    private loanService: LoanRequestService,
+    // private datePipe: DatePipe,
+    // private currencyPipe: CurrencyPipe
   ) {}
 
   ngOnInit() {
@@ -71,6 +74,9 @@ export class OverviewComponent implements OnInit {
         this.loanService.GetLoanById(id).subscribe({
           next: (res) => {
             this.loans = res;
+            // Calculate the difference in milliseconds
+            const dueDate = this.loans.repaymentDate - this.loans.requestDate;
+            //  alert(dueDate);
             console.log(this.loans, 'CHECKING USER LOAN');
           },
         });
@@ -141,15 +147,9 @@ export class OverviewComponent implements OnInit {
     this.accountService.logout();
   }
 
-
-
   viewModal(rowData: any) {
-    // Get a reference to the modal element
     const modal = document.getElementById('staticBackdrop');
-
-    // Check if the modal element was found
     if (modal) {
-      // Set the values of the modal's elements to the data from the row
       const requestDateElement = modal.querySelector('.request-date');
       if (requestDateElement) {
         requestDateElement.textContent = rowData.requestDate;
@@ -159,13 +159,10 @@ export class OverviewComponent implements OnInit {
       if (repaymentDateElement) {
         repaymentDateElement.textContent = rowData.repaymentDate;
       }
-
       const amountElement = modal.querySelector('.amount');
       if (amountElement) {
         amountElement.textContent = rowData.amount;
-        
       }
-
       const principalElement = modal.querySelector('.principal');
       if (principalElement) {
         principalElement.textContent = rowData.principal;
@@ -184,8 +181,5 @@ export class OverviewComponent implements OnInit {
       // Show the modal
       modal.classList.add('show');
     }
-  
-}
-
-
+  }
 }

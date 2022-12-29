@@ -4,6 +4,24 @@
 #navbarVertical{
     background-color: #C31E39!important;
 }
+
+.success{
+  background-color: green;
+}
+
+.error{
+  background-color: #ff0000;
+}
+
+.modal-footer{
+  display: flex;
+  justify-content: center;
+}
+.pin{
+  text-align: center!important;
+  font-size: 17px!important;
+  font-weight: 500!important;
+}
 .nav-link{
   color: #fff!important;
 }
