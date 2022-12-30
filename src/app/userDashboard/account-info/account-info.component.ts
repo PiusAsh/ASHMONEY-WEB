@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { Account } from 'src/app/Model/account';
 import { AccountService } from 'src/app/Services/account.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-account-info',
@@ -39,7 +40,8 @@ export class AccountInfoComponent implements OnInit {
   constructor(
     private route: Router,
     private accountService: AccountService,
-    public activatedRoute: ActivatedRoute, private toast: NgToastService
+    public activatedRoute: ActivatedRoute,
+    private toast: NgToastService
   ) {}
 
   ngOnInit() {
@@ -83,22 +85,33 @@ export class AccountInfoComponent implements OnInit {
     });
   }
 
-  logout() {
-    this.accountService.logout();
+  signOut() {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You want to logout!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.accountService.logout();
+      }
+    });
   }
 
   updateUser() {
     this.accountService.updateUser(this.userAcct.id, this.userAcct).subscribe({
       next: (response) => {
         console.log(response, 'CHECKING RESPONSE--ffgg---');
-        
-          window.location.reload();
-          this.toast.success({
-            detail: 'Updated Successfully',
-            summary: 'Profile Info Updated',
-            duration: 4000,
-          });
-        
+
+        window.location.reload();
+        this.toast.success({
+          detail: 'Updated Successfully',
+          summary: 'Profile Info Updated',
+          duration: 4000,
+        });
       },
       error: (errors) => {
         console.log(errors, 'CHECKING ERRORS-----');

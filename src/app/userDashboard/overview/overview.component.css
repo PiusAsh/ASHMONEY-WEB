@@ -119,7 +119,7 @@ th{
   font-size: 11px!important;
 }
 .text-danger, .text-success{
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .list-group-item{
@@ -144,19 +144,19 @@ th{
 
 .status-paid {
   color: green;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .status-not-paid {
   color: orange;
-  font-weight: 600;
+  font-weight: 500;
 
   
 }
 
 .status-due {
   color: red;
-  font-weight: 600;
+  font-weight: 500;
 
 }
 

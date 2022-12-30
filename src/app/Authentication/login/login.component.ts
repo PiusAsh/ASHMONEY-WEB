@@ -20,7 +20,6 @@ export class LoginComponent {
   public phoneNumber!: AbstractControl;
   public password!: AbstractControl;
   public email!: AbstractControl;
-  
 
   constructor(
     private formBuilder: FormBuilder,
@@ -49,16 +48,19 @@ export class LoginComponent {
     // console.log(this.loginForm.value, 'CHECKING VALUE');
     this.accountService.LoginUser(this.loginForm.value).subscribe({
       next: (res) => {
+        res.lastLoggedIn = new Date();
         // alert(res);
         console.log(res, 'CHECKING SUCCESS');
         console.log(res, 'CHECKING SUCCESS RES');
         console.log(this.loginForm.value, 'CHECKING FORM VALUE');
       },
       error: (err) => {
-        
         // alert(err.error.message);
         console.log(err.error.message, 'CHECKING SUCCESS');
       },
     });
+  }
+  lastLoggedIn() {
+    localStorage.setItem('lastLoggedInTime', new Date().toString());
   }
 }

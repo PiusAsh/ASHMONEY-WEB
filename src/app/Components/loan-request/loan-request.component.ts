@@ -25,7 +25,7 @@ export class LoanRequestComponent implements OnInit {
   principal!: number;
   interest!: number;
   incorrectPin = false;
-  pinForm! : FormGroup;
+  pinForm!: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -100,11 +100,18 @@ export class LoanRequestComponent implements OnInit {
   `,
               confirmButtonText: 'OK',
               confirmButtonColor: '#C31E39',
-            }).then((result) => {
-              if (result.isConfirmed) {
+            })
+              .then((result) => {
+                if (result.isConfirmed) {
+                  this.route.navigate([`user/${this.userAcct.id}`]);
+                  window.location.reload();
+                  // this.route.navigate([`user/${this.userAcct.id}`]);
+                }
+              })
+              .then((result) => {
                 this.route.navigate([`user/${this.userAcct.id}`]);
-              }
-            });
+                window.location.reload();
+              });
           }
         });
 
@@ -186,5 +193,19 @@ export class LoanRequestComponent implements OnInit {
     });
   }
 
-  logout() {}
+  signOut() {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You want to logout!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.accountService.logout();
+      }
+    });
+  }
 }

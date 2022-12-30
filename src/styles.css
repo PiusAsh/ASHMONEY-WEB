@@ -22,8 +22,24 @@ input[type=number] {
 .swal2-timer-progress-bar {
   background-color: #C31E39!important;
   height: 7px!important;
+    animation: progress-bar-running 2s linear infinite;
+     transform: 50% 50%;
 }
 
 .ngx-pagination .current{
   background-color: #C31E39!important;
+}
+
+.swal2-timer-progress-bar-running {
+  animation: progress-bar-running 1s linear infinite;
+  
+}
+
+@keyframes progress-bar-running {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
 }

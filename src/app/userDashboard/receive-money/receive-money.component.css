@@ -106,3 +106,6 @@ option {
   border-bottom: 1px solid #c31e39 !important;
 }
 
+.logout{
+  cursor: pointer;
+}

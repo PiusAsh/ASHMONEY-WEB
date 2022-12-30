@@ -23,3 +23,47 @@ th{
   font-weight: 600!important;
   font-size: 11px!important;
 }
+.print{
+  background-color: #C31E39;
+  color: #fff;
+}
+.status-paid {
+  color: green;
+  font-weight: 500;
+}
+
+.status-not-paid {
+  color: orange;
+  font-weight: 500;
+
+  
+}
+
+.status-due {
+  color: red;
+  font-weight: 500;
+
+}
+.list-group-item{
+  padding: 10px 20px!important;
+}
+
+.active{
+    
+font-style: normal;
+font-weight: 600;
+font-size: 14px;
+color: #E31E23;
+border-bottom: 3px solid #C31E39;
+
+  }
+  td{
+  font-size: 14px;
+  font-weight: 500;
+}
+.table td{
+  padding: 5px 5px!important;
+}
+.tab{
+  cursor: pointer;
+}

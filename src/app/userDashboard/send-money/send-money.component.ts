@@ -187,16 +187,20 @@ export class SendMoneyComponent implements OnInit {
     left top
     no-repeat
   `,
+              footer: 'Thank you for banking with us..',
               confirmButtonText: 'OK',
               confirmButtonColor: '#C31E39',
             })
               .then((result) => {
                 if (result.isConfirmed) {
-                  this.route.navigate([`user/${this.encryptId}`]);
+                  this.route.navigate([`user/${this.userAcct.id}`]);
+                  window.location.reload();
+                  // this.route.navigate([`user/${this.userAcct.id}`]);
                 }
-                // this.route.navigate([`user/${this.userAcct.id}`]);
+              
               })
               .then((result) => {
+                this.route.navigate([`user/${this.userAcct.id}`]);
                 window.location.reload();
               });
           }
@@ -263,7 +267,19 @@ export class SendMoneyComponent implements OnInit {
     );
   }
 
-  logout() {
-    this.accountService.logout();
+  signOut() {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You want to logout!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.accountService.logout();
+      }
+    });
   }
 }

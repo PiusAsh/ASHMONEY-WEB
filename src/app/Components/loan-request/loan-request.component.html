@@ -118,8 +118,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link logout"  data-toggle="modal"
-              data-target="#exampleModalCenter">
+            <a class="nav-link logout"  (click)="signOut()">
               <i class="bi bi-box-arrow-left"></i> Logout
             </a>
           </li>
@@ -128,36 +127,7 @@
     </div>
   </nav>
 
-  <!-- Logout Modal -->
-  <div
-    class="modal fade shadow justify-content-center"
-    id="exampleModalCenter"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-body">
-          <div class="text-center">
-            <i class="bi bi-question-circle-fill"></i>
-          </div>
-          <h4 class="modal-title text-center" id="exampleModalCenterTitle">
-            Are you sure you want to log out?
-          </h4>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" (click)="logout()">
-            Yes
-          </button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">
-            No
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
+
   <!-- Main content -->
   <div class="h-screen flex-grow-1 overflow-y-lg-auto">
     <!-- Header -->
@@ -189,10 +159,10 @@
 
               <!-- modal content -->
 <form [formGroup]="pinForm">
-   <div class="col-12 p-0 px-4">
+   <div class="col-12 p-0 px-4 text-center">
 
      <input type="number" (input)="resetIncorrectPin()" formControlName="pin" onkeydown="return event.key !== 'e'" class="form-control shadow-sm d-flex align-items-center pin py-3 px-2" placeholder="Enter PIN here">
-<div class="error text-white" *ngIf="incorrectPin == true && loanRequestForm.controls['pin'].touched">
+<div class="error text-white" *ngIf="incorrectPin == true && pinForm.controls['pin'].touched">
     Incorrect PIN
   </div>
 <div class="success text-white text-center" *ngIf="incorrectPin == false && pinForm.value.pin == userAcct.transactionPin">
@@ -273,8 +243,11 @@
                     *ngIf="loanRequestForm.controls['purpose'].touched && loanRequestForm.hasError('required', 'purpose')">Purpose is required</span>
             </div>
             <div class="col-12 p-0 px-4">
-              <div class="d-flex align-items-center my-3">
-                <span class="text-muted text-uppercase">you're to repay:</span>
+              <div class=" align-items-center text-center my-3">
+                <span class="text-muted text-uppercase">Interest:</span>
+                <span class="c-g ps-1"><span id="money">{{ interest | currency: '₦'}}</span></span>
+                <br>
+                 <span class="text-muted text-uppercase">you're to repay:</span>
                 <span class="c-g ps-1"><span id="money">{{ principal | currency: '₦'}}</span></span>
               </div>
             </div>

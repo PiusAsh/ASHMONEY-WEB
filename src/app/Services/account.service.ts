@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Account, IUserLogin } from '../Model/account';
 import { BehaviorSubject, map, Observable, tap } from 'rxjs';
 import { Router } from '@angular/router';
@@ -54,11 +54,11 @@ export class AccountService {
       this.baseApiUrl + 'Account/GetAllTransfer'
     );
   }
-  getUserTransaction(accountNumber: any): Observable<bankTransferResponse[]> {
+  getUserTransactionss(accountNumber: any): Observable<bankTransferResponse[]> {
     return this.http
       .get<bankTransferResponse[]>(
-        // `https://localhost:44303/GetUserTransaction?accountNumber=${accountNumber}`
-        'https://localhost:44303/GetUserTransaction?accountNumber=1111138626'
+        `https://localhost:44303/GetUserTransaction?accountNumber=${accountNumber}`
+        // 'https://localhost:44303/GetUserTransaction?accountNumber=1111138626'
       )
       .pipe(
         tap({
@@ -66,16 +66,28 @@ export class AccountService {
             console.log('GETTING USER TRANSACTIONS', res);
           },
         })
-      );;
+      );
   }
 
- getUserTransactions(accountNumber: any) {
+  getUserTransactions(accountNumber: any) {
     return this.http.get<bankTransferResponse[]>(
       'https://localhost:44303/GetUserTransaction',
       {
         params: {
-          accountNumber: accountNumber,
+          accountNumber: this.user.accountNumber,
         },
+      }
+    );
+  }
+
+  getUserTransaction(
+    accountNumber: any
+  ): Observable<bankTransferResponse[]> {
+    const params = new HttpParams().set('accountNumber', accountNumber);
+    return this.http.get<bankTransferResponse[]>(
+      'https://localhost:44303/GetUserTransaction',
+      {
+        params,
       }
     );
   }
@@ -89,11 +101,11 @@ export class AccountService {
 
   logout() {
     localStorage.removeItem(this.UserKey);
-    this.router.navigate(['login']);
     this.toast.info({
       detail: 'Logout Successful',
       summary: 'Please login to continue',
     });
+    this.router.navigate(['login']);
   }
 
   getAllTransfers(): Observable<bankTransferResponse[]> {
@@ -128,7 +140,7 @@ export class AccountService {
           },
           error: (err) => {
             this.toast.error({
-              detail: "Internet Connection error",
+              detail: 'Internet Connection error',
               summary: 'Please try again',
               duration: 4000,
             });
@@ -185,6 +197,12 @@ export class AccountService {
 
   private setUserLocalStorage(user: Account) {
     localStorage.setItem(this.UserKey, JSON.stringify(user));
+    // let previousLastLoggedInTime = user.lastLoggedIn;
+    // user.lastLoggedIn = new Date();
+    // localStorage.setItem('user', JSON.stringify(user));
+    // localStorage.setItem(
+    //   'previousLastLoggedInTime',
+    //   previousLastLoggedInTime.toString()
   }
 
   private getUserFromLocalStorage(): Account {

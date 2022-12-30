@@ -120,8 +120,7 @@
           <li class="nav-item">
             <a
               class="nav-link logout"
-              data-toggle="modal"
-              data-target="#exampleModalCenter"
+             (click)="signOut()"
             >
               <i class="bi bi-box-arrow-left"></i> Logout
             </a>
@@ -151,7 +150,7 @@
           </h4>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" (click)="logout()">
+          <button type="button" class="btn btn-primary">
             Yes
           </button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">
@@ -170,17 +169,17 @@
       <!-- Modal -->
       <div
         class="modal fade"
-        id="staticBackdrop2"
+        id="staticBackdrop3"
         data-bs-backdrop="static"
         data-bs-keyboard="false"
         tabindex="-1"
-        aria-labelledby="staticBackdropLabe2l"
+        aria-labelledby="staticBackdropLabel3"
         aria-hidden="true"
       >
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title px-5" id="staticBackdropLabel2">
+              <h5 class="modal-title px-5" id="staticBackdropLabel3">
                 Transaction Details
               </h5>
               <button
@@ -191,12 +190,7 @@
               ></button>
             </div>
             <div class="modal-body container">
-              <a class="navbar-brand px-5" href="#"
-                ><img
-                  src="/assets/images/logo.jpg"
-                  alt="AshMoney Logo"
-                  style="width: 150px"
-              /></a>
+          
               <ul class="list-group list-group-flush container text-black">
                 <li
                   class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
@@ -405,7 +399,7 @@
                         <p
                           class="btn btn-sm btn-neutral"
                           data-bs-toggle="modal"
-                          data-bs-target="#staticBackdrop"
+                          data-bs-target="#staticBackdrop3"
                         >
                           View
                         </p>
@@ -562,12 +556,6 @@
                             <span class="status" ></span>
                           </li>
                         </ul>
-                        <!-- <p>Request Date: <span class="request-date"></span></p>
-        <p>Repayment Date: <span class="repayment-date"></span></p>
-        <p>Amount: <span class="amount"></span></p>
-        <p>Principal: <span class="principal"></span></p>
-        <p>Amount Paid: <span class="amount-paid"></span></p>
-        <p>Status: <span class="status"></span></p> -->
                       </div>
                       <div class="modal-footer">
                         <div class="text-center printD">

@@ -118,8 +118,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link logout"  data-toggle="modal"
-              data-target="#exampleModalCenter">
+            <a class="nav-link logout"  (click)="signOut()">
               <i class="bi bi-box-arrow-left"></i> Logout
             </a>
           </li>
@@ -128,108 +127,408 @@
     </div>
   </nav>
 
-  <!-- Logout Modal -->
-  <div
-    class="modal fade shadow justify-content-center"
-    id="exampleModalCenter"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-body">
-          <div class="text-center">
-            <i class="bi bi-question-circle-fill"></i>
-          </div>
-          <h4 class="modal-title text-center" id="exampleModalCenterTitle">
-            Are you sure you want to log out?
-          </h4>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" (click)="logout()">
-            Yes
-          </button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">
-            No
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
   <!-- Main content -->
   <div class="h-screen flex-grow-1 overflow-y-lg-auto">
     <!-- Header -->
     
     <!-- Main -->
     <main class="py-6">
+
+            <!-- Modal -->
+      <div
+        class="modal fade"
+        id="staticBackdrop3"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel3"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title px-5" id="staticBackdropLabel3">
+                Transaction Details
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body container">
+          
+              <ul class="list-group list-group-flush container text-black">
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                >
+                  <h6 class="mb-0">Sender</h6>
+
+                  <span class=""> {{ userAcct.fullName }}</span>
+                </li>
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                >
+                  <h6 class="mb-0">Recipient</h6>
+
+                  <span class="">
+                    {{ userAcct.fullName }} ( 06977797797 )
+                  </span>
+                </li>
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                >
+                  <h6 class="mb-0">Recipient Bank</h6>
+
+                  <span class=""> {{ userAcct.bankName }} </span>
+                </li>
+
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                >
+                  <h6 class="mb-0">Amount</h6>
+
+                  <span class="">{{
+                    userAcct.accountBalance | currency : "₦"
+                  }}</span>
+                </li>
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                >
+                  <h6 class="mb-0">Transaction Ref</h6>
+
+                  <span class="">{{ userAcct.accountNumber }}</span>
+                </li>
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                >
+                  <h6 class="mb-0">Narration</h6>
+
+                  <span class="">{{ userAcct.dateCreated }}</span>
+                </li>
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                >
+                  <h6 class="mb-0">Status</h6>
+
+                  <span class="text-success">{{ userAcct.accountType }}</span>
+                </li>
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                >
+                  <h6 class="mb-0">Transaction Date</h6>
+
+                  <span class="">{{ userAcct.dateCreated }}</span>
+                </li>
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                >
+                  <h6 class="mb-0">Transaction Ref</h6>
+
+                  <span class="">{{ userAcct.dateCreated }}</span>
+                </li>
+              </ul>
+              <div class="text-center printD">
+                <button class="btn btn-sm print" (click)="print()">
+                  Print Receipt
+                </button>
+              </div>
+            </div>
+            <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div> -->
+          </div>
+        </div>
+      </div>
       
       <div class="container-fluid">
 
         
         
-        <div class="card shadow mb-7">
-          <div class="card-header shadow-lg"><h5 class="mb-0">Transaction history</h5></div>
-          <div class="table-responsive">
-            <table class="table table-hover table-nowrap">
+        <div class="content card shadow" role="main">
+          <input type="hidden" #selection [(ngModel)]="selectedCase" />
+          <div class="card-container d-flex">
+            <div
+              class="p-4 tab"
+              (click)="selection.value = 'transaction'"
+              [ngClass]="{ active: selection.value === 'transaction' }"
+              tabindex="0"
+            >
+              <h5 class="mb-0">Transaction history</h5>
+            </div>
+            <div
+              class="p-4 tab"
+              (click)="selection.value = 'loan'"
+              [ngClass]="{ active: selection.value === 'loan' }"
+              tabindex="0"
+            >
+              <h5 class="mb-0">Loan history</h5>
+            </div>
+          </div>
+          <div class="terminal" [ngSwitch]="selection.value">
+            <div *ngSwitchDefault="'transaction'">
+              <div class="table-responsive">
+                <table class="table table-hover table-nowrap text-center">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col">trans ref</th>
+                      <th scope="col">Sender</th>
+                      <th scope="col">Beneficiary</th>
+                      <th scope="col">Type</th>
+                      <th class="amt" scope="col">Amount</th>
+                      <th scope="col">Date</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr
+                      *ngFor="
+                        let tran of transact
+                          | paginate : { itemsPerPage: 9, currentPage: p }
+                      "
+                    >
+                      <td>{{ tran.referenceNumber }}</td>
+                      <td>{{ tran.sender }}</td>
+                      <td>{{ tran.beneficiary }}</td>
+                      <td
+                        class="text-danger"
+                        *ngIf="tran.sender == userAcct.fullName"
+                      >
+                        Debit
+                      </td>
+                      <td
+                        class="text-success"
+                        *ngIf="tran.sender != userAcct.fullName"
+                      >
+                        Credit
+                      </td>
+                      <td class="money1">{{ tran.amount | currency : "₦" }}</td>
+                      <td>{{ tran.transactionDate | date : "dd-MM-yyyy" }}</td>
+                      <td class="">
+                        <p
+                          class="btn btn-sm btn-neutral"
+                          data-bs-toggle="modal"
+                          data-bs-target="#staticBackdrop3"
+                        >
+                          View
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <pagination-controls
+                  (pageChange)="p = $event"
+                ></pagination-controls>
+              </div>
+            </div>
+            <div *ngSwitchCase="'loan'">
+              <div class="table-responsive">
+                <table class="table table-hover table-nowrap text-center">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col">Request Date</th>
+                      <th scope="col">Repayment Date</th>
+                      <th class="amt" scope="col">Amount</th>
+                      <th class="amt" scope="col">Principal</th>
+                      <th class="amt" scope="col">Amount Paid</th>
+                      <th scope="col">Status</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr
+                      *ngFor="
+                        let tran of loans
+                          | paginate : { itemsPerPage: 9, currentPage: p }
+                      "
+                    >
+                      <td>{{ tran.requestDate | date : "dd-MM-yyyy" }}</td>
+                      <td>{{ tran.repaymentDate | date : "dd-MM-yyyy" }}</td>
+                      <td class="money1">{{ tran.amount | currency : "₦" }}</td>
+                      <td class="money1">
+                        {{ tran.principal | currency : "₦" }}
+                      </td>
+                      <td class="money1">
+                        {{ tran.amountPaid | currency : "₦" }}
+                      </td>
+                      <td
+                        [ngClass]="{
+                          'status-paid': tran.status === 'Paid',
+                          'status-not-paid': tran.status === 'Not Paid',
+                          'status-due': tran.status === 'Due'
+                        }"
+                      >
+                        {{ tran.status }}
+                      </td>
+
+                      <td  *ngIf="tran.status === 'Paid'" class="">
+                        <p
+                          class="btn btn-sm btn-neutral"
+                          data-bs-toggle="modal"
+                          data-bs-target="#staticBackdrop"
+                          (click)="viewModal(tran)"
+                        >
+                          View
+                        </p>
+                      </td>
+                      <td *ngIf="tran.status === 'Not Paid'" class="">
+                        <p
+                          class="btn btn-sm btn-warning"
+                          
+                        >
+                          Pay
+                        </p>
+                      </td>
+                      <td *ngIf="tran.status === 'Due'" class="">
+                        <p
+                          class="btn btn-sm btn-danger"
+                          
+                        >
+                          Pay
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <!-- Modal -->
+                <div
+                  class="modal fade"
+                  id="staticBackdrop"
+                  tabindex="-1"
+                  role="dialog"
+                  aria-labelledby="staticBackdropLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5
+                          class="modal-title text-center"
+                          id="staticBackdropLabel"
+                        >
+                          Loan Information
+                        </h5>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div class="modal-body">
+                        <!-- <a class="navbar-brand text-center" href="#"><img src="/assets/images/ashmoney.PNG" alt="AshMoney Logo" style="width: 100px;"></a> -->
+                        <ul
+                          class="list-group list-group-flush container text-black"
+                        >
+                          <li
+                            class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                          >
+                            <h6 class="mb-0">Request Date:</h6>
+
+                            <span class="request-date"></span>
+                          </li>
+
+                          <li
+                            class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                          >
+                            <h6 class="mb-0">Repayment Date:</h6>
+
+                            <span class="repayment-date"></span>
+                          </li>
+                          <li
+                            class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                          >
+                            <h6 class="mb-0">Amount:</h6>
+
+                            <span class="amount"></span>
+                          </li>
+                          <li
+                            class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                          >
+                            <h6 class="mb-0">Principal:</h6>
+
+                            <span class="principal"></span>
+                          </li>
+                          <li
+                            class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                          >
+                            <h6 class="mb-0">Amount Paid:</h6>
+
+                            <span class="amount-paid"></span>
+                          </li>
+                          <li
+                            class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                          >
+                            <h6 class="mb-0">Status:</h6>
+
+                            <span class="status" ></span>
+                          </li>
+                        </ul>
+                        <!-- <p>Request Date: <span class="request-date"></span></p>
+        <p>Repayment Date: <span class="repayment-date"></span></p>
+        <p>Amount: <span class="amount"></span></p>
+        <p>Principal: <span class="principal"></span></p>
+        <p>Amount Paid: <span class="amount-paid"></span></p>
+        <p>Status: <span class="status"></span></p> -->
+                      </div>
+                      <div class="modal-footer">
+                        <div class="text-center printD">
+                          <button class="btn btn-sm print" (click)="print()">
+                            Print Receipt
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- <table class="table table-hover table-nowrap text-center">
               <thead class="thead-light">
                 <tr>
-                  <th scope="col">Trans Ref</th>
-                  <th scope="col">Sender Name</th>
-                  <th scope="col">Sender Account</th>
-                  <th scope="col">Beneficiary</th>
-                  <th scope="col">Beneficiary Account</th>
-                  <th scope="col">Amount</th>
+                  <th scope="col">Request Date</th>
+                  <th scope="col">Repayment Date</th>
+                  <th class="amt" scope="col">Amount</th>
+                  <th class="amt" scope="col">Principal</th>
+                  <th class="amt"  scope="col">Amount Paid</th>
                   <th scope="col">Status</th>
-                  <th scope="col">Date</th>
                   <th></th>
                 </tr>
               </thead>
               <tbody>
-
-                
-              
-                
-                
-                <tr *ngFor="let tran of trans">
-                  <td>{{tran.referenceNumber}}</td>
-                  <td>{{trans.sender}}</td>
-                  <td>{{trans.senderAccount}}</td>
-                  <td>{{trans.beneficiary}}</td>
-                  <td>{{trans.beneficiaryAccount}}</td>
-                  <td class="text-right">{{trans.amount}}</td>
-                  <td>{{trans.status}}</td>
-                  <td>{{trans.transactionDate | date: "yyyy-MM-DD"}}</td>
-
+                <tr
+                  *ngFor="
+                    let tran of loans
+                      | paginate : { itemsPerPage: 3, currentPage: p }
+                  "
                   
+                >
+                
+                  <td>{{ tran.requestDate  | date : "dd-MM-yyyy"  }}</td>
+                  <td>{{ tran.repaymentDate | date : "dd-MM-yyyy"}}</td>
+                  <td class="money1">{{ tran.amount | currency : "₦" }}</td>
+                  <td class="money1">{{ tran.principal | currency : "₦" }}</td>
+                  <td class="money1">{{ tran.amountPaid | currency : "₦" }}</td>
                   
-                 
-
-                  <!-- <td>
-                    <span class="badge badge-lg badge-dot">
-                      <i class="bg-success"></i>Paid
-                    </span>
-                  </td> -->
-                  <td class="text-end">
-                    <a href="#" class="btn btn-sm btn-neutral">View</a>
-                    <!-- <button
-                      type="button"
-                      class="btn btn-sm btn-square btn-neutral text-danger-hover"
+                  <td>{{ tran.status }}</td>
+                  <td class="">
+                    <p
+                      class="btn btn-sm btn-neutral"
+                      data-bs-toggle="modal"
+                      data-bs-target="#staticBackdrop"
                     >
-                      <i class="bi bi-trash"></i>
-                    </button> -->
+                      View
+                    </p>
                   </td>
                 </tr>
-                
-
               </tbody>
-            </table>
-          </div>
-          <div class="card-footer border-0 py-5">
-            <span class="text-muted text-sm"
-              >No Record found</span
-            >
+            </table> -->
+                <pagination-controls
+                  (pageChange)="p = $event"
+                ></pagination-controls>
+              </div>
+            </div>
           </div>
         </div>
       </div>
