@@ -18,7 +18,6 @@
     "@angular/platform-browser": "^15.0.0",
     "@angular/platform-browser-dynamic": "^15.0.0",
     "@angular/router": "^15.0.0",
-    "@ng-bootstrap/ng-bootstrap": "^14.0.0",
     "ng-angular-popup": "^0.2.0",
     "ngx-pagination": "^6.0.3",
     "num-words": "^1.2.2",

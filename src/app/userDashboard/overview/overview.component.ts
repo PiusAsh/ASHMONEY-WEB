@@ -1,17 +1,20 @@
 import { CurrencyPipe, DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Account } from 'src/app/Model/account';
 import { bankTransferResponse } from 'src/app/Model/transaction';
 import { AccountService } from 'src/app/Services/account.service';
 import { LoanRequestService } from 'src/app/Services/loan-request.service';
 import Swal from 'sweetalert2';
+// import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-overview',
   templateUrl: './overview.component.html',
   styleUrls: ['./overview.component.css'],
+  providers: [CurrencyPipe, DatePipe],
 })
 export class OverviewComponent implements OnInit {
   myDate = Date.now();
@@ -54,19 +57,24 @@ export class OverviewComponent implements OnInit {
   lastLoggedInTime!: Date;
   dueDate!: Date;
   today = Date.now();
-
-
+  repayForm: any;
+  amount!: number;
+  formattedAmount: any;
 
   constructor(
     private route: Router,
     private accountService: AccountService,
     public activatedRoute: ActivatedRoute,
-    private loanService: LoanRequestService, 
-  ) {}
-
-
+    private loanService: LoanRequestService, private currencyPipe: CurrencyPipe, private datePipe: DatePipe
+  ) // private modalService: NgbModal
+  {
+    this.repayForm = new FormGroup({
+      amount: new FormControl('', [Validators.required]),
+    });
+  }
 
   ngOnInit() {
+    
     let accountNumber = 0;
     this.activatedRoute.paramMap.subscribe((params) => {
       const id: any = params.get('id');
@@ -95,14 +103,13 @@ export class OverviewComponent implements OnInit {
             const loanDueDate = new Date();
             loanDueDate.setTime(this.loans.repaymentDate);
 
-            if(currentDate.getTime() > loanDueDate.getTime()){
-                            this.loans.status = 'Due';
-                            // Show an alert to the user indicating that their loan is due
-                            alert(
-                              'Your loan is due. Please make a payment as soon as possible.'
-                            );
+            if (currentDate.getTime() > loanDueDate.getTime()) {
+              this.loans.status = 'Due';
+              // Show an alert to the user indicating that their loan is due
+              alert(
+                'Your loan is due. Please make a payment as soon as possible.'
+              );
             }
-          
           },
         });
       }
@@ -152,11 +159,10 @@ export class OverviewComponent implements OnInit {
     });
   }
 
-  signOut(){
-
+  signOut() {
     Swal.fire({
       title: 'Are you sure?',
-      text: "You want to logout!",
+      text: 'You want to logout!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -167,35 +173,58 @@ export class OverviewComponent implements OnInit {
         this.accountService.logout();
       }
     });
-
   }
 
- 
+  formatAmount(event: any) {
+    this.formattedAmount = this.currencyPipe.transform(
+      this.amount,
+      '₦',
+      'symbol',
+      '1.2-2'
+    );
+  }
 
   viewModal(rowData: any) {
     const modal = document.getElementById('staticBackdrop');
     if (modal) {
       const requestDateElement = modal.querySelector('.request-date');
       if (requestDateElement) {
-        requestDateElement.textContent = rowData.requestDate;
+        requestDateElement.textContent = this.datePipe.transform(
+          rowData.requestDate,
+          'dd-MM-yyyy'
+        );
       }
 
       const repaymentDateElement = modal.querySelector('.repayment-date');
       if (repaymentDateElement) {
-        repaymentDateElement.textContent = rowData.repaymentDate;
+        repaymentDateElement.textContent = this.datePipe.transform(
+          rowData.repaymentDate, 'dd-MM-yyyy'
+        );
+        
       }
       const amountElement = modal.querySelector('.amount');
       if (amountElement) {
-        amountElement.textContent = rowData.amount;
+        amountElement.textContent = this.currencyPipe.transform(
+          rowData.amount,
+          '₦'
+        );
+        // rowData.amount;
       }
       const principalElement = modal.querySelector('.principal');
       if (principalElement) {
-        principalElement.textContent = rowData.principal;
+        principalElement.textContent = this.currencyPipe.transform(
+          rowData.principal,
+          '₦'
+        );
       }
 
       const amountPaidElement = modal.querySelector('.amount-paid');
       if (amountPaidElement) {
-        amountPaidElement.textContent = rowData.amountPaid;
+        amountPaidElement.textContent = this.currencyPipe.transform(
+          rowData.amountPaid,
+          '₦'
+        );
+        ;
       }
 
       const statusElement = modal.querySelector('.status');

@@ -121,7 +121,18 @@ th{
 .text-danger, .text-success{
   font-weight: 500;
 }
-
+.modal-footer{
+  display: flex;
+  justify-content: center;
+}
+ .pin{ text-align: center!important;
+  font-size: 17px!important;
+  font-weight: 500!important;
+}
+.money{
+  color: #ac1c34;
+  font-size: 17px;
+}
 .list-group-item{
   padding: 10px 20px!important;
 }

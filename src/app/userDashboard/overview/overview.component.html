@@ -130,36 +130,7 @@
     </div>
   </nav>
 
-  <!-- Logout Modal -->
-  <div
-    class="modal fade shadow justify-content-center"
-    id="exampleModalCenter"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-body">
-          <div class="text-center">
-            <i class="bi bi-question-circle-fill"></i>
-          </div>
-          <h4 class="modal-title text-center" id="exampleModalCenterTitle">
-            Are you sure you want to log out?
-          </h4>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary">
-            Yes
-          </button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">
-            No
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
+
   <!-- Main content -->
   <div class="h-screen flex-grow-1 overflow-y-lg-auto">
     <!-- Header -->
@@ -453,6 +424,12 @@
                       </td>
 
                       <td  *ngIf="tran.status === 'Paid'" class="">
+                        <!-- <p
+                          class="btn btn-sm btn-neutral"
+                          (click)="openModal(modalContent)"
+                        >
+                          View
+                        </p> -->
                         <p
                           class="btn btn-sm btn-neutral"
                           data-bs-toggle="modal"
@@ -464,7 +441,8 @@
                       </td>
                       <td *ngIf="tran.status === 'Not Paid'" class="">
                         <p
-                          class="btn btn-sm btn-warning"
+                          class="btn btn-sm btn-warning"  data-bs-toggle="modal"
+                          data-bs-target="#staticBackdrop5"
                           
                         >
                           Pay
@@ -472,7 +450,8 @@
                       </td>
                       <td *ngIf="tran.status === 'Due'" class="">
                         <p
-                          class="btn btn-sm btn-danger"
+                          class="btn btn-sm btn-danger"  data-bs-toggle="modal"
+                          data-bs-target="#staticBackdrop5"
                           
                         >
                           Pay
@@ -481,6 +460,70 @@
                     </tr>
                   </tbody>
                 </table>
+
+<!-- PAY MODAL -->
+      <div
+        class="modal fade"
+        id="staticBackdrop5"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header text-center">
+
+
+            </div>
+            <div class="modal-body container">
+              <h5 class="h5 headText text-center py-5">
+                ENTER YOUR AMOUNT
+              </h5>
+
+              <!-- modal content -->
+<form [formGroup]="repayForm">
+   <div class="col-12 p-0 px-4">
+
+     <!-- <input type="number"  formControlName="amount" [(ngModel)]="amount" (ngModelChange)="formatAmount()" onkeydown="return event.key !== 'e'" class="form-control shadow-sm d-flex align-items-center pin py-3 px-2" placeholder="Enter Amount">
+      <p id="moneyy" class="text-center">Amount: {{ formattedAmount}}</p> -->
+
+
+      <input type="number" formControlName="amount" [(ngModel)]="amount" (ngModelChange)="formatAmount($event)" onkeydown="return event.key !== 'e'" class="form-control shadow-sm d-flex align-items-center pin py-3 px-2" placeholder="Enter Amount">
+           <span class="text-danger mt-3"
+                    *ngIf="repayForm.controls['amount'].touched && repayForm.hasError('required', 'amount')">Please enter an Amount</span>
+      <div class="d-flex justify-content-between align-items-center text-center text-black mt-2">
+
+        <p id="moneyy" class="text-center">Amount: <br><span class="money"> {{ formattedAmount}}</span></p> 
+        <p id="moneyy" class="text-center">Loan Balance: <br><span class="money"> {{ formattedAmount}}</span></p>
+      </div>
+      <div class="d-flex justify-content-between align-items-center text-center text-black">
+
+        <p id="moneyy" class="text-center">Request Date: <br><span class="money"> {{ formattedAmount}}</span></p> 
+        <p id="moneyy" class="text-center">Repayment Date: <br><span class="money"> {{ formattedAmount}}</span></p>
+      </div>
+
+      
+
+  
+
+   </div>
+   <!-- <div class=" text-center text-muted py-2"> <span style="color: #C31E39; font-weight: 500; font-style: 10px!important;">Repay on time.</span>
+                </div> -->
+</form>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" style="background-color: #C31E39; border: none;" class="btn btn-primary" [disabled]="repayForm.invalid">Pay Now</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+       <!-- <div class=" text-center text-muted py-2"> <span style="color: #C31E39; font-weight: 600; font-style: 10px!important;">Do not share your PIN with anyone.</span>
+                </div> -->
+          </div>
+        </div>
+      </div>
+                
 
                 <!-- Modal -->
                 <div
@@ -614,7 +657,10 @@
             </div>
           </div>
         </div>
+        
       </div>
+
+
     </main>
   </div>
 </div>

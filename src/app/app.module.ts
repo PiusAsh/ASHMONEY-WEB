@@ -20,6 +20,7 @@ import { NgToastModule } from 'ng-angular-popup';
 import { QuickLoanComponent } from './useDashboard/quick-loan/quick-loan.component';
 import { LoanRequestComponent } from './Components/loan-request/loan-request.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { CurrencyPipe, DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     UsersuccessPageComponent,
     QuickLoanComponent,
     LoanRequestComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -46,9 +48,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     HttpClientModule,
     NgToastModule,
     NgxPaginationModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-
 export class AppModule {}
