@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { LoanRequestModel, LoanResponse } from '../Model/loan';
+import { LoanPayment, LoanRequestModel, LoanResponse } from '../Model/loan';
 import { Observable, tap } from 'rxjs';
 
 
@@ -8,7 +8,8 @@ import { Observable, tap } from 'rxjs';
   providedIn: 'root',
 })
 export class LoanRequestService {
-  baseApiUrl: string = 'https://localhost:44303';
+  // baseApiUrl: string = 'https://localhost:44303';
+  baseApiUrl: string = 'http://ashmoneyapi.somee.com';
   constructor(private http: HttpClient) {}
 
   sendLoanRequest(loanRequest: LoanRequestModel) {
@@ -19,7 +20,13 @@ export class LoanRequestService {
     );
   }
 
-  
+  makeLoanPayment(payment: LoanPayment): Observable<any> {
+    let queryParam: string = `?LoanId=${payment.loanId}&Amount=${payment.amount}`;
+    return this.http.post(
+      this.baseApiUrl + '/MakeLoanPayment' + queryParam,
+      payment
+    );
+  }
 
   GetLoanById(id: any): Observable<LoanResponse> {
     return this.http

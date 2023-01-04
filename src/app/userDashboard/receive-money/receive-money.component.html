@@ -2,6 +2,42 @@
 
 <!-- Dashboard -->
 <div class="d-flex flex-column flex-lg-row h-lg-full ">
+
+    <nav class="navbar navbar-expand-lg shadow-sm navbar-light bg-white" id="mobileContent">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><img src="/assets/images/logo.jpg" alt="AshMoney Logo" style="width: 100px;"></a>
+    <button class="navbar-toggler"  type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav p-3">
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page"  routerLink="/user/{{ userAcct.id }}"> <i class="bi bi-house"></i> Dashboard</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link"  routerLink="/transactions/{{ userAcct.id }}"><i class="bi bi-bar-chart"></i> Transactions</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link"  routerLink="/send-money/{{ userAcct.id }}">              <i class="bi bi-cash"></i> Send Money</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link"  routerLink="/receive-money/{{ userAcct.id }}">              <i class="bi bi-wallet-fill"></i> Receive Money</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link"  routerLink="/quick-loan/{{ userAcct.id }}"> <i class="bi bi-bookmarks"></i> Quick Loan</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link"  routerLink="/account-info/{{ userAcct.id }}">              <i class="bi bi-person-square me-2"></i>Profile</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link logout"  (click)="signOut()">              <i class="bi bi-box-arrow-left me-2"></i>Logout</a>
+                </li>
+              </ul>
+      
+    </div>
+  </div>
+</nav>
   <!-- Vertical Navbar -->
   <nav
     class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light bg-white border-bottom border-bottom-lg-0 border-end-lg"
@@ -129,7 +165,33 @@
     <!-- Header -->
     
     <!-- Main -->
-    <main class="py-6">
+    <main class="">
+      <div class="container" id="mobileContent">
+  <ul class="nav nav-tabs overflow-x " style="border-bottom: 2px solid #c31e39;">
+            <li class="nav-item">
+              <a routerLink="/user/{{ userAcct.id }}" class="nav-link ttt "> <i class="bi bi-house"></i> Dashboard</a>
+            </li>
+            <li class="nav-item ">
+              <a  routerLink="/transactions/{{ userAcct.id }}" class="nav-link ttt font-regular"><i class="bi bi-bar-chart"></i> Transactions</a> 
+            </li> 
+            
+            <li class="nav-item">
+              <a routerLink="/send-money/{{ userAcct.id }}" class="nav-link ttt font-regular"><i class="bi bi-cash"></i> Send Money</a> 
+            </li>
+            <li class="nav-item">
+              <a routerLink="/receive-money/{{ userAcct.id }}" class="nav-link ttt font-regular">              <i class="bi bi-wallet-fill me-1"> </i>Receive Money</a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="/quick-loan/{{ userAcct.id }}" class="nav-link ttt font-regular"> <i class="bi bi-bookmarks"></i> Quick Loan</a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="/account-info/{{ userAcct.id }}" class="nav-link ttt font-regular"><i class="bi bi-person-square"></i> Personal Information</a>
+            </li>
+            <li class="nav-item">
+              <a (click)="signOut()" class="nav-link font-regular"><i class="bi bi-box-arrow-left me-2"></i>Logout</a>
+            </li>
+          </ul>
+</div>
       
       <div class="container-fluid">
 <div class="row py-5">
@@ -157,7 +219,8 @@
     </div>
     <div class="mb-4">
        <span class="text-uppercase h3  font-semibold text-white text-sm d-block mb-1">Account Number</span>
-       <p class="acct">{{userAcct.accountNumber}}</p>
+       <p #accountNumber class="acct">{{userAcct.accountNumber}}</p>
+     
     </div>
     <div class="">
        <span class="text-uppercase h3  font-semibold text-white text-sm d-block mb-2">Beneficiary Name</span>
@@ -179,6 +242,10 @@
         
       </div>
     </main>
+    <div class=" bg-blue  p-2 text-center fixed-bottom" id="mobileContent">
+                 <small class="text-center">Developed By <a class="fw-bold" href="https://www.linkedin.com/in/piusash/">Pius Ashogbon</a></small>
+                 
+            </div>
   </div>
 </div>
 

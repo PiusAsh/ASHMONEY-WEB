@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import { Account } from 'src/app/Model/account';
 import { AccountService } from 'src/app/Services/account.service';
 import Swal from 'sweetalert2';
@@ -35,9 +36,10 @@ export class ReceiveMoneyComponent implements OnInit {
   acct: any;
   constructor(
     private accountService: AccountService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute, private toast: NgToastService
   ) {}
-
+  @ViewChild('hiddenTextarea', { static: false })
+  hiddenTextarea!: ElementRef;
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params) => {
       const id: any = params.get('id');
@@ -60,6 +62,21 @@ export class ReceiveMoneyComponent implements OnInit {
         console.log(this.acct, 'TESTING USER INFO ---');
         return data;
       },
+    });
+  }
+
+  copyToClipboard(element: any) {
+    // Set the value of the hidden textarea to the text of the element
+    this.hiddenTextarea.nativeElement.value = element.innerText;
+
+    // Select the text in the textarea
+    this.hiddenTextarea.nativeElement.select();
+
+    // Copy the text to the clipboard
+    document.execCommand('copy');
+    this.toast.success({
+      detail: 'Account number copied!',
+      duration: 3000,
     });
   }
 

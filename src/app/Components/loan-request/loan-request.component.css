@@ -91,3 +91,132 @@ option {
   font-size: 15px;
   font-family: "Poppins", sans-serif;
 }
+
+#navbarVertical{
+  display: none;
+  
+
+}
+@media (min-width: 602px) {
+#navbarVertical {
+    display: block;
+  }
+  
+}
+
+#mobileContent{
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  #mobileContent {
+    display: block;
+  }
+  
+
+  .account {
+  background-image: linear-gradient(
+    to right,
+    #c31e39,
+    #ac1c34,
+    #961a2f,
+    #80172a,
+    #6b1524
+  );
+  border-radius: 0px!important;
+}
+.cash{
+  flex-direction: column;
+}
+
+a {
+  color: inherit;
+  cursor: pointer;
+}
+.nav-tabs .nav-link {
+    /* padding: 1.25rem 0; */
+    border-bottom: 1px solid transparent;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    padding: 10px;
+}
+.nav-tabs .nav-link:hover {
+    /* padding: 1.25rem 0; */
+    border-bottom: 1px solid transparent;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+}
+
+/* .nav-tabs .nav-link {
+    padding: 0px!important;
+    border-bottom: 1px solid transparent;
+    
+} */
+
+.btn-blue:hover {
+  background-color: #000;
+  cursor: pointer;
+}
+
+.bg-blue {
+  color: #fff;
+  background-color: #c31e39;
+  text-align: center;
+}
+
+.bi {
+  font-size: 16px !important;
+  color: #121212!important;
+}
+
+.sendReceive{
+  background-color: white;
+  color: #ac1c34;
+  border: none;
+  font-weight: 600;
+  font-size: 13px!important;
+  padding: 7px;
+}
+.money {
+  background-color: white;
+  color: #ac1c34;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  border: none;
+  border-radius: 6px;
+  padding: 5px 8px 5px 8px;
+}
+
+.welcome {
+  color: #121212;
+  font-size: 20px!important;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+}
+  #desktopContent{
+    display: none;
+  }
+
+ .nav-link{
+    font-family: 'Poppins',
+    sans-serif;
+    color: #c31e39 !important;
+    font-size: 15px;
+    font-weight: 500;
+    
+}
+.nav-link:hover {
+  color: #fff !important;
+  background-color: #c31e39;
+}
+
+.bi {
+  color: #c31e39 !important;
+}
+.bi:hover {
+  color: #fff !important;
+}
+}

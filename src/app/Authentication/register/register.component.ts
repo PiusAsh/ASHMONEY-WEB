@@ -17,23 +17,55 @@ export class RegisterComponent {
     private router: Router,
     private accountService: AccountService
   ) {
-    this.registerForm = this.formBuilder.group({
-      fullName: ['', Validators.required],
-      email: [
-        '',
-        Validators.required
-        // Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
-      ],
-      phoneNumber: ['', Validators.required],
-      password: ['', Validators.required],
-      dateOfBirth: ['', Validators.required, [this.minAgeValidator(18)]],
-      address: ['', Validators.required],
-      gender: ['', Validators.required],
-      confirmPassword: ['', Validators.required],
-    });
+    // Custom validator function to check that the password and confirm password fields match
+    function passwordMatchValidator(g: FormGroup) {
+      const password = g.get('password');
+      const confirmPassword = g.get('confirmPassword');
+      if (
+        password &&
+        confirmPassword &&
+        password.value === confirmPassword.value
+      ) {
+        return null;
+      } else {
+        return { mismatch: true };
+      }
+    }
+
+    // DATE OF BIRTH
+
+
+    function minAgeValidator(
+      control: AbstractControl
+    ): { [key: string]: boolean } | null {
+      const dateOfBirth = new Date(control.value);
+      const currentDate = new Date();
+      const age = currentDate.getFullYear() - dateOfBirth.getFullYear();
+      return age < 18 ? { minAge: true } : null;
+    }
+
+    this.registerForm = this.formBuilder.group(
+      {
+        fullName: ['', Validators.required],
+        email: [
+          '',
+          Validators.required,
+          // Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
+        ],
+        phoneNumber: ['', Validators.required],
+        password: ['', Validators.required],
+        dateOfBirth: ['', [Validators.required, minAgeValidator]],
+        address: ['', Validators.required],
+        gender: ['', Validators.required],
+        confirmPassword: ['', Validators.required, Validators.compose],
+      },
+      { validators: passwordMatchValidator }
+    );
   }
 
   ngOnInIt(): void {}
+
+
 
   Register() {
     this.accountService.RegisterUser(this.registerForm.value).subscribe({
@@ -43,7 +75,7 @@ export class RegisterComponent {
         console.log(res, 'CHECKING SUCCESS');
       },
       error: (err) => {
-        alert(err.error.message);
+        // alert(err.error.message);
         console.log(err.error.message, 'CHECKING ERRORS');
       },
     });

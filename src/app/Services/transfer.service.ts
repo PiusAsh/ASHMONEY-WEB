@@ -8,13 +8,12 @@ import { bankTransferRequest, bankTransferResponse } from '../Model/transaction'
   providedIn: 'root',
 })
 export class TransferService {
-  baseApiUrl: string = 'https://localhost:44303';
+  // baseApiUrl: string = 'https://localhost:44303';
+  baseApiUrl: string = 'http://ashmoneyapi.somee.com';
   constructor(private http: HttpClient) {}
   BeneficiaryAccount!: number;
   SenderAccount!: number;
   Amount!: number;
-
-  
 
   transfer(request: bankTransferRequest): Observable<bankTransferResponse> {
     let queryParam: string = `?BeneficiaryAccount=${request.beneficiaryAccount}&SenderAccount=${request.senderAccount}&Amount=${request.amount}`;
@@ -32,8 +31,6 @@ export class TransferService {
       );
   }
 
-  
-
   GetAccountNumber(accountNumber: any): Observable<Account> {
     return this.http
       .get<Account>(
@@ -47,6 +44,4 @@ export class TransferService {
         })
       );
   }
-
-  
 }

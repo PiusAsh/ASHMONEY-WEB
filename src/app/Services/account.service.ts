@@ -11,9 +11,10 @@ import { bankTransferResponse } from '../Model/transaction';
 })
 export class AccountService {
   user: any;
+  admin: any;
   public UserKey: string = 'User Account';
-  // baseApiUrl: string = 'https://localhost:44370/api/';
-  baseApiUrl: string = 'https://localhost:44303/api/';
+  // baseApiUrl: string = 'https://localhost:44303/api/';
+  baseApiUrl: string = 'http://ashmoneyapi.somee.com/api/';
 
   private userSubject = new BehaviorSubject<Account>(
     this.getUserFromLocalStorage()
@@ -21,6 +22,7 @@ export class AccountService {
   public userObservable!: Observable<Account>;
   res: any;
   userDetails: any;
+  isAdmin: any;
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -34,6 +36,16 @@ export class AccountService {
     return this.userSubject.value;
   }
 
+  // IsAdmin() {
+  //   this.admin = localStorage.getItem(this.UserKey);
+  //   this.isAdmin = JSON.parse(this.admin.role == true);
+
+  //   return this.admin;
+  // }
+
+  IsLoggedIn() {
+    return localStorage.getItem(this.UserKey)?.toString();
+  }
   getAllAccountQ(): Observable<Account[]> {
     return this.http
       .get<Account[]>(this.baseApiUrl + 'Account/GetAllAccounts')
@@ -80,12 +92,10 @@ export class AccountService {
     );
   }
 
-  getUserTransaction(
-    accountNumber: any
-  ): Observable<bankTransferResponse[]> {
+  getUserTransaction(accountNumber: any): Observable<bankTransferResponse[]> {
     const params = new HttpParams().set('accountNumber', accountNumber);
     return this.http.get<bankTransferResponse[]>(
-      'https://localhost:44303/GetUserTransaction',
+      'http://ashmoneyapi.somee.com/GetUserTransaction',
       {
         params,
       }
@@ -110,7 +120,7 @@ export class AccountService {
 
   getAllTransfers(): Observable<bankTransferResponse[]> {
     return this.http.get<bankTransferResponse[]>(
-      'https://localhost:44303/GetAllTransfer'
+      'http://ashmoneyapi.somee.com/GetAllTransfer'
     );
   }
 
@@ -140,9 +150,9 @@ export class AccountService {
           },
           error: (err) => {
             this.toast.error({
-              detail: 'Internet Connection error',
-              summary: 'Please try again',
-              duration: 4000,
+              detail: 'Something went wrong',
+              summary: 'Please check your details and internet',
+              duration: 7000,
             });
             return err;
           },
@@ -169,20 +179,13 @@ export class AccountService {
               summary: 'Please try again later!',
               duration: 4000,
             });
+            console.log(err, 'checking-----');
             return err;
           },
         })
       );
   }
-  // getUserById(id: any): Observable<Account> {
-  //   return this.http
-  //     .get<Account>(this.baseApiUrl + 'Account/GetUserById?Id=' + id)
-  //     .pipe(
-  //       map((data) => {
-  //         return data;
-  //       })
-  //     );
-  // }
+
   GetAccountById(id: any): Observable<Account> {
     return this.http
       .get<Account>(`${this.baseApiUrl}Account/GetAccountById?Id=` + id)
@@ -197,12 +200,6 @@ export class AccountService {
 
   private setUserLocalStorage(user: Account) {
     localStorage.setItem(this.UserKey, JSON.stringify(user));
-    // let previousLastLoggedInTime = user.lastLoggedIn;
-    // user.lastLoggedIn = new Date();
-    // localStorage.setItem('user', JSON.stringify(user));
-    // localStorage.setItem(
-    //   'previousLastLoggedInTime',
-    //   previousLastLoggedInTime.toString()
   }
 
   private getUserFromLocalStorage(): Account {

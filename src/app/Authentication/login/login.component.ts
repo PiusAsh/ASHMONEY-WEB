@@ -56,7 +56,7 @@ export class LoginComponent {
       },
       error: (err) => {
         // alert(err.error.message);
-        console.log(err.error.message, 'CHECKING SUCCESS');
+        console.log(err, 'CHECKING ERROR');
       },
     });
   }

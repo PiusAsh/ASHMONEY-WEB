@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './Authentication/login/login.component';
 import { RegisterComponent } from './Authentication/register/register.component';
+import { AccountGuard } from './AuthGuard/account.guard';
 import { LoanRequestComponent } from './Components/loan-request/loan-request.component';
 import { HomeComponent } from './HomePage/home/home.component';
 import { QuickLoanComponent } from './useDashboard/quick-loan/quick-loan.component';
@@ -13,10 +14,7 @@ import { TransactionComponent } from './userDashboard/transaction/transaction.co
 import { UsersuccessPageComponent } from './usersuccess-page/usersuccess-page.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: HomeComponent,
-  },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   {
     path: 'register',
     component: RegisterComponent,
@@ -28,18 +26,22 @@ const routes: Routes = [
   {
     path: 'user/:id',
     component: OverviewComponent,
+    canActivate: [AccountGuard],
   },
   {
     path: 'account-info/:id',
     component: AccountInfoComponent,
+    canActivate: [AccountGuard],
   },
   {
     path: 'transactions/:id',
     component: TransactionComponent,
+    canActivate: [AccountGuard],
   },
   {
     path: 'quick-loan/:id',
     component: LoanRequestComponent,
+    canActivate: [AccountGuard],
   },
   // {
   //   path: 'admin',
@@ -48,6 +50,7 @@ const routes: Routes = [
   {
     path: 'send-money/:id',
     component: SendMoneyComponent,
+    canActivate: [AccountGuard],
   },
   // {
   //   path: 'loan',
@@ -56,15 +59,17 @@ const routes: Routes = [
   {
     path: 'receive-money/:id',
     component: ReceiveMoneyComponent,
+    canActivate: [AccountGuard],
   },
   {
     path: 'user-profile',
     component: AccountInfoComponent,
   },
-  
+
   {
     path: 'success/:id',
     component: UsersuccessPageComponent,
+    canActivate: [AccountGuard],
   },
   // {
   //   path: 'testing',

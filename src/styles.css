@@ -6,6 +6,12 @@
     font-family: 'Poppins', sans-serif;
     
 }
+
+
+
+
+
+
  input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -19,11 +25,17 @@ input[type=number] {
 .swal2-title {
   font-size: 24px!important;
 }
+
+@media only screen and (max-width: 600px) {
+  .swal2-title {
+    font-size: 18px!important;
+  }
+}
 .swal2-timer-progress-bar {
   background-color: #C31E39!important;
   height: 7px!important;
-    animation: progress-bar-running 2s linear infinite;
-     transform: 50% 50%;
+    /* animation: progress-bar-running 2s linear infinite;
+     transform: 50% 50%; */
 }
 
 .ngx-pagination .current{
@@ -35,11 +47,13 @@ input[type=number] {
   
 }
 
-@keyframes progress-bar-running {
+
+
+/* @keyframes progress-bar-running {
   0% {
     transform: scaleX(0);
   }
   100% {
     transform: scaleX(1);
   }
-}
+} */

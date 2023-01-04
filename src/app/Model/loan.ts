@@ -15,3 +15,8 @@ export interface LoanResponse {
   requestDate: Date;
   status: string;
 }
+export interface LoanPayment {
+  loanId: number;
+  amount: number;
+}
+
