@@ -8,7 +8,7 @@ import { AccountService } from 'src/app/Services/account.service';
 import { TransferService } from 'src/app/Services/transfer.service';
 import Swal from 'sweetalert2';
 // import * as crypto from 'crypto';
-// import { sha256 } from 'crypto-js';
+import { SHA256 } from 'crypto-js';
 
 
 
@@ -59,7 +59,7 @@ export class SendMoneyComponent implements OnInit {
     amount: 0,
     narration: '',
   };
-
+  hashedPin: any;
   senderAccount!: number;
   beneficiaryAccount!: number;
   amount!: number;
@@ -123,6 +123,12 @@ export class SendMoneyComponent implements OnInit {
         });
       }
     });
+    this.reset();
+  }
+  reset() {
+    this.sendMoneyForm.reset();
+    this.incorrectPin = false;
+    this.hashedPin = null;
   }
 
   trf() {
@@ -271,7 +277,7 @@ export class SendMoneyComponent implements OnInit {
   }
 
   hashPin(pin: any): any {
-    return sha256(pin);
+    return SHA256(pin);
   }
 
   signOut() {
@@ -290,7 +296,5 @@ export class SendMoneyComponent implements OnInit {
     });
   }
 }
-function sha256(pin: string) {
-  throw new Error('Function not implemented.');
-}
+
 

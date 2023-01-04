@@ -234,8 +234,10 @@
               <!-- modal content -->
 <form [formGroup]="sendMoneyForm">
    <div class="col-12 p-0 px-4">
+    <input type="text" (input)="resetIncorrectPin(); hashedPin = hashPin(sendMoneyForm.value.pin)" formControlName="pin" onkeydown="return event.key !== 'e'" class="form-control shadow-sm d-flex align-items-center pin py-3 px-2" placeholder="Enter PIN here">
 
-     <input type="number" (input)="hashPin(sendMoneyForm.value.pin)" (input)="resetIncorrectPin()" formControlName="pin" onkeydown="return event.key !== 'e'" class="form-control shadow-sm d-flex align-items-center pin py-3 px-2" placeholder="Enter PIN here">
+
+     <!-- <input type="number" (input)="resetIncorrectPin()" formControlName="pin" onkeydown="return event.key !== 'e'" class="form-control shadow-sm d-flex align-items-center pin py-3 px-2" placeholder="Enter PIN here"> -->
 <div class="error text-white" *ngIf="incorrectPin == true && sendMoneyForm.controls['pin'].touched">
     Incorrect PIN
   </div>
@@ -253,7 +255,7 @@
             </div>
             <div class="modal-footer">
               <button  (click)="post()" type="button" [disabled]="sendMoneyForm.invalid" class="btn btn-primary">Send</button>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal" (click)="reset()">Close</button>
       </div>
        <!-- <div class=" text-center text-muted py-2"> <span style="color: #C31E39; font-weight: 600; font-style: 10px!important;">Do not share your PIN with anyone.</span>
                 </div> -->

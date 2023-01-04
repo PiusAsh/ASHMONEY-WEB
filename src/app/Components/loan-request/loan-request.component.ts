@@ -28,7 +28,7 @@ export class LoanRequestComponent implements OnInit {
   incorrectPin = false;
   pinForm!: FormGroup;
   // value: any;
-
+  hashedPin: any;
   constructor(
     private formBuilder: FormBuilder,
     private loanRequestService: LoanRequestService,
@@ -204,7 +204,11 @@ export class LoanRequestComponent implements OnInit {
       this.loanInfo.amount = value;
     }
   }
-
+  reset() {
+    this.pinForm.reset();
+    this.incorrectPin = false;
+    this.hashedPin = null;
+  }
   signOut() {
     Swal.fire({
       title: 'Are you sure you want to logout?',
