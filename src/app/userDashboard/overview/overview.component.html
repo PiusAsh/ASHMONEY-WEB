@@ -347,7 +347,7 @@
                     <tr
                       *ngFor="
                         let tran of transact
-                          | paginate : { itemsPerPage: 3, currentPage: transactionPage  }
+                          | paginate : { itemsPerPage: 5, currentPage: transactionPage  }
                       "
                     >
                       <td>{{ tran.transactionDate | date : "dd-MM-yyyy" }}</td>
@@ -408,7 +408,7 @@
                     <tr
                       *ngFor="
                         let tran of loans
-                          | paginate : { itemsPerPage: 3, currentPage: loanPage }
+                          | paginate : { itemsPerPage: 5, currentPage: loanPage }
                       "
                     >
                       <td>{{ tran.requestDate | date : "dd-MM-yyyy" }}</td>

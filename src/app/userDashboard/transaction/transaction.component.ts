@@ -300,13 +300,16 @@ export class TransactionComponent implements OnInit {
 
   signOut() {
     Swal.fire({
-      title: 'Are you sure?',
-      text: 'You want to logout!',
-      icon: 'warning',
+      title: 'Proceed to logout?',
+      // text: 'You want to logout!',
+      icon: 'info',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
+      confirmButtonColor: '#c31e39',
+      cancelButtonColor: 'swal2-cancel',
+      // cancelButtonColor: '#cfd6df',
+      // cancelButtonClass: 'my-custom-cancel-button-class',
       confirmButtonText: 'Yes',
+      cancelButtonText: 'No',
     }).then((result) => {
       if (result.isConfirmed) {
         this.accountService.logout();
