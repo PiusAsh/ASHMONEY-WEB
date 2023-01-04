@@ -82,8 +82,8 @@ export class ReceiveMoneyComponent implements OnInit {
 
   signOut() {
     Swal.fire({
-      title: 'Are you sure?',
-      text: 'You want to logout!',
+      title: 'Are you sure you want to logout?',
+      // text: 'You want to logout!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',

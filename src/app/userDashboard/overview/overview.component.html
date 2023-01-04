@@ -248,7 +248,7 @@
         <p class="welcome mb-1 px-4">
           Welcome Back, {{ this.userAcct.fullName }} <br />
           <span class="How"
-            >How are you doing today? Today is
+            >How are you doing? Today is
             {{ myDate | date : "fullDate" }}</span
           >
         </p>
@@ -333,12 +333,13 @@
                 <table class="table table-hover table-nowrap text-center">
                   <thead class="thead-light">
                     <tr>
+                      <th scope="col">Date</th>
+
                       <th scope="col">trans ref</th>
                       <th scope="col">Sender</th>
                       <th scope="col">Beneficiary</th>
-                      <th scope="col">Type</th>
+                      <th scope="col">trans Type</th>
                       <th class="amt" scope="col">Amount</th>
-                      <th scope="col">Date</th>
                       <th></th>
                     </tr>
                   </thead>
@@ -349,6 +350,8 @@
                           | paginate : { itemsPerPage: 3, currentPage: transactionPage  }
                       "
                     >
+                      <td>{{ tran.transactionDate | date : "dd-MM-yyyy" }}</td>
+
                       <td>{{ tran.referenceNumber }}</td>
                       <td>{{ tran.sender }}</td>
                       <td>{{ tran.beneficiary }}</td>
@@ -365,7 +368,6 @@
                         Credit
                       </td>
                       <td class="money1">{{ tran.amount | currency : "₦" }}</td>
-                      <td>{{ tran.transactionDate | date : "dd-MM-yyyy" }}</td>
                       <td class="">
                         <p
                           class="btn btn-sm btn-neutral"
@@ -983,16 +985,17 @@
           </div>
           <div class="terminal" [ngSwitch]="selection.value">
             <div *ngSwitchDefault="'transaction'">
-              <div class="table-responsive">
+              <div class="table-responsive text-center">
                 <table class="table table-hover table-nowrap text-center">
                   <thead class="thead-light">
                     <tr>
+                      <th scope="col">Date</th>
+
                       <th scope="col">trans ref</th>
                       <th scope="col">Sender</th>
                       <th scope="col">Beneficiary</th>
-                      <th scope="col">Type</th>
+                      <th scope="col">trans Type</th>
                       <th class="amt" scope="col">Amount</th>
-                      <th scope="col">Date</th>
                       <th></th>
                     </tr>
                   </thead>
@@ -1003,6 +1006,8 @@
                           | paginate : { itemsPerPage: 6, currentPage: transactionPage  }
                       "
                     >
+                      <td>{{ tran.transactionDate | date : "dd-MM-yyyy" }}</td>
+
                       <td>{{ tran.referenceNumber }}</td>
                       <td>{{ tran.sender }}</td>
                       <td>{{ tran.beneficiary }}</td>
@@ -1019,7 +1024,6 @@
                         Credit
                       </td>
                       <td class="money1">{{ tran.amount | currency : "₦" }}</td>
-                      <td>{{ tran.transactionDate | date : "dd-MM-yyyy" }}</td>
                       <td class="">
                         <p
                           class="btn btn-sm btn-neutral"

@@ -37,6 +37,7 @@ export class AccountInfoComponent implements OnInit {
     token: '',
     role: '',
   };
+  originalUserAcct: any;
   constructor(
     private route: Router,
     private accountService: AccountService,
@@ -58,6 +59,8 @@ export class AccountInfoComponent implements OnInit {
       }
     });
 
+    // Get the original values of the user account
+    this.originalUserAcct = { ...this.userAcct };
     this.accountService.getAllAccount().subscribe((data: any) => {
       this.acct = data;
       console.log(data, 'ALL ACCOUNTS ----');
@@ -87,8 +90,8 @@ export class AccountInfoComponent implements OnInit {
 
   signOut() {
     Swal.fire({
-      title: 'Are you sure?',
-      text: 'You want to logout!',
+      title: 'Are you sure you want to logout?',
+      // text: 'You want to logout!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -102,16 +105,25 @@ export class AccountInfoComponent implements OnInit {
   }
 
   updateUser() {
+    if (this.userAcct === this.originalUserAcct) {
+      // No changes detected, show an alert message
+       this.toast.info({
+         detail: 'No changes detected',
+         summary: '',
+         duration: 4000,
+       });
+      return;
+    }
     this.accountService.updateUser(this.userAcct.id, this.userAcct).subscribe({
       next: (response) => {
         console.log(response, 'CHECKING RESPONSE--ffgg---');
 
-        window.location.reload();
         this.toast.success({
           detail: 'Updated Successfully',
           summary: 'Profile Info Updated',
           duration: 4000,
         });
+        // window.location.reload();
       },
       error: (errors) => {
         console.log(errors, 'CHECKING ERRORS-----');

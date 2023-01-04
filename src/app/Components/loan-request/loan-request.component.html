@@ -61,7 +61,7 @@
       <!-- Brand -->
       <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0" href="#">
         <img
-          src="assets/images/sidelogo.png" style="width: 200px; height: 100px;"
+          src="assets/images/sidelogo.png" style="width: 250px; height: 100px;"
           alt="..."
         />
       </a>
@@ -257,17 +257,17 @@
       <div class="container py-5">
         <form class="py-5" [formGroup]="loanRequestForm">
           <div class="d-flex flex-column align-items-center">
-            <p class="fs-4 text-black fw-bold m-0 mt-4">How much do you want?</p>
-            <span class="text-muted">We provide online instant cash loans.</span>
+            <p class="fs-4 text-black fw-bold m-0 mt-4">Quick Loan</p>
+            <span class="text-muted">Get the loan within 3 minutes.</span>
             <span class="line my-3"></span>
           </div>
           <div class="row p-0">
             <div class="col-12 p-0 px-4 mt-2">
-              <span class="text-uppercase text-muted">amount you want</span>
+              <span class="text-uppercase text-muted">Loan amount </span>
             </div>
             
             <div class="col-12 p-0 px-4">
- <input type="text" formControlName="amount" (ngModelChange)="calculate()" id="loanAmount" [(ngModel)]="loanAmount"
+ <input type="number" formControlName="amount"  (ngModelChange)="calculate()" id="loanAmount" [(ngModel)]="loanAmount"
                 class="form-control shadow-sm d-flex align-items-center py-2 px-2">
                                                          <span class="text-danger"
                     *ngIf="loanRequestForm.controls['amount'].touched && loanRequestForm.hasError('required', 'amount')">Amount is required</span>
@@ -306,16 +306,16 @@
             </div>
             <div class="col-12 p-0 px-4">
               <div class=" align-items-center text-center my-3">
-                <span class="text-muted text-uppercase">Interest:</span>
+                <span class="text-muted text-uppercase fw-bold">Interest:</span>
                 <span class="c-g ps-1"><span id="money">{{ interest | currency: '₦'}}</span></span>
                 <br>
-                 <span class="text-muted text-uppercase">you're to repay:</span>
+                 <span class="text-muted text-uppercase fw-bold">repayment:</span>
                 <span class="c-g ps-1"><span id="money">{{ principal | currency: '₦'}}</span></span>
               </div>
             </div>
             <div class="col-12 p-0 px-4">
               <button type="submit" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#staticBackdrop">apply now</button>
-              <div class="text-muted text-center mb-4 mt-3">We provide online instant cash loans</div>
+              <div class="text-muted text-center mb-4 mt-3">We provide online instant loans</div>
             </div>
           </div>
         </form>

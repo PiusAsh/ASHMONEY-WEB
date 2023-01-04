@@ -7,6 +7,7 @@ import { LoanRequestService } from 'src/app/Services/loan-request.service';
 import Swal from 'sweetalert2';
 
 
+
 @Component({
   selector: 'app-loan-request',
   templateUrl: './loan-request.component.html',
@@ -26,6 +27,7 @@ export class LoanRequestComponent implements OnInit {
   interest!: number;
   incorrectPin = false;
   pinForm!: FormGroup;
+  // value: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -192,11 +194,21 @@ export class LoanRequestComponent implements OnInit {
       },
     });
   }
+  onInputChange(event: Event) {
+    if (event.target) {
+      // Cast the target property to the correct type (HTMLInputElement)
+      const input: any = event.target as HTMLInputElement;
+      // Access the value of the input element using input.value
+      const value = input.value;
+      // Perform calculations or logic here
+      this.loanInfo.amount = value;
+    }
+  }
 
   signOut() {
     Swal.fire({
-      title: 'Are you sure?',
-      text: 'You want to logout!',
+      title: 'Are you sure you want to logout?',
+      // text: 'You want to logout!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',

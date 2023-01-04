@@ -235,7 +235,7 @@
 <form [formGroup]="sendMoneyForm">
    <div class="col-12 p-0 px-4">
 
-     <input type="number" (input)="resetIncorrectPin()" formControlName="pin" onkeydown="return event.key !== 'e'" class="form-control shadow-sm d-flex align-items-center pin py-3 px-2" placeholder="Enter PIN here">
+     <input type="number" (input)="hashPin(sendMoneyForm.value.pin)" (input)="resetIncorrectPin()" formControlName="pin" onkeydown="return event.key !== 'e'" class="form-control shadow-sm d-flex align-items-center pin py-3 px-2" placeholder="Enter PIN here">
 <div class="error text-white" *ngIf="incorrectPin == true && sendMoneyForm.controls['pin'].touched">
     Incorrect PIN
   </div>
@@ -293,17 +293,18 @@
                 class="form-control shadow-sm d-flex align-items-center py-2 px-2">
             </div>
 
-            <!-- NARRATION -->
+
             <div class="col-12 p-0 px-4 mt-1">
-              <span class="text-uppercase text-muted">Narration</span>
+              <span class="text-uppercase text-muted">amount</span>
             </div>
-            <div class="col-12 p-0 px-4">
-              <input type="text" formControlName="narration" name="narration"
-                class="form-control shadow-sm d-flex mb-4  align-items-center py-2 px-2"  [(ngModel)]="AccountUser.narration">
-                                                         <span class="text-danger"
-                    *ngIf="transferForm.controls['narration'].touched && transferForm.hasError('required', 'narration')">Narration is required</span>
-                
+ <div class="col-12 p-0 px-4">
+              <input type="number" onkeydown="return event.key !== 'e'" formControlName="amount"
+                class="form-control nom shadow-sm d-flex align-items-center py-2 px-2" id="amount" [(ngModel)]="AccountUser.amount" name="amount" required>
+
+                                         <span class="text-danger"
+                    *ngIf="transferForm.controls['amount'].touched && transferForm.hasError('required', 'amount')">Amount is required</span>
             </div>
+          
             
           </div>
   </div>
@@ -329,7 +330,7 @@
             </div>
 
 
-            <!-- AMOUNT -->
+
             <div class="col-12 p-0 px-4 mt-1">
               <span class="text-uppercase text-muted">Bank Name</span>
             </div>
@@ -338,17 +339,18 @@
                 class="form-control  shadow-sm d-flex align-items-center py-2 px-2" required readonly  [(ngModel)]="AccountUser.bankName" name="beneficiaryBankName">
             </div>
 
-           
+             <!-- NARRATION -->
             <div class="col-12 p-0 px-4 mt-1">
-              <span class="text-uppercase text-muted">amount</span>
+              <span class="text-uppercase text-muted">Narration</span>
             </div>
- <div class="col-12 p-0 px-4">
-              <input type="number" formControlName="amount"
-                class="form-control nom shadow-sm d-flex align-items-center py-2 px-2" [(ngModel)]="AccountUser.amount" name="amount" required>
-
-                                         <span class="text-danger"
-                    *ngIf="transferForm.controls['amount'].touched && transferForm.hasError('required', 'amount')">Amount is required</span>
+            <div class="col-12 p-0 px-4">
+              <input type="text" formControlName="narration" name="narration"
+                class="form-control shadow-sm d-flex mb-4  align-items-center py-2 px-2"  [(ngModel)]="AccountUser.narration">
+                                                         <span class="text-danger"
+                    *ngIf="transferForm.controls['narration'].touched && transferForm.hasError('required', 'narration')">Narration is required</span>
+                
             </div>
+            
             
           </div>
          

@@ -4,7 +4,14 @@
 #navbarVertical{
     background-color: #C31E39!important;
 }
-
+#loanAmount{
+  text-align: end!important;
+  font-size: 18px;
+}
+.form-select{
+  /* font-size: 20px!important; */
+  height: 40px!important;
+}
 .success{
   background-color: green;
 }

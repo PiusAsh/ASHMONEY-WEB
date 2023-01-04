@@ -4,6 +4,10 @@
 .swal2-title {
   font-size: 10px!important;
 }
+
+#amount{
+  text-align: end!important;
+}
 .modal-content {
   text-align: center!important;
 }

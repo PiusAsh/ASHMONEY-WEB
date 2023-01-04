@@ -7,7 +7,11 @@ import { bankTransferRequest, bankTransferResponse } from 'src/app/Model/transac
 import { AccountService } from 'src/app/Services/account.service';
 import { TransferService } from 'src/app/Services/transfer.service';
 import Swal from 'sweetalert2';
-import * as crypto from 'crypto';
+// import * as crypto from 'crypto';
+// import { sha256 } from 'crypto-js';
+
+
+
 
 
 @Component({
@@ -96,14 +100,14 @@ export class SendMoneyComponent implements OnInit {
     });
   }
 
-  async encryptId(id: any) {
-    const cipher = crypto.createCipher('aes-256-cbc', 'secret-key');
-    let encryptedId = cipher.update(id, 'utf8', 'hex');
-    encryptedId += cipher.final('hex');
+  // async encryptId(id: any) {
+  //   const cipher = crypto.createCipher('aes-256-cbc', 'secret-key');
+  //   let encryptedId = cipher.update(id, 'utf8', 'hex');
+  //   encryptedId += cipher.final('hex');
 
-    this.encryptId(this.userAcct.id);
-    this.route.navigate(['/route', encryptedId]);
-  }
+  //   this.encryptId(this.userAcct.id);
+  //   this.route.navigate(['/route', encryptedId]);
+  // }
 
   ngOnInit(): void {
     // this.router.navigate(['user/', encryptedId]);
@@ -187,7 +191,7 @@ export class SendMoneyComponent implements OnInit {
     left top
     no-repeat
   `,
-              footer: 'Thank you for banking with us..',
+              // footer: 'Thank you for banking with us..',
               confirmButtonText: 'OK',
               confirmButtonColor: '#C31E39',
             })
@@ -197,7 +201,6 @@ export class SendMoneyComponent implements OnInit {
                   window.location.reload();
                   // this.route.navigate([`user/${this.userAcct.id}`]);
                 }
-              
               })
               .then((result) => {
                 this.route.navigate([`user/${this.userAcct.id}`]);
@@ -267,10 +270,14 @@ export class SendMoneyComponent implements OnInit {
     );
   }
 
+  hashPin(pin: any): any {
+    return sha256(pin);
+  }
+
   signOut() {
     Swal.fire({
-      title: 'Are you sure?',
-      text: 'You want to logout!',
+      title: 'Are you sure you want to logout?',
+      // text: 'You want to logout!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -283,3 +290,7 @@ export class SendMoneyComponent implements OnInit {
     });
   }
 }
+function sha256(pin: string) {
+  throw new Error('Function not implemented.');
+}
+

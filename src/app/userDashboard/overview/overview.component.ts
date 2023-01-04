@@ -126,9 +126,9 @@ export class OverviewComponent implements OnInit {
     });
   }
 
-  async GetUserTransaction(accountNumber: any) {
+  GetUserTransaction(accountNumber: any) {
     console.log(accountNumber);
-    await this.accountService
+   this.accountService
       .getUserTransaction(accountNumber)
       .subscribe((data: any) => {
         this.transact = data;
@@ -182,8 +182,8 @@ export class OverviewComponent implements OnInit {
 
   signOut() {
     Swal.fire({
-      title: 'Are you sure?',
-      text: 'You want to logout!',
+      title: 'Are you sure you want to logout?',
+      // text: 'You want to logout!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',

@@ -136,6 +136,15 @@ export class TransactionComponent implements OnInit {
       console.log(this.account, 'GETTING ALL USERS');
     });
   }
+  GetUserTransaction(accountNumber: any) {
+    console.log(accountNumber);
+    this.accountService
+      .getUserTransaction(accountNumber)
+      .subscribe((data: any) => {
+        this.transact = data;
+        console.log(data, 'FOR USERS*******');
+      });
+  }
   GetAcctById(id: any) {
     this.accountService.GetAccountById(id).subscribe({
       next: (data) => {
@@ -401,15 +410,5 @@ export class TransactionComponent implements OnInit {
       // Show the modal
       modal.classList.add('show');
     }
-  }
-
-  async GetUserTransaction(accountNumber: any) {
-    console.log(accountNumber);
-    await this.accountService
-      .getUserTransaction(accountNumber)
-      .subscribe((data: any) => {
-        this.transact = data;
-        console.log(data, 'FOR USERS*******');
-      });
   }
 }
