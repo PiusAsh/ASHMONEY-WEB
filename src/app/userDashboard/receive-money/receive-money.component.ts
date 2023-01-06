@@ -15,6 +15,7 @@ export class ReceiveMoneyComponent implements OnInit {
     id: 0,
     fullName: '',
     email: '',
+    eligibleLoanAmt: '',
     phoneNumber: 0,
     country: '',
     state: '',
@@ -36,7 +37,8 @@ export class ReceiveMoneyComponent implements OnInit {
   acct: any;
   constructor(
     private accountService: AccountService,
-    private activatedRoute: ActivatedRoute, private toast: NgToastService
+    private activatedRoute: ActivatedRoute,
+    private toast: NgToastService
   ) {}
   @ViewChild('hiddenTextarea', { static: false })
   hiddenTextarea!: ElementRef;

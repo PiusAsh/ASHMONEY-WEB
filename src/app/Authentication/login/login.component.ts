@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
+
 import {
   AbstractControl,
   FormBuilder,
@@ -24,7 +26,8 @@ export class LoginComponent {
   constructor(
     private formBuilder: FormBuilder,
     private route: Router,
-    private accountService: AccountService
+    private accountService: AccountService,
+    private spinner: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
@@ -45,21 +48,22 @@ export class LoginComponent {
   }
 
   login() {
-    // console.log(this.loginForm.value, 'CHECKING VALUE');
+    this.spinner.show();
     this.accountService.LoginUser(this.loginForm.value).subscribe({
       next: (res) => {
         res.lastLoggedIn = new Date();
-        // alert(res);
         console.log(res, 'CHECKING SUCCESS');
         console.log(res, 'CHECKING SUCCESS RES');
         console.log(this.loginForm.value, 'CHECKING FORM VALUE');
+        this.spinner.hide();
       },
       error: (err) => {
-        // alert(err.error.message);
         console.log(err, 'CHECKING ERROR');
+        this.spinner.hide();
       },
     });
   }
+
   lastLoggedIn() {
     localStorage.setItem('lastLoggedInTime', new Date().toString());
   }

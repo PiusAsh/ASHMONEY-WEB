@@ -8,8 +8,8 @@ import { Observable, tap } from 'rxjs';
   providedIn: 'root',
 })
 export class LoanRequestService {
-  // baseApiUrl: string = 'https://localhost:44303';
-  baseApiUrl: string = 'http://ashmoneyapi.somee.com';
+  baseApiUrl: string = 'https://localhost:44303';
+  // baseApiUrl: string = 'http://www.ashmoneyapi.somee.com';
   constructor(private http: HttpClient) {}
 
   sendLoanRequest(loanRequest: LoanRequestModel) {

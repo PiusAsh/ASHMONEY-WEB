@@ -41,6 +41,7 @@ export class TransactionComponent implements OnInit {
     lastLoggedIn: new Date(),
     token: '',
     role: '',
+    eligibleLoanAmt: '',
   };
 
   transact: any;
@@ -220,6 +221,33 @@ export class TransactionComponent implements OnInit {
       }
     }
   }
+  repayModalMobile(payData: any, loanId: any) {
+    this.loanId = loanId;
+    const modal = document.getElementById('staticBackdrop5Loan');
+    if (modal) {
+      const requestDateElement = modal.querySelector('.request-date');
+      if (requestDateElement) {
+        requestDateElement.textContent = this.datePipe.transform(
+          payData.requestDate,
+          'dd-MM-yyyy'
+        );
+      }
+      const repaymentDateElement = modal.querySelector('.repayment-date');
+      if (repaymentDateElement) {
+        repaymentDateElement.textContent = this.datePipe.transform(
+          payData.repaymentDate,
+          'dd-MM-yyyy'
+        );
+      }
+      const balanceDateElement = modal.querySelector('.money');
+      if (balanceDateElement) {
+        const loanBalance = payData.principal - payData.amountPaid;
+        balanceDateElement.textContent = `₦${loanBalance}`;
+        // this.datePipe.transform(`₦${loanBalance}`);
+        // alert(loanBalance);
+      }
+    }
+  }
 
   onMakePayment() {
     this.loanService.GetLoanById(this.loanId).subscribe((response) => {
@@ -365,6 +393,57 @@ export class TransactionComponent implements OnInit {
 
   viewModal(rowData: any) {
     const modal = document.getElementById('staticBackdrop');
+    if (modal) {
+      const requestDateElement = modal.querySelector('.request-date');
+      if (requestDateElement) {
+        requestDateElement.textContent = this.datePipe.transform(
+          rowData.requestDate,
+          'dd-MM-yyyy'
+        );
+      }
+
+      const repaymentDateElement = modal.querySelector('.repayment-date');
+      if (repaymentDateElement) {
+        repaymentDateElement.textContent = this.datePipe.transform(
+          rowData.repaymentDate,
+          'dd-MM-yyyy'
+        );
+      }
+      const amountElement = modal.querySelector('.amount');
+      if (amountElement) {
+        amountElement.textContent = this.currencyPipe.transform(
+          rowData.amount,
+          '₦'
+        );
+        // rowData.amount;
+      }
+      const principalElement = modal.querySelector('.principal');
+      if (principalElement) {
+        principalElement.textContent = this.currencyPipe.transform(
+          rowData.principal,
+          '₦'
+        );
+      }
+
+      const amountPaidElement = modal.querySelector('.amount-paid');
+      if (amountPaidElement) {
+        amountPaidElement.textContent = this.currencyPipe.transform(
+          rowData.amountPaid,
+          '₦'
+        );
+      }
+
+      const statusElement = modal.querySelector('.status');
+      if (statusElement) {
+        statusElement.textContent = rowData.status;
+      }
+
+      // Show the modal
+      modal.classList.add('show');
+    }
+  }
+  viewModalMobile(rowData: any) {
+    const modal = document.getElementById('staticBackdropLoanMobile');
     if (modal) {
       const requestDateElement = modal.querySelector('.request-date');
       if (requestDateElement) {

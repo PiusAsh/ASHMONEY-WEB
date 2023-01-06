@@ -43,6 +43,7 @@ export class SendMoneyComponent implements OnInit {
     lastLoggedIn: new Date(),
     token: '',
     role: '',
+    eligibleLoanAmt: '',
   };
   TransferResponse: bankTransferResponse = new bankTransferResponse();
   TransferResponseee: bankTransferResponse = {

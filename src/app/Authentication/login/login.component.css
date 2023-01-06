@@ -5,6 +5,14 @@ body {
   background-color: #b0bec5;
   background-repeat: no-repeat;
 }
+  #mobileContent{
+    display: none;
+  }
+
+@media only screen and (max-width: 600px) {
+  #mobileContent {
+    display: block;
+  }}
 
 @media (max-width: 576px) {
   .hideMobile {
@@ -27,8 +35,8 @@ body {
 .logo {
   width: 200px;
   height: 100px;
-  margin-top: 20px;
-  margin-left: 35px;
+  align-items: center!important;
+
 }
 
 .image {

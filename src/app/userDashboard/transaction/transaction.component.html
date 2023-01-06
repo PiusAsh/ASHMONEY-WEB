@@ -5,7 +5,7 @@
 <!-- Dashboard -->
 <div class="d-flex flex-column flex-lg-row h-lg-full">
 
-    <nav class="navbar navbar-expand-lg shadow-sm navbar-light bg-white" id="mobileContent">
+    <nav class="navbar navbar-expand-lg shadow-sm navbar-light" id="mobileContent">
   <div class="container-fluid">
     <a class="navbar-brand" href="#"><img src="/assets/images/logo.jpg" alt="AshMoney Logo" style="width: 100px;"></a>
     <button class="navbar-toggler"  type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -296,168 +296,11 @@
           </div>
         </div>
       </div>
-      
-      <div class="container-fluid" id="desktopContent">
-
-        
-        
-        <div class="content card shadow" role="main">
-          <input type="hidden" #selection [(ngModel)]="selectedCase" />
-          <div class="card-container d-flex">
-            <div
-              class="p-4 tab"
-              (click)="selection.value = 'transaction'"
-              [ngClass]="{ active: selection.value === 'transaction' }"
-              tabindex="0"
-            >
-              <h5 class="mb-0">Transaction history</h5>
-            </div>
-            <div
-              class="p-4 tab"
-              (click)="selection.value = 'loan'"
-              [ngClass]="{ active: selection.value === 'loan' }"
-              tabindex="0"
-            >
-              <h5 class="mb-0">Loan history</h5>
-            </div>
-
-          </div>
-          <div class="terminal" [ngSwitch]="selection.value">
-            <div *ngSwitchDefault="'transaction'">
-              <div class="table-responsive">
-                <table class="table table-hover table-nowrap text-center">
-                  <thead class="thead-light">
-                    <tr>
-                      <th scope="col">Date</th>
-
-                      <th scope="col">trans ref</th>
-                      <th scope="col">Sender</th>
-                      <th scope="col">Beneficiary</th>
-                      <th scope="col">trans Type</th>
-                      <th class="amt" scope="col">Amount</th>
-                      <th></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr
-                      *ngFor="
-                        let tran of transact
-                          | paginate : { itemsPerPage: 9, currentPage: transactionPage }
-                      "
-                    >
-                      <td>{{ tran.transactionDate | date : "dd-MM-yyyy" }}</td>
-
-                      <td>{{ tran.referenceNumber }}</td>
-                      <td>{{ tran.sender }}</td>
-                      <td>{{ tran.beneficiary }}</td>
-                      <td
-                        class="text-danger"
-                        *ngIf="tran.sender == userAcct.fullName"
-                      >
-                        Debit
-                      </td>
-                      <td
-                        class="text-success"
-                        *ngIf="tran.sender != userAcct.fullName"
-                      >
-                        Credit
-                      </td>
-                      <td class="money1">{{ tran.amount | currency : "₦" }}</td>
-                      <td class="">
-                        <p
-                          class="btn btn-sm btn-neutral"
-                          data-bs-toggle="modal"
-                          data-bs-target="#staticBackdrop3"
-                           (click)="viewTransactionModal(tran)"
-                        >
-                          View
-                        </p>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-                <pagination-controls
-                  (pageChange)="transactionPage = $event"
-                ></pagination-controls>
-              </div>
-            </div>
-            <div *ngSwitchCase="'loan'">
-              <div class="table-responsive">
-                <table class="table table-hover table-nowrap text-center">
-                  <thead class="thead-light">
-                    <tr>
-                      <th scope="col">Request Date</th>
-                      <th scope="col">Repayment Date</th>
-                      <th class="amt" scope="col">Amount</th>
-                      <th class="amt" scope="col">Principal</th>
-                      <th class="amt" scope="col">Amount Paid</th>
-                      <th scope="col">Status</th>
-                      <th></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr
-                      *ngFor="
-                        let tran of loans
-                          | paginate : { itemsPerPage: 9, currentPage: loanPage }
-                      "
-                    >
-                      <td>{{ tran.requestDate | date : "dd-MM-yyyy" }}</td>
-                      <td>{{ tran.repaymentDate | date : "dd-MM-yyyy" }}</td>
-                      <td class="money1">{{ tran.amount | currency : "₦" }}</td>
-                      <td class="money1">
-                        {{ tran.principal | currency : "₦" }}
-                      </td>
-                      <td class="money1">
-                        {{ tran.amountPaid | currency : "₦" }}
-                      </td>
-                      <td
-                        [ngClass]="{
-                          'status-paid': tran.status === 'Paid',
-                          'status-not-paid': tran.status === 'Not Paid',
-                          'status-due': tran.status === 'Due'
-                        }"
-                      >
-                        {{ tran.status }}
-                      </td>
-
-                      <td  *ngIf="tran.status === 'Paid'" class="">
-                        <p
-                          class="btn btn-sm btn-neutral"
-                          data-bs-toggle="modal"
-                          data-bs-target="#staticBackdrop
-                          "
-                          (click)="viewModal(tran)"
-                        >
-                          View
-                        </p>
-                      </td>
-                      <td *ngIf="tran.status === 'Not Paid'" class="">
-                        <p
-                          class="btn btn-sm btn-warning"  data-bs-toggle="modal"
-                          data-bs-target="#staticBackdrop5" (click)="repayModal(tran, tran.loanId)"
-                          
-                        >
-                          Pay
-                        </p>
-                      </td>
-                      <td *ngIf="tran.status === 'Due'" class="">
-                        <p
-                          class="btn btn-sm btn-danger"  data-bs-toggle="modal"
-                          data-bs-target="#staticBackdrop5"  (click)="repayModal(tran, tran.loanId)"
-                          
-                        >
-                          Pay
-                        </p>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
 
 
-                
 
-                <!-- Modal -->
+
+       <!-- Modal -->
                 <div
                   class="modal fade"
                   id="staticBackdrop"
@@ -603,15 +446,8 @@
           </div>
         </div>
       </div>
-                <pagination-controls
-                  (pageChange)="loanPage = $event"
-                ></pagination-controls>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="" id="mobileContent">
+      
+      <div class="container-fluid" id="desktopContent">
 
         
         
@@ -642,12 +478,13 @@
                 <table class="table table-hover table-nowrap text-center">
                   <thead class="thead-light">
                     <tr>
+                      <th scope="col">Date</th>
+
                       <th scope="col">trans ref</th>
                       <th scope="col">Sender</th>
                       <th scope="col">Beneficiary</th>
-                      <th scope="col">Type</th>
+                      <th scope="col">trans Type</th>
                       <th class="amt" scope="col">Amount</th>
-                      <th scope="col">Date</th>
                       <th></th>
                     </tr>
                   </thead>
@@ -658,6 +495,8 @@
                           | paginate : { itemsPerPage: 9, currentPage: transactionPage }
                       "
                     >
+                      <td>{{ tran.transactionDate | date : "short" }}</td>
+
                       <td>{{ tran.referenceNumber }}</td>
                       <td>{{ tran.sender }}</td>
                       <td>{{ tran.beneficiary }}</td>
@@ -674,7 +513,6 @@
                         Credit
                       </td>
                       <td class="money1">{{ tran.amount | currency : "₦" }}</td>
-                      <td>{{ tran.transactionDate | date : "dd-MM-yyyy" }}</td>
                       <td class="">
                         <p
                           class="btn btn-sm btn-neutral"
@@ -714,8 +552,8 @@
                           | paginate : { itemsPerPage: 9, currentPage: loanPage }
                       "
                     >
-                      <td>{{ tran.requestDate | date : "dd-MM-yyyy" }}</td>
-                      <td>{{ tran.repaymentDate | date : "dd-MM-yyyy" }}</td>
+                      <td>{{ tran.requestDate | date : "short" }}</td>
+                      <td>{{ tran.repaymentDate | date : "short" }}</td>
                       <td class="money1">{{ tran.amount | currency : "₦" }}</td>
                       <td class="money1">
                         {{ tran.principal | currency : "₦" }}
@@ -768,6 +606,265 @@
 
 
                 
+
+               
+                <pagination-controls
+                  (pageChange)="loanPage = $event"
+                ></pagination-controls>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="" id="mobileContent">
+
+        
+        
+        <div class="content card shadow" role="main">
+          <input type="hidden" #selection [(ngModel)]="selectedCase" />
+          <div class="card-container d-flex">
+            <div
+              class="p-4 tab"
+              (click)="selection.value = 'transaction'"
+              [ngClass]="{ active: selection.value === 'transaction' }"
+              tabindex="0"
+            >
+              <h5 class="mb-0">Transaction history</h5>
+            </div>
+            <div
+              class="p-4 tab"
+              (click)="selection.value = 'loan'"
+              [ngClass]="{ active: selection.value === 'loan' }"
+              tabindex="0"
+            >
+              <h5 class="mb-0">Loan history</h5>
+            </div>
+
+          </div>
+          <div class="terminal" [ngSwitch]="selection.value">
+            <div *ngSwitchDefault="'transaction'">
+              <div class="table-responsive">
+                <table class="table table-hover table-nowrap text-center">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col">trans ref</th>
+                      <th scope="col">Sender</th>
+                      <th scope="col">Beneficiary</th>
+                      <th scope="col">Type</th>
+                      <th class="amt" scope="col">Amount</th>
+                      <th scope="col">Date</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr
+                      *ngFor="
+                        let tran of transact
+                          | paginate : { itemsPerPage: 10, currentPage: transactionPage }
+                      "
+                    >
+                      <td>{{ tran.referenceNumber }}</td>
+                      <td>{{ tran.sender }}</td>
+                      <td>{{ tran.beneficiary }}</td>
+                      <td
+                        class="text-danger"
+                        *ngIf="tran.sender == userAcct.fullName"
+                      >
+                        Debit
+                      </td>
+                      <td
+                        class="text-success"
+                        *ngIf="tran.sender != userAcct.fullName"
+                      >
+                        Credit
+                      </td>
+                      <td class="money1">{{ tran.amount | currency : "₦" }}</td>
+                      <td>{{ tran.transactionDate | date : "short" }}</td>
+                      <td class="">
+                        <p
+                          class="btn btn-sm btn-neutral"
+                          data-bs-toggle="modal"
+                          data-bs-target="#staticBackdrop3"
+                           (click)="viewTransactionModal(tran)"
+                        >
+                          View
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <pagination-controls
+                  (pageChange)="transactionPage = $event"
+                ></pagination-controls>
+              </div>
+            </div>
+            <div *ngSwitchCase="'loan'">
+              <div class="table-responsive">
+                <table class="table table-hover table-nowrap text-center">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col">Request Date</th>
+                      <th scope="col">Repayment Date</th>
+                      <th class="amt" scope="col">Amount</th>
+                      <th class="amt" scope="col">Principal</th>
+                      <th class="amt" scope="col">Amount Paid</th>
+                      <th scope="col">Status</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr
+                      *ngFor="
+                        let tran of loans
+                          | paginate : { itemsPerPage: 10, currentPage: loanPage }
+                      "
+                    >
+                      <td>{{ tran.requestDate | date : "short" }}</td>
+                      <td>{{ tran.repaymentDate | date : "short" }}</td>
+                      <td class="money1">{{ tran.amount | currency : "₦" }}</td>
+                      <td class="money1">
+                        {{ tran.principal | currency : "₦" }}
+                      </td>
+                      <td class="money1">
+                        {{ tran.amountPaid | currency : "₦" }}
+                      </td>
+                      <td
+                        [ngClass]="{
+                          'status-paid': tran.status === 'Paid',
+                          'status-not-paid': tran.status === 'Not Paid',
+                          'status-due': tran.status === 'Due'
+                        }"
+                      >
+                        {{ tran.status }}
+                      </td>
+
+                      <td  *ngIf="tran.status === 'Paid'" class="">
+                        <p
+                          class="btn btn-sm btn-neutral"
+                          data-bs-toggle="modal"
+                          data-bs-target="#staticBackdrop
+                          "
+                          (click)="viewModal(tran)"
+                        >
+                          View
+                        </p>
+                      </td>
+                      <td *ngIf="tran.status === 'Not Paid'" class="">
+                        <p
+                          class="btn btn-sm btn-warning"  data-bs-toggle="modal"
+                          data-bs-target="#staticBackdrop5" (click)="repayModal(tran, tran.loanId)"
+                          
+                        >
+                          Pay
+                        </p>
+                      </td>
+                      <td *ngIf="tran.status === 'Due'" class="">
+                        <p
+                          class="btn btn-sm btn-danger"  data-bs-toggle="modal"
+                          data-bs-target="#staticBackdrop5"  (click)="repayModal(tran, tran.loanId)"
+                          
+                        >
+                          Pay
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+
+                
+
+                <!-- Modal -->
+                <div
+                  class="modal fade"
+                  id="staticBackdropLoanMobile"
+                  tabindex="-1"
+                  role="dialog"
+                  aria-labelledby="staticBackdropLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5
+                          class="modal-title text-center"
+                          id="staticBackdropLabel"
+                        >
+                          Loan Information
+                        </h5>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div class="modal-body">
+                        <!-- <a class="navbar-brand text-center" href="#"><img src="/assets/images/ashmoney.PNG" alt="AshMoney Logo" style="width: 100px;"></a> -->
+                        <ul
+                          class="list-group list-group-flush container text-black"
+                        >
+                          <li
+                            class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                          >
+                            <h6 class="mb-0">Request Date:</h6>
+
+                            <span class="request-date"></span>
+                          </li>
+
+                          <li
+                            class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                          >
+                            <h6 class="mb-0">Repayment Date:</h6>
+
+                            <span class="repayment-date"></span>
+                          </li>
+                          <li
+                            class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                          >
+                            <h6 class="mb-0">Amount:</h6>
+
+                            <span class="amount"></span>
+                          </li>
+                          <li
+                            class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                          >
+                            <h6 class="mb-0">Principal:</h6>
+
+                            <span class="principal"></span>
+                          </li>
+                          <li
+                            class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                          >
+                            <h6 class="mb-0">Amount Paid:</h6>
+
+                            <span class="amount-paid"></span>
+                          </li>
+                          <li
+                            class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                          >
+                            <h6 class="mb-0">Status:</h6>
+
+                            <span class="status" ></span>
+                          </li>
+                        </ul>
+                        <!-- <p>Request Date: <span class="request-date"></span></p>
+        <p>Repayment Date: <span class="repayment-date"></span></p>
+        <p>Amount: <span class="amount"></span></p>
+        <p>Principal: <span class="principal"></span></p>
+        <p>Amount Paid: <span class="amount-paid"></span></p>
+        <p>Status: <span class="status"></span></p> -->
+                      </div>
+                      <div class="modal-footer">
+                        <div class="text-center printD">
+                          <button class="btn btn-sm print" (click)="prints()">
+                            Print Receipt
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
                 <!-- Modal -->
                 <div

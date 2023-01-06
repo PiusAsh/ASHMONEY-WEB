@@ -36,6 +36,7 @@ export class OverviewComponent implements OnInit {
     dateOfBirth: new Date(),
     accountNumber: 0,
     bankName: '',
+    eligibleLoanAmt: '',
     accountBalance: 0,
     accountType: '',
     transactionPin: 0,

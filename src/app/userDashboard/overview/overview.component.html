@@ -350,7 +350,7 @@
                           | paginate : { itemsPerPage: 5, currentPage: transactionPage  }
                       "
                     >
-                      <td>{{ tran.transactionDate | date : "dd-MM-yyyy" }}</td>
+                      <td>{{ tran.transactionDate | date : "short" }}</td>
 
                       <td>{{ tran.referenceNumber }}</td>
                       <td>{{ tran.sender }}</td>
@@ -411,8 +411,8 @@
                           | paginate : { itemsPerPage: 5, currentPage: loanPage }
                       "
                     >
-                      <td>{{ tran.requestDate | date : "dd-MM-yyyy" }}</td>
-                      <td>{{ tran.repaymentDate | date : "dd-MM-yyyy" }}</td>
+                      <td>{{ tran.requestDate | date : "short" }}</td>
+                      <td>{{ tran.repaymentDate | date : "short" }}</td>
                       <td class="money1">{{ tran.amount | currency : "₦" }}</td>
                       <td class="money1">
                         {{ tran.principal | currency : "₦" }}
@@ -636,8 +636,8 @@
                   
                 >
                 
-                  <td>{{ tran.requestDate  | date : "dd-MM-yyyy"  }}</td>
-                  <td>{{ tran.repaymentDate | date : "dd-MM-yyyy"}}</td>
+                  <td>{{ tran.requestDate  | date : "short"  }}</td>
+                  <td>{{ tran.repaymentDate | date : "short"}}</td>
                   <td class="money1">{{ tran.amount | currency : "₦" }}</td>
                   <td class="money1">{{ tran.principal | currency : "₦" }}</td>
                   <td class="money1">{{ tran.amountPaid | currency : "₦" }}</td>
@@ -676,7 +676,7 @@
 
 <!-- MOBILE VIEW --------------------------------------------------------------------------------------------->
 <div class="" id="mobileContent">
-  <nav class="navbar navbar-expand-lg shadow-sm navbar-light bg-white">
+  <nav class="navbar navbar-expand-md shadow-sm navbar-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#"><img src="/assets/images/logo.jpg" alt="AshMoney Logo" style="width: 125px;"></a>
     <button class="navbar-toggler" (click)="toggler()" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -1006,7 +1006,7 @@
                           | paginate : { itemsPerPage: 6, currentPage: transactionPage  }
                       "
                     >
-                      <td>{{ tran.transactionDate | date : "dd-MM-yyyy" }}</td>
+                      <td>{{ tran.transactionDate | date : "short" }}</td>
 
                       <td>{{ tran.referenceNumber }}</td>
                       <td>{{ tran.sender }}</td>
@@ -1067,8 +1067,8 @@
                           | paginate : { itemsPerPage: 6, currentPage: loanPage }
                       "
                     >
-                      <td>{{ tran.requestDate | date : "dd-MM-yyyy" }}</td>
-                      <td>{{ tran.repaymentDate | date : "dd-MM-yyyy" }}</td>
+                      <td>{{ tran.requestDate | date : "short" }}</td>
+                      <td>{{ tran.repaymentDate | date : "short" }}</td>
                       <td class="money1">{{ tran.amount | currency : "₦" }}</td>
                       <td class="money1">
                         {{ tran.principal | currency : "₦" }}
@@ -1292,8 +1292,8 @@
                   
                 >
                 
-                  <td>{{ tran.requestDate  | date : "dd-MM-yyyy"  }}</td>
-                  <td>{{ tran.repaymentDate | date : "dd-MM-yyyy"}}</td>
+                  <td>{{ tran.requestDate  | date : "short"  }}</td>
+                  <td>{{ tran.repaymentDate | date : "short"}}</td>
                   <td class="money1">{{ tran.amount | currency : "₦" }}</td>
                   <td class="money1">{{ tran.principal | currency : "₦" }}</td>
                   <td class="money1">{{ tran.amountPaid | currency : "₦" }}</td>

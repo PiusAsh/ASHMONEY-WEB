@@ -4,7 +4,7 @@
 <div class="d-flex flex-column flex-lg-row h-lg-full ">
 
 
-  <nav class="navbar navbar-expand-lg shadow-sm navbar-light bg-white" id="mobileContent">
+  <nav class="navbar navbar-expand-lg shadow-sm navbar-light" id="mobileContent">
   <div class="container-fluid">
     <a class="navbar-brand" href="#"><img src="/assets/images/logo.jpg" alt="AshMoney Logo" style="width: 100px;"></a>
     <button class="navbar-toggler"  type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -204,7 +204,9 @@
    <div class="col-lg-5">
     <div class="d-flex py-5 mb-4 flex-column align-items-center">
             <p class="fs-4 fw-bold m-0 send">Send Money</p>
-            <span class="text-muted text-center">Please provide the details you will like to send</span>
+            <div class="text-muted text-center mt-1">You can make up to <span style="color: #C31E39; font-weight: 600;">30</span>
+                free transfers</div>
+            <!-- <span class="text-muted text-center">Fill in the i</span> -->
             <span class="line my-2"></span>
           </div></div>
    <div class="col-lg-4"></div>
@@ -234,7 +236,7 @@
               <!-- modal content -->
 <form [formGroup]="sendMoneyForm">
    <div class="col-12 p-0 px-4">
-    <input type="text" (input)="resetIncorrectPin(); hashedPin = hashPin(sendMoneyForm.value.pin)" formControlName="pin" onkeydown="return event.key !== 'e'" class="form-control shadow-sm d-flex align-items-center pin py-3 px-2" placeholder="Enter PIN here">
+    <input type="number" (input)="resetIncorrectPin(); hashedPin = hashPin(sendMoneyForm.value.pin)" formControlName="pin" onkeydown="return event.key !== 'e'" class="form-control shadow-sm d-flex align-items-center pin py-3 px-2" placeholder="Enter PIN here">
 
 
      <!-- <input type="number" (input)="resetIncorrectPin()" formControlName="pin" onkeydown="return event.key !== 'e'" class="form-control shadow-sm d-flex align-items-center pin py-3 px-2" placeholder="Enter PIN here"> -->
@@ -257,6 +259,7 @@
               <button  (click)="post()" type="button" [disabled]="sendMoneyForm.invalid" class="btn btn-primary">Send</button>
         <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal" (click)="reset()">Close</button>
       </div>
+
        <!-- <div class=" text-center text-muted py-2"> <span style="color: #C31E39; font-weight: 600; font-style: 10px!important;">Do not share your PIN with anyone.</span>
                 </div> -->
           </div>
@@ -267,7 +270,7 @@
   <div class="form">
     <form class="row" [formGroup]="transferForm">
         <div class="col-lg-1"></div>
-  <div class="col-lg-5">
+  <div class="col-lg-5 mb-3">
     <h4>Sender Information</h4>
     <div class="row p-0">
       <div class="col-12 p-0 px-4 mt-1">
@@ -347,7 +350,7 @@
             </div>
             <div class="col-12 p-0 px-4">
               <input type="text" formControlName="narration" name="narration"
-                class="form-control shadow-sm d-flex mb-4  align-items-center py-2 px-2"  [(ngModel)]="AccountUser.narration">
+                class="form-control shadow-sm d-flex  align-items-center py-2 px-2"  [(ngModel)]="AccountUser.narration">
                                                          <span class="text-danger"
                     *ngIf="transferForm.controls['narration'].touched && transferForm.hasError('required', 'narration')">Narration is required</span>
                 
@@ -362,12 +365,12 @@
 
 
             
-            <div class="row">
+            <div class="row mb-5">
               <div class="col-lg-4"></div>
               <div class="col-lg-4">            <div class=" p-0 px-4">
               <button data-bs-toggle="modal" data-bs-target="#staticBackdrop" [disabled]="transferForm.invalid " class="btn btn-primary w-100 text-center mt-5 mb-5">Send</button>
-              <div class="text-muted text-center mt-1">You can make up to <span style="color: #C31E39; font-weight: 600;">30</span>
-                free transfers</div>
+              <!-- <div class="text-muted text-center mt-1">You can make up to <span style="color: #C31E39; font-weight: 600;">30</span>
+                free transfers</div> -->
             </div></div>
               <div class="col-lg-4"></div>
             </div>

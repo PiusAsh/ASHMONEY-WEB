@@ -1,7 +1,7 @@
 export class Account {
-       id!: number;
-  fullName!: string ;
-  email!: string ;
+  id!: number;
+  fullName!: string;
+  email!: string;
   phoneNumber!: number;
   country!: string;
   state!: string;
@@ -14,13 +14,12 @@ export class Account {
   accountBalance!: number;
   accountType!: string;
   transactionPin!: number;
-  dateCreated!:Date;
+  dateCreated!: Date;
   lastUpdated!: Date;
   lastLoggedIn!: Date;
   token!: string;
+  eligibleLoanAmt!: string;
   role!: string;
-
-  
 }
 
 export interface IUserLogin {

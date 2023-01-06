@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { AccountService } from 'src/app/Services/account.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class RegisterComponent {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private accountService: AccountService
+    private accountService: AccountService,
+    private spinner: NgxSpinnerService
   ) {
     // Custom validator function to check that the password and confirm password fields match
     function passwordMatchValidator(g: FormGroup) {
@@ -33,7 +35,6 @@ export class RegisterComponent {
     }
 
     // DATE OF BIRTH
-
 
     function minAgeValidator(
       control: AbstractControl
@@ -65,31 +66,29 @@ export class RegisterComponent {
 
   ngOnInIt(): void {}
 
-
-
   Register() {
+    this.spinner.show();
     this.accountService.RegisterUser(this.registerForm.value).subscribe({
       next: (res) => {
         this.reg = res;
+        this.spinner.hide();
         // alert(this.reg.account.accountBalance);
         console.log(res, 'CHECKING SUCCESS');
       },
       error: (err) => {
+        
         // alert(err.error.message);
         console.log(err.error.message, 'CHECKING ERRORS');
       },
     });
   }
 
-
-minAgeValidator(minAge: number): ValidatorFn {
-  return (control: AbstractControl): {[key: string]: any} | null => {
-    const date = new Date(control.value);
-    const currentDate = new Date();
-    const age = currentDate.getFullYear() - date.getFullYear();
-    return age < minAge ? {'minAge': {value: control.value}} : null;
+  minAgeValidator(minAge: number): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const date = new Date(control.value);
+      const currentDate = new Date();
+      const age = currentDate.getFullYear() - date.getFullYear();
+      return age < minAge ? { minAge: { value: control.value } } : null;
+    };
   }
-}
-
-
 }

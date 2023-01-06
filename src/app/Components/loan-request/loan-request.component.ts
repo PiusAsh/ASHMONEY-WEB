@@ -1,6 +1,8 @@
+import { CurrencyPipe, DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Account } from 'src/app/Model/account';
 import { LoanRequestModel } from 'src/app/Model/loan';
 import { AccountService } from 'src/app/Services/account.service';
 import { LoanRequestService } from 'src/app/Services/loan-request.service';
@@ -12,11 +14,34 @@ import Swal from 'sweetalert2';
   selector: 'app-loan-request',
   templateUrl: './loan-request.component.html',
   styleUrls: ['./loan-request.component.css'],
+  providers: [CurrencyPipe, DatePipe],
 })
 export class LoanRequestComponent implements OnInit {
   loanRequestForm!: FormGroup;
   acct: any;
-  userAcct: any;
+  userAcct: Account = {
+    id: 0,
+    fullName: '',
+    email: '',
+    phoneNumber: 0,
+    country: '',
+    state: '',
+    address: '',
+    password: '',
+    gender: '',
+    dateOfBirth: new Date(),
+    accountNumber: 0,
+    bankName: '',
+    eligibleLoanAmt: '',
+    accountBalance: 0,
+    accountType: '',
+    transactionPin: 0,
+    dateCreated: new Date(),
+    lastUpdated: new Date(),
+    lastLoggedIn: new Date(),
+    token: '',
+    role: '',
+  };
   loanInfo: any;
   timerInterval: any;
   result: any;
@@ -29,12 +54,14 @@ export class LoanRequestComponent implements OnInit {
   pinForm!: FormGroup;
   // value: any;
   hashedPin: any;
+  public formattedAmount: string = '';
   constructor(
     private formBuilder: FormBuilder,
     private loanRequestService: LoanRequestService,
     private route: Router,
     private accountService: AccountService,
-    public activatedRoute: ActivatedRoute
+    public activatedRoute: ActivatedRoute,
+    private currencyPipe: CurrencyPipe
   ) {
     this.pinForm = new FormGroup({
       pin: new FormControl('', [Validators.required, Validators.maxLength(4)]),
@@ -55,6 +82,7 @@ export class LoanRequestComponent implements OnInit {
         this.accountService.GetAccountById(id).subscribe({
           next: (res) => {
             this.userAcct = res;
+            this.formatAmount();
             console.log(this.userAcct, 'ACTIVATED ROUTE');
           },
         });
@@ -65,7 +93,26 @@ export class LoanRequestComponent implements OnInit {
       amount: ['', Validators.required],
       purpose: ['', Validators.required],
       repaymentPeriod: ['', Validators.required],
+      eligibleAmt: ['']
     });
+  }
+
+  formatAmount() {
+
+    let v = this.currencyPipe.transform(
+      this.userAcct.eligibleLoanAmt,
+      '₦'
+    );
+    // let s: any = this.currencyPipe.transform(
+    //   this.loanRequestForm.value.amount,
+    //   '₦'
+    // );
+      //  alert(v?.toString()!);
+
+    this.loanRequestForm.patchValue({
+      eligibleAmt: v?.toString()!
+    })
+
   }
 
   onSubmit() {
@@ -140,7 +187,7 @@ export class LoanRequestComponent implements OnInit {
           if (result.dismiss === Swal.DismissReason.timer) {
             Swal.fire({
               title: 'Loan Disapproved',
-              text: error.error,
+              text: error.error.message,
               icon: 'error',
               iconColor: '#C31E39',
               // color: '#C31E39',
@@ -167,7 +214,7 @@ export class LoanRequestComponent implements OnInit {
 
   calculate() {
     // Calculate the principal and interest
-    this.principal = this.loanAmount * (1 + (5 * this.repaymentPeriod) / 12);
+    this.principal = this.loanAmount * (1 + (3 * this.repaymentPeriod) / 12);
     this.interest = this.principal - this.loanAmount;
   }
   resetIncorrectPin() {

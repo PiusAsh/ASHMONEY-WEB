@@ -4,91 +4,132 @@
   <input type="submit" value="Submit">
 </form> -->
 
-
 <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 mx-auto">
-    <div class="border-0">
-        <div class="row d-flex">
-            <div class="col-lg-6 hideMobile">
-                <div class="card1 pb-5">
-                    <div class="row">
-                        <img class="" src="/assets/images/logo.jpg" class="logo">
-                    </div>
-                    <div class="row px-3 justify-content-center mt-5 mb-5 border-line">
-                        <img class="mt-5" src="/assets/images/draw.svg" class="image">
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="card2 card border-0 px-4 py-4">
-                    <div class="row mt-4 px-3">
-                        <!-- <h6 class="mb-0 mr-4 py-3">Sign in with</h6> -->
-                        <!-- <div class="facebook text-center me-2"><div class="bi bi-facebook"></div></div>
-                        <div class="twitter text-center me-2"><div class="bi bi-twitter"></div></div>
-                        <div class="linkedin text-center mr-2"><div class="bi bi-linkedin"></div></div> -->
-                    </div>
-                    <div class="row px-3 py-5">
-                      <p class="welcome">Welcome Back!</p>
-                      <p>Kindly login to continue</p>
-                        <!-- <div class="line"></div>
-                        <small class="or text-center">Or</small> -->
-                        <!-- <div class="line"></div> -->
-                    </div>
-                    <form [formGroup]="loginForm">
-                    <div class="row px-3 mb-4">
-                        <label class="mb-1"><h6 class="mb-0 text-sm">Phone Number</h6></label>
-                        <input class="" formControlName="phoneNumber" type="number" name="phoneNumber" placeholder="Enter your phone number">
-                         <span class="text-danger"
-                    *ngIf="loginForm.controls['phoneNumber'].touched && loginForm.hasError('required', 'phoneNumber')">Phone Number is required</span>
-                    </div>
-                    <div class="row px-3">
-                        <label class="mb-1"><h6 class="mb-0 text-sm">Password</h6></label>
-                        <input type="password" formControlName="password" name="password" placeholder="Enter password">
-                        <span class="text-danger"
-                  *ngIf="loginForm.controls['password'].touched && loginForm.hasError('required', 'password')">Password is
-                  required</span>
-                    </div>
-                    <div class="row px-3 mb-4">
-
-                    </div>
-                    <div class="row mb-3 px-3">
-                        <button type="submit" [disabled]="loginForm.invalid" class="btn btn-blue text-center py-2 w-100 fw-bold" (click)="login()">Login</button>
-                    </div> </form>
-                    <div class="row mb-2 px-3">
-                                   <small class="font-weight-bold text-center"
-              >Don't have an account? <a routerLink="/register" class="text-danger log">Open An Account</a></small
-            >
-                    </div>
-                    <div class="row mb-4 px-3">
-                                   <small class="font-weight-bold text-center"
-              >Back To <a routerLink="/" class="text-danger log">HomePage</a></small
-            >
-                    </div>
-                </div>
-                
-            </div>
-                    <!-- <div class="bg-blue"> -->
-
-        <!-- </div> -->
+  <div class="border-0">
+    <div class="row d-flex">
+      <div class="col-lg-6 hideMobile">
+        <div class="card1 pb-5">
+          <div class="row">
+            <img
+              style="height: 100%; width: 50%"
+              src="/assets/images/logo.jpg"
+              class="logo"
+            />
+          </div>
+          <div class="row px-3 justify-content-center mt-5 mb-5 border-line">
+            <img class="mt-5" src="/assets/images/draw.svg" class="image" />
+          </div>
         </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card2 card border-0 py-5">
+          <div class="row" id="mobileContent">
+        
+            <img
+              style="height: 100%; width: 60%"
+              src="/assets/images/logo.jpg"
+              class="logo"
+            />
 
+          </div>
+          <div class="row px-3 mt-5">
+            <p class="welcome">Welcome Back!</p>
+            <p>Kindly login to continue</p>
+            <!-- <div class="line"></div>
+                        <small class="or text-center">Or</small> -->
+            <!-- <div class="line"></div> -->
+
+          </div>
+          <form class="py-3" [formGroup]="loginForm">
+            <div class="row px-3 mb-4">
+              <label class="mb-1"
+                ><h6 class="mb-0 text-sm">Phone Number</h6></label
+              >
+              <input
+                class=""
+                formControlName="phoneNumber"
+                type="number"
+                name="phoneNumber"
+                placeholder="Enter your phone number"
+              />
+              <span
+                class="text-danger"
+                *ngIf="
+                  loginForm.controls['phoneNumber'].touched &&
+                  loginForm.hasError('required', 'phoneNumber')
+                "
+                >Phone Number is required</span
+              >
+            </div>
+            <div class="row px-3">
+              <label class="mb-1"><h6 class="mb-0 text-sm">Password</h6></label>
+              <input
+                type="password"
+                formControlName="password"
+                name="password"
+                placeholder="Enter password"
+              />
+              <span
+                class="text-danger"
+                *ngIf="
+                  loginForm.controls['password'].touched &&
+                  loginForm.hasError('required', 'password')
+                "
+                >Password is required</span
+              >
+            </div>
+            <div class="row px-3 mb-4"></div>
+ 
+
+            <div class="row mb-3 px-3">
+              <button
+                type="submit"
+                [disabled]="loginForm.invalid"
+                class="btn btn-blue text-center py-2 w-100 fw-bold"
+                (click)="login()"
+              >
+                Login
+              </button>
+            </div>
+         </form>
+          <div class="row mb-2 px-3">
+            <small class="font-weight-bold text-center"
+              >Don't have an account?
+              <a routerLink="/register" class="text-danger log"
+                >Open An Account</a
+              ></small
+            >
+          </div>
+          <div class="row mb-4 px-3">
+            <small class="font-weight-bold text-center"
+              >Back To
+              <a routerLink="/" class="text-danger log">HomePage</a></small
+            >
+          </div>
+        </div>
+      </div>
+      <!-- <div class="bg-blue"> -->
+
+      <!-- </div> -->
     </div>
+  </div>
 </div>
 
-            <div class="row bg-blue fixed-bottom p-2 hideMobile">
-               <div class="col-lg-6">
+<div class="row bg-blue fixed-bottom p-2 hideMobile">
+  <div class="col-lg-6">
+    <small class="copy">Copyright &copy; 2022. All rights reserved.</small>
+  </div>
 
-                 <small class="copy">Copyright &copy; 2022. All rights reserved.</small>
-               </div> 
+  <div class="col-lg-6 text-center">
+    <span class="bi bi-facebook text-sm"></span>
+    <span class="bi bi-github text-sm"></span>
+    <span class="bi bi-linkedin text-sm"></span>
+    <span class="bi bi-twitter text-sm"></span>
+  </div>
+</div>
 
-                               <div class="col-lg-6 text-center">
-                  
-                    <span class="bi bi-facebook  text-sm"></span>
-                    <span class="bi bi-github text-sm"></span>
-                    <span class="bi bi-linkedin text-sm"></span>
-                    <span class="bi bi-twitter text-sm"></span>
-                </div>
-
+<div class=" bg-blue  p-2 text-center fixed-bottom" id="mobileContent">
+                 <small class="text-center">Developed By <a class="fw-bold" href="https://www.linkedin.com/in/piusash/">Pius Ashogbon</a></small>
+                 
             </div>
-
-
-
+<!-- <ngx-spinner bdColor="#c31e3a4f" bdOpacity=".9" size="large" color="#fff" type="ball-rotate"></ngx-spinner> -->

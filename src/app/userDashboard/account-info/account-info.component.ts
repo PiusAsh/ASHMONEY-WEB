@@ -25,6 +25,7 @@ export class AccountInfoComponent implements OnInit {
     address: '',
     password: '',
     gender: '',
+    eligibleLoanAmt: '',
     dateOfBirth: new Date(),
     accountNumber: 0,
     bankName: '',

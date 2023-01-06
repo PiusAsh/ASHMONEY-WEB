@@ -8,8 +8,8 @@ import { bankTransferRequest, bankTransferResponse } from '../Model/transaction'
   providedIn: 'root',
 })
 export class TransferService {
-  // baseApiUrl: string = 'https://localhost:44303';
-  baseApiUrl: string = 'http://ashmoneyapi.somee.com';
+  baseApiUrl: string = 'https://localhost:44303';
+  // baseApiUrl: string = 'http://www.ashmoneyapi.somee.com';
   constructor(private http: HttpClient) {}
   BeneficiaryAccount!: number;
   SenderAccount!: number;

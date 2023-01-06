@@ -21,6 +21,7 @@ import { QuickLoanComponent } from './useDashboard/quick-loan/quick-loan.compone
 import { LoanRequestComponent } from './Components/loan-request/loan-request.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CurrencyPipe, DatePipe } from '@angular/common';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,6 @@ import { CurrencyPipe, DatePipe } from '@angular/common';
     UsersuccessPageComponent,
     QuickLoanComponent,
     LoanRequestComponent,
-    
   ],
   imports: [
     BrowserModule,
@@ -48,7 +48,7 @@ import { CurrencyPipe, DatePipe } from '@angular/common';
     HttpClientModule,
     NgToastModule,
     NgxPaginationModule,
-    
+    NgxSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

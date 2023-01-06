@@ -34,6 +34,7 @@ export class UsersuccessPageComponent {
     lastLoggedIn: new Date(),
     token: '',
     role: '',
+    eligibleLoanAmt: '',
   };
   userInformation: any;
 
@@ -78,6 +79,4 @@ export class UsersuccessPageComponent {
       },
     });
   }
-
-  
 }

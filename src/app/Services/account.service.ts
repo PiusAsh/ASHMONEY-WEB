@@ -5,6 +5,7 @@ import { BehaviorSubject, map, Observable, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { bankTransferResponse } from '../Model/transaction';
+import { UrlEncrypt } from '../Helper/encrypt';
 
 @Injectable({
   providedIn: 'root',
@@ -13,8 +14,8 @@ export class AccountService {
   user: any;
   admin: any;
   public UserKey: string = 'User Account';
-  // baseApiUrl: string = 'https://localhost:44303/api/';
-  baseApiUrl: string = 'http://ashmoneyapi.somee.com/api/';
+  baseApiUrl: string = 'https://localhost:44303/api/';
+  // baseApiUrl: string = 'http://www.ashmoneyapi.somee.com/api/';
 
   private userSubject = new BehaviorSubject<Account>(
     this.getUserFromLocalStorage()
@@ -23,10 +24,12 @@ export class AccountService {
   res: any;
   userDetails: any;
   isAdmin: any;
+  public keys: string = '1234567890';
   constructor(
     private http: HttpClient,
     private router: Router,
-    private toast: NgToastService
+    private toast: NgToastService,
+    private urlEncrypt: UrlEncrypt,
   ) {
     this.userObservable = this.userSubject.asObservable();
   }
@@ -95,7 +98,8 @@ export class AccountService {
   getUserTransaction(accountNumber: any): Observable<bankTransferResponse[]> {
     const params = new HttpParams().set('accountNumber', accountNumber);
     return this.http.get<bankTransferResponse[]>(
-      'http://ashmoneyapi.somee.com/GetUserTransaction',
+      'https://localhost:44303/GetUserTransaction',
+      // 'http://www.ashmoneyapi.somee.com/GetUserTransaction',
       {
         params,
       }
@@ -120,7 +124,9 @@ export class AccountService {
 
   getAllTransfers(): Observable<bankTransferResponse[]> {
     return this.http.get<bankTransferResponse[]>(
-      'http://ashmoneyapi.somee.com/GetAllTransfer'
+      // 'http://www.ashmoneyapi.somee.com/GetAllTransfer'
+      'https://localhost:44303/GetAllTransfer'
+      
     );
   }
 
@@ -140,7 +146,7 @@ export class AccountService {
                 this.userDetails = res;
               },
             });
-
+            // let _enUrl = this.urlEncrypt.encrypt(this.user.user.id);
             this.router.navigate([`user/${this.user.user.id}`]);
             this.toast.success({
               detail: `Hey, ${this.user.user.fullName}`,
@@ -175,8 +181,8 @@ export class AccountService {
           },
           error: (err) => {
             this.toast.error({
-              detail: err.error.message,
-              summary: 'Please try again later!',
+              detail: 'Oops!!',
+              summary: 'Error Occurred: ' + err.error.message,
               duration: 4000,
             });
             console.log(err, 'checking-----');

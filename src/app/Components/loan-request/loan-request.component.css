@@ -4,9 +4,19 @@
 #navbarVertical{
     background-color: #C31E39!important;
 }
+
+input[readonly] {
+  background-color: white;
+}
 #loanAmount{
   text-align: end!important;
   font-size: 18px;
+}
+#loanAbleAmount{
+  text-align: end!important;
+  font-size: 20px;
+  color: #c31e39;
+  font-weight: 600;
 }
 .form-select{
   /* font-size: 20px!important; */
@@ -118,7 +128,14 @@ option {
 @media only screen and (max-width: 600px) {
   #mobileContent {
     display: block;
+    
+    
   }
+  .navbar-toggler {
+  background-color: white!important;
+  /* padding: 10px; */
+}
+
   
 
   .account {
