@@ -8,7 +8,7 @@ import { Observable, tap } from 'rxjs';
   providedIn: 'root',
 })
 export class LoanRequestService {
-  baseApiUrl: string = 'https://localhost:44303';
+  baseApiUrl: string = 'http://testingapi.runasp.net';
   // baseApiUrl: string = 'http://www.ashmoneyapi.somee.com';
   constructor(private http: HttpClient) {}
 
@@ -40,10 +40,10 @@ export class LoanRequestService {
       );
   }
 
-  getLoansByBorrower() {
+  getLoansByBorrower(borrowerAccountNumber: any) {
     return this.http.get<LoanResponse[]>(
-      this.baseApiUrl + `/borrower/1111138626/loans`
-      // this.baseApiUrl + `/borrower/${borrowerAccountNumber}/loans`
+      // this.baseApiUrl + `/borrower/1111138626/loans`
+      this.baseApiUrl + `/borrower/${borrowerAccountNumber}/loans`
     );
   }
   // getLoansByBorrower(borrowerAccountNumber: number) {

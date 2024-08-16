@@ -43,22 +43,22 @@
           <form class="py-3" [formGroup]="loginForm">
             <div class="row px-3 mb-4">
               <label class="mb-1"
-                ><h6 class="mb-0 text-sm">Phone Number</h6></label
+                ><h6 class="mb-0 text-sm">Email</h6></label
               >
               <input
                 class=""
-                formControlName="phoneNumber"
-                type="number"
-                name="phoneNumber"
-                placeholder="Enter your phone number"
+                formControlName="email"
+                type="text"
+                name="email"
+                placeholder="Enter email address"
               />
               <span
                 class="text-danger"
                 *ngIf="
-                  loginForm.controls['phoneNumber'].touched &&
-                  loginForm.hasError('required', 'phoneNumber')
+                  loginForm.controls['email'].touched &&
+                  loginForm.hasError('required', 'email')
                 "
-                >Phone Number is required</span
+                >Email Address is required</span
               >
             </div>
             <div class="row px-3">

@@ -14,7 +14,8 @@ export class AccountService {
   user: any;
   admin: any;
   public UserKey: string = 'User Account';
-  baseApiUrl: string = 'https://localhost:44303/api/';
+  baseApiUrl: string = 'http://testingapi.runasp.net/api/';
+  // http://testingapi.runasp.net/swagger/index.html
   // baseApiUrl: string = 'http://www.ashmoneyapi.somee.com/api/';
 
   private userSubject = new BehaviorSubject<Account>(
@@ -72,7 +73,7 @@ export class AccountService {
   getUserTransactionss(accountNumber: any): Observable<bankTransferResponse[]> {
     return this.http
       .get<bankTransferResponse[]>(
-        `https://localhost:44303/GetUserTransaction?accountNumber=${accountNumber}`
+        `http://testingapi.runasp.net/GetUserTransaction?accountNumber=${accountNumber}`
         // 'https://localhost:44303/GetUserTransaction?accountNumber=1111138626'
       )
       .pipe(
@@ -86,7 +87,7 @@ export class AccountService {
 
   getUserTransactions(accountNumber: any) {
     return this.http.get<bankTransferResponse[]>(
-      'https://localhost:44303/GetUserTransaction',
+      'http://testingapi.runasp.net/GetUserTransaction',
       {
         params: {
           accountNumber: this.user.accountNumber,
@@ -98,7 +99,7 @@ export class AccountService {
   getUserTransaction(accountNumber: any): Observable<bankTransferResponse[]> {
     const params = new HttpParams().set('accountNumber', accountNumber);
     return this.http.get<bankTransferResponse[]>(
-      'https://localhost:44303/GetUserTransaction',
+      'http://testingapi.runasp.net/GetUserTransaction',
       // 'http://www.ashmoneyapi.somee.com/GetUserTransaction',
       {
         params,
@@ -125,31 +126,30 @@ export class AccountService {
   getAllTransfers(): Observable<bankTransferResponse[]> {
     return this.http.get<bankTransferResponse[]>(
       // 'http://www.ashmoneyapi.somee.com/GetAllTransfer'
-      'https://localhost:44303/GetAllTransfer'
-      
+      'http://testingapi.runasp.net/GetAllTransfer'
     );
   }
 
   LoginUser(login: any): Observable<Account> {
     return this.http
-      .post<Account>(`${this.baseApiUrl}Account/Auth`, login)
+      .post<Account>(`http://testingapi.runasp.net/api/Account/Login`, login)
       .pipe(
         tap({
-          next: (res) => {
-            this.user = res;
-            this.userSubject.next(res);
-            this.setUserLocalStorage(res);
-            console.log('GETTING THE PRESENT USE ***R', this.user.user);
+          next: (res: any) => {
+            this.user = res.data;
+            this.userSubject.next(res.data);
+            this.setUserLocalStorage(res.data);
+            console.log('GETTING THE PRESENT USE ***R', this.user);
 
-            this.GetAccountById(this.user.user.id).subscribe({
-              next: (res) => {
-                this.userDetails = res;
-              },
-            });
+            // this.GetAccountById(this.user.user.id).subscribe({
+            //   next: (res) => {
+            //     this.userDetails = res;
+            //   },
+            // });
             // let _enUrl = this.urlEncrypt.encrypt(this.user.user.id);
-            this.router.navigate([`user/${this.user.user.id}`]);
+            this.router.navigate([`user/${this.user.id}`]);
             this.toast.success({
-              detail: `Hey, ${this.user.user.fullName}`,
+              detail: `Hey, ${this.user.fullName}`,
               summary: 'Welcome back!',
               duration: 5000,
             });
@@ -167,7 +167,7 @@ export class AccountService {
   }
   RegisterUser(reg: any): Observable<Account> {
     return this.http
-      .post<Account>(`${this.baseApiUrl}Account/Signup`, reg)
+      .post<Account>(`${this.baseApiUrl}Account/OpenAccount`, reg)
       .pipe(
         tap({
           next: (res) => {

@@ -33,8 +33,9 @@ export class AccountGuard implements CanActivate {
 
     var _user = this.accountService.IsLoggedIn();
     if (_user != '' && _user != undefined && _user != null) {
+      // console.log(_user)
       let _v = JSON.parse(_user!);
-      if (parseInt(routeUserId!) === _v.user.id) {
+      if (parseInt(routeUserId!) === _v.id) {
         return true;
       } else {
         this.toast.error({

@@ -102,15 +102,17 @@ export class TransactionComponent implements OnInit {
           .getUserTransaction(this.userAcct.accountNumber)
           .subscribe((transact) => {
             this.transactions = transact;
-            console.log(this.userAcct.accountNumber, '************** ACCT');
-            console.log(transact, '************** TRANSACTIONS');
+            // console.log(this.userAcct.accountNumber, '************** ACCT');
+            // console.log(transact, '************** TRANSACTIONS');
           });
-        this.loanService.getLoansByBorrower().subscribe((loans) => {
-          this.userLoans = loans;
-          // Calculate the due date based on the repayment period
-          console.log(loans, 'CHECKING USER LOAN');
-          console.log('CHECKING LOANS', this.userLoans);
-        });
+        this.loanService
+          .getLoansByBorrower(this.userAcct?.accountNumber)
+          .subscribe((loans) => {
+            this.userLoans = loans;
+            // Calculate the due date based on the repayment period
+            // console.log(loans, 'CHECKING USER LOAN');
+            // console.log('CHECKING LOANS', this.userLoans);
+          });
       }
     });
 
@@ -118,7 +120,7 @@ export class TransactionComponent implements OnInit {
       .getUserTransaction(this.userAcct.accountNumber)
       .subscribe((data: any) => {
         this.transact = data;
-        console.log(data, 'FOR USERS*******');
+        // console.log(data, 'FOR USERS*******');
       });
 
     this.accountService.getAllAccount().subscribe((data: any) => {

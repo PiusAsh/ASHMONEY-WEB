@@ -8,7 +8,7 @@ import { bankTransferRequest, bankTransferResponse } from '../Model/transaction'
   providedIn: 'root',
 })
 export class TransferService {
-  baseApiUrl: string = 'https://localhost:44303';
+  baseApiUrl: string = 'http://testingapi.runasp.net';
   // baseApiUrl: string = 'http://www.ashmoneyapi.somee.com';
   constructor(private http: HttpClient) {}
   BeneficiaryAccount!: number;
