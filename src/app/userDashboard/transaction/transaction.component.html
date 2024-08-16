@@ -474,7 +474,7 @@
           </div>
           <div class="terminal" [ngSwitch]="selection.value">
             <div *ngSwitchDefault="'transaction'">
-              <div class="table-responsive">
+              <div class="table-responsive" >
                 <table class="table table-hover table-nowrap text-center">
                   <thead class="thead-light">
                     <tr>
@@ -526,7 +526,10 @@
                     </tr>
                   </tbody>
                 </table>
-                <pagination-controls
+                <div class="p-5" *ngIf="transact?.length === 0">
+                  <p>No transaction yet</p>
+                </div>
+                <pagination-controls *ngIf="transact?.length > 0"
                   (pageChange)="transactionPage = $event"
                 ></pagination-controls>
               </div>
@@ -606,9 +609,11 @@
 
 
                 
-
+ <div class="p-5" *ngIf="loans?.length === 0">
+                  <p>No loans yet</p>
+                </div>
                
-                <pagination-controls
+                <pagination-controls *ngIf="loans?.length > 0"
                   (pageChange)="loanPage = $event"
                 ></pagination-controls>
               </div>
